@@ -1,0 +1,42 @@
+.cards {
+  display: flex;
+  justify-content: space-between;
+  width: 98%;
+  margin: 100px auto 0 auto;
+}
+.card-item {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 20px;
+  transition: all 0.5s ease-in-out;
+}
+.card-image {
+  height: 450px;
+  width: 450px;
+  border-radius: 30px 30px 0 0;
+}
+.card-head {
+  text-align: center;
+  margin-top: 200px;
+}
+.card-head h1 {
+  text-align: center;
+  color: rgb(78, 77, 77);
+  font-size: 2.3rem;
+
+  letter-spacing: 1px;
+}
+.card-item:hover {
+  transform: scale(1.05);
+}
+.card-text {
+  margin-top: 5px;
+  text-align: center;
+  color: rgb(233, 233, 233);
+  background-color: rgb(44, 44, 44);
+  padding: 30px 20px 20px 20px;
+
+  border-radius: 0 0 30px 30px;
+}
+.card-link {
+  text-decoration: none;
+}

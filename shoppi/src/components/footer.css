@@ -1,0 +1,49 @@
+.foot-container {
+  margin-top: 100px;
+  /* background-color: rgb(245, 245, 245, 0.5); */
+  padding: 100px;
+}
+.foot-about {
+  text-align: center;
+  width: 60%;
+  margin: auto;
+  margin-bottom: 80px;
+}
+.foot-about h2 {
+  color: rgb(78, 77, 77);
+  margin-bottom: 50px;
+}
+.foot-about p {
+  color: rgb(114, 114, 114);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1.5rem;
+}
+.icons {
+  display: flex;
+  width: 20%;
+  justify-content: space-between;
+  margin: auto;
+  margin-bottom: 30px;
+}
+.foot-bottom {
+  padding: 50px;
+  background-color: #ffa005;
+  height: 400px;
+}
+.foot-text {
+  color: rgb(37, 37, 37);
+  margin: auto;
+  font-size: 1.1rem;
+  line-height: 3;
+  width: 65%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+.copyright {
+  font-size: 1.3rem;
+  display: flex;
+  width: 13%;
+  margin: auto;
+  margin-top: 100px;
+}

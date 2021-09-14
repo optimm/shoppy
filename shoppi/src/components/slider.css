@@ -1,0 +1,43 @@
+.slider {
+  margin-top: 150px;
+  margin-bottom: 250px;
+}
+.slider-item {
+  background-color: #ffa005;
+}
+.slider-color {
+  background-color: white;
+  height: 200px;
+}
+.slider-image1 {
+  height: 700px;
+  margin-top: -150px;
+  margin-left: -150px;
+}
+.slider-image2 {
+  height: 650px;
+  margin-top: -100px;
+  margin-left: 7%;
+}
+.slider-image3 {
+  height: 700px;
+  margin-top: -150px;
+  margin-left: -8%;
+}
+.slider-image4 {
+  height: 750px;
+  margin-top: -200px;
+  margin-left: -8%;
+}
+.slider-main {
+  display: flex;
+}
+.slider-text {
+  font-size: 4rem;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  margin-top: 8%;
+}
+.settle {
+  margin-left: -200px;
+}

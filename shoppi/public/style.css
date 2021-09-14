@@ -1,0 +1,19 @@
+body {
+  overflow-x: hidden;
+  /* rgb(255, 253, 253); */
+}
+
+/* .main {
+  /* display: flex; */
+/* flex-wrap: wrap; */
+/* border-bottom: 0.5px solid rgb(131, 131, 131);} */
+
+.yellow {
+  /* position: relative; */
+  background-color: #ffa005;
+  /* width: 700px; */
+}
+.white {
+  background-color: rgb(255, 253, 253);
+  /* border-bottom: 1px soPhoto by NASA Image Librarylid rgb(207, 206, 206, 0.5); */
+}

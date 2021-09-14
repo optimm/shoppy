@@ -1,0 +1,46 @@
+.nav {
+  background-color: rgb(255, 253, 253);
+}
+.container {
+  margin-left: -40px;
+  margin-top: 20px;
+  width: 100%;
+}
+img {
+  margin-top: -50px;
+}
+.logo {
+  width: 200px;
+  height: 120px;
+}
+.me-auto {
+  margin-top: -30px;
+  margin-left: 0px;
+}
+.nav-item {
+  color: rgb(70, 70, 70);
+  text-decoration: none;
+  margin-left: 30px;
+  margin-right: 20px;
+  font-size: 16px;
+  /* font-weight: bold; */
+}
+.nav-item:hover {
+  color: black;
+}
+.item {
+  margin-left: 50px;
+}
+@media only screen and (max-width: 1100px) {
+  .item {
+    margin-left: 36px;
+  }
+  .logo {
+    width: 180px;
+    height: 100px;
+  }
+  .nav-item {
+    font-size: 15px;
+    /* font-weight: bold; */
+  }
+}
