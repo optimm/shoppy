@@ -27,13 +27,13 @@ function Navigation() {
           <Link className="nav-item" to="/women">
             Women
           </Link>
-
           <Link className="nav-item item" to="/sign">
             <FaceOutlinedIcon style={{ fontSize: 25 }} />
           </Link>
           <Link className="nav-item" to="/cart">
             <ShoppingCartOutlinedIcon style={{ fontSize: 25 }} />
           </Link>
+          {/* after 950px want to vanish */}
         </Nav>
       </Container>
     </Navbar>
