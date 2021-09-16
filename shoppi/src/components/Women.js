@@ -9,49 +9,271 @@ const Women = (props) => {
   console.log(props.location.state);
   return (
     <>
-      <Navigation />
+      {/* <Navigation /> */}
 
    
       <Row >
-      <Col lg={3} className="women-left" >
+
+
+
+
+
+
+            <Col lg={9} md={12} sm={12} className="women-left" >
+            <Navigation />
+             
+             <div className="women-left-box" id="scroll">
+                
+                
+                
+                <Row className="women-cloth">
+
+                <Col lg={4} md={4} sm={4} xs={4}>
+                  <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+                  <p>Girls Hoody  <br/>
+                  Rs 499/-  </p>
+
+                </Col>
+
+                <Col lg={4} md={4} sm={4} xs={4}>
+                  <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+                  <p>Girls Hoody  <br/>
+                  Rs 499/-  </p>
+                </Col>
+
+
+                <Col lg={4} md={4} sm={4} xs={4}>
+                  <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+                  <p>Girls Hoody  <br/>
+                  Rs 499/-  </p>
+                </Col>
+
+
+              
+                </Row>
+
+
+                     
+                
+                
+                <Row className="women-cloth">
+
+                <Col lg={4} md={4} sm={4} xs={4}>
+                  <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+                  <p>Girls Hoody  <br/>
+                  Rs 499/-  </p>
+                </Col>
+
+                <Col lg={4} md={4} sm={4} xs={4}>
+                  <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+                  <p>Girls Hoody  <br/>
+                  Rs 499/-  </p>
+                </Col>
+
+
+                <Col lg={4} md={4} sm={4} xs={4}>
+                  <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+                  <p>Girls Hoody  <br/>
+                  Rs 499/-  </p>
+                </Col>
+
+
+              
+                </Row>
+
+
+
+                 
+
+
+
+
+                <Row className="women-cloth">
+
+<Col lg={4} md={4} sm={4} xs={4}>
+  <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+  <p>Girls Hoody  <br/>
+                  Rs 499/-  </p>
+</Col>
+
+<Col lg={4} md={4} sm={4} xs={4}>
+  <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+  <p>Girls Hoody  <br/>
+                  Rs 499/-  </p>
+</Col>
+
+
+<Col lg={4} md={4} sm={4} xs={4}>
+  <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+  <p>Girls Hoody  <br/>
+                  Rs 499/-  </p>
+</Col>
+
+
+
+</Row>
+
+
+
+
+
+
+
+
+
+
+<Row className="women-cloth">
+
+<Col lg={4} md={4} sm={4} xs={4}>
+  <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+  <p>Girls Hoody  <br/>
+                  Rs 499/-  </p>
+</Col>
+
+<Col lg={4} md={4} sm={4} xs={4}>
+  <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+  <p>Girls Hoody  <br/>
+                  Rs 499/-  </p>
+</Col>
+
+
+<Col lg={4} md={4} sm={4} xs={4}>
+  <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+  <p>Girls Hoody  <br/>
+                  Rs 499/-  </p>
+</Col>
+
+
+
+</Row>
+
+
+
+
+
+
+
+
+
+
+
+<Row className="women-cloth">
+
+<Col lg={4} md={4} sm={4} xs={4}>
+  <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+  <p>Girls Hoody  <br/>
+                  Rs 499/-  </p>
+</Col>
+
+<Col lg={4} md={4} sm={4} xs={4}>
+  <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+  <p>Girls Hoody  <br/>
+                  Rs 499/-  </p>
+</Col>
+
+
+<Col lg={4} md={4} sm={4} xs={4}>
+  <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+  <p>Girls Hoody  <br/>
+                  Rs 499/-  </p>
+</Col>
+
+
+
+</Row>
+
+
+
+
+
+
+
+
+
+
+
+
+             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+            </Col>
+     
+     
+
 
      
 
-      <div className="women-filterBox">
 
-      <h2>Women Fashion</h2>
- 
-       
-       <Col className= "women-filter">
-       <Row className="women-sort1" >
-
-         <h4>Sort By:- </h4>
-
-         </Row>
-         <Row  className="women-sort2" >
-         <h4>Sort By:- </h4>
-         </Row>
-         </Col>
-
-
-     
-
-
-        </div> 
-
-
-     
-      
     
-      </Col>
+
+
+    {/* right */}
+
+
+
+
+
+
+
+      <Col  lg={3} md={12} sm={12}  className="women-right"  >
+      
+
+      <div className="women-filterBox">   
+      
+      <h2>Women Fashion</h2>
+
+      <Col className="women-filter">
+
+       
+       <Row >
+         <div className="women-sort1">
+           top
+         </div>
+       </Row>
+
+
+       <Row >
+         <div className="women-sort1">
+           bottom</div>
+      </Row>
+
+
        
 
+      </Col>
 
+       </div> 
 
-      <Col  lg={9} className="women-right"  >
-        right
       
       </Col>
+
+
+
 
 
 
