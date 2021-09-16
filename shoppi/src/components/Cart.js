@@ -7,7 +7,7 @@ import { Container, Row, Col, Image } from "react-bootstrap";
 import DeleteIcon from "@material-ui/icons/Delete";
 import "./cart.css";
 const Cart = () => {
-  // let [data, setData] = useState("ayush");
+  let [data, setData] = useState("address");
 
   return (
     <>
@@ -113,6 +113,7 @@ const Cart = () => {
                         type="text"
                         autoComplete="disable"
                         placeholder="Sector 82 Noida"
+                        onchange={(e) => setData(e.target.value)}
                       />
                     </div>
                   </Col>
