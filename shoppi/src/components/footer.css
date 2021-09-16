@@ -138,13 +138,13 @@ body {
 }
 @media only screen and (max-width: 400px) {
   .foot-about {
-    width: 100%;
+    width: 95%;
   }
   .foot-about p {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
   .foot-about h4 {
-    font-size: 1.15rem;
+    font-size: 1.09rem;
   }
   .icons {
     width: 70%;

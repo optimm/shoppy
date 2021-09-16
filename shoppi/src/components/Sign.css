@@ -1,0 +1,116 @@
+*{
+    font-family: Ubuntu;
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  
+  .login-main{
+    
+    margin: 6%;
+  
+  }
+  .signup{
+  
+    margin-top: 75px;
+      height: 575px;
+      max-width: 60vw;
+      background-image: url("./SignImg.jpg");
+      filter: drop-shadow(7px 8px 4px rgba(0, 0, 0, 0.25));
+      
+         
+  }
+  
+  .login{
+    margin-top: 75px;
+    max-width: 60vw;
+  }
+  
+  .login-left{
+   
+  
+    text-align: center;
+    width: 50vw;
+    margin-top: -30px;
+    height: 575px;
+    background-color: #a3a19b;
+    
+  }
+  
+  
+  .login h2{
+  
+    font-size: 38px;
+  text-align: center;
+  margin-top: 30px;
+  
+  
+  }
+  
+  .login-input{
+  
+  
+   border: none;
+   font-size: 23px;
+   width: 70%;
+   height: 50px;
+   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+   border-radius: 25px;
+   background: rgba(255, 255, 255, 0.9);
+   padding: 0.1em 1em;
+  margin-top: 7%;
+  
+  
+  }
+  
+  .login-input:focus {
+   outline: none;
+  }
+  
+  
+  
+  .login-btn{
+    width: 45%;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.74);
+    border-radius: 100px;
+    font-family: Ubuntu;
+    font-size: 28px;
+    color: #FFFFFF;
+    position: relative;
+    top: 5rem;
+    cursor: pointer;
+    border: none;
+    margin-bottom: 10px;
+   
+  }
+  
+  .login-btn:hover {
+    background-color: #F0A411; 
+  }
+  
+  
+  .login-btn2{
+    margin-top: 42px;
+  }
+  
+  
+  
+  .login h3{
+    position: relative;
+    top: 7rem;
+    /* margin-left: 8em; */
+  }
+  
+  
+  @media (max-width: 990px) { 
+  
+    .signup{
+  
+      display: none;
+    
+    }
+    
+  }
+  
