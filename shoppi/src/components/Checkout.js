@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./check.css";
 
 const Checkout = (props) => {
-  console.log(props);
+  const [addres,mobile,email] = Object.values(props.location.state);
   return (
     <>
       <div>
@@ -35,7 +35,7 @@ const Checkout = (props) => {
                     </Col>
                     <Col lg={7} md={7} sm={7} xs={7} style={{ padding: "0" }}>
                       <p className="check-data" id="check-d">
-                        Sector-82 Noida Up
+                         <nobr>{addres}</nobr>
                       </p>
                     </Col>
                   </Row>
@@ -45,7 +45,7 @@ const Checkout = (props) => {
                     </Col>
                     <Col lg={7} md={7} sm={7} xs={7} style={{ padding: "0" }}>
                       <p className="check-data" id="check-d">
-                        ayushsaxena823@gmail.com
+                         <nobr>{email}</nobr>
                       </p>
                     </Col>
                   </Row>
@@ -55,7 +55,7 @@ const Checkout = (props) => {
                     </Col>
                     <Col lg={7} md={7} sm={7} xs={7} style={{ padding: "0" }}>
                       <p className="check-data" id="check-d">
-                        9899102467
+                        <nobr>{mobile}</nobr>
                       </p>
                     </Col>
                   </Row>

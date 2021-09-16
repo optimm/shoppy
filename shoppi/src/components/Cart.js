@@ -7,11 +7,13 @@ import { Container, Row, Col, Image } from "react-bootstrap";
 import DeleteIcon from "@material-ui/icons/Delete";
 import "./cart.css";
 const Cart = () => {
-  let [data, setData] = useState("address");
-
+  let [addres, setaddres] = useState("not filled");
+  let [mobile, setmobile] = useState("not filled");
+   let [email, setemail] = useState("please check email");
+const deliveryData = [addres,mobile,email]
   return (
     <>
-      {/* =====================sending data =========================== */}
+      {/* =====================sending addres =========================== */}
 
       {/* <div className="cart-container">
         <img src="./slider4.png" alt="" /> 
@@ -21,11 +23,11 @@ const Cart = () => {
           id="yourName"
           onChange={(e) => setData(e.target.value)}
         ></input>
-        <Link to={{ pathname: "/check", state: data }}>
-          <button>Send data</button>
+        <Link to={{ pathname: "/check", state: addres }}>
+          <button>Send addres</button>
         </Link>
       </div> */}
-      {/* =====================sending data =========================== */}
+      {/* =====================sending addres =========================== */}
       <Row>
         <Col lg={7} md={12} sm={12} className="left">
           <Navigation />
@@ -113,7 +115,7 @@ const Cart = () => {
                         type="text"
                         autoComplete="disable"
                         placeholder="Sector 82 Noida"
-                        onchange={(e) => setData(e.target.value)}
+                        onChange={(e) => setaddres(e.target.value)}
                       />
                     </div>
                   </Col>
@@ -130,6 +132,7 @@ const Cart = () => {
                         type="text"
                         placeholder="8999102345"
                         autoComplete="disable"
+                        onChange={(e) => setmobile(e.target.value)}
                       />
                     </div>
                   </Col>
@@ -146,13 +149,14 @@ const Cart = () => {
                         type="email"
                         placeholder="adityamc@lora.com"
                         autoComplete="disable"
+                        onChange={(e) => setemail(e.target.value)}
                       />
                     </div>
                   </Col>
                 </Row>
               </label>
               <h3 className="total">Total</h3>
-              <Link to="/check">
+              <Link to={{ pathname: "/check", state: deliveryData }}>
                 <button className="cart-btn">Checkout</button>
               </Link>
             </div>
