@@ -4,6 +4,7 @@ import Navigation from "./Navigation";
 import "./cart.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Container, Row, Col, Image } from "react-bootstrap";
+import DeleteIcon from "@material-ui/icons/Delete";
 import "./cart.css";
 const Cart = () => {
   // let [data, setData] = useState("ayush");
@@ -32,36 +33,68 @@ const Cart = () => {
             <div>
               <h2>Cart</h2>
             </div>
-            <div className="cart-item">
-              <p>
-                <Image src="./cartimages/cart1.jpeg" alt="item1" fluid />
-                <button className="cart-remove-btn">D</button>
-                <input type="number" defaultValue="1" />
-              </p>{" "}
-            </div>
+            <div className="cart-items" id="scroll">
+              <Row className="cart-item">
+                <Col lg={4} md={4} sm={4} xs={4}>
+                  <Image src="./cartimages/cart1.jpeg" alt="item1" fluid />
+                </Col>
+                <Col lg={6} md={6} sm={6} xs={6} className="cart-item-detail">
+                  <p>Gucci Hoodie</p>
+                </Col>
+                <Col lg={2} md={2} sm={2} xs={2} className="cart-item-price">
+                  <p>$250</p>
+                </Col>
+              </Row>
+              <div className="cart-value">
+                <DeleteIcon className="cart-remove-btn" />
+                <input type="number" min="1" defaultValue="1" />
+              </div>
+              <Row className="cart-item">
+                <Col lg={4} md={4} sm={4} xs={4}>
+                  <Image src="./cartimages/cart2.jpeg" alt="item1" fluid />
+                </Col>
+                <Col lg={6} md={6} sm={6} xs={6} className="cart-item-detail">
+                  <p>Womens Top</p>
+                </Col>
+                <Col lg={2} md={2} sm={2} xs={2} className="cart-item-price">
+                  <p>$550</p>
+                </Col>
+              </Row>
+              <div className="cart-value">
+                <DeleteIcon className="cart-remove-btn" />
+                <input type="number" min="1" defaultValue="1" />
+              </div>
+              <Row className="cart-item">
+                <Col lg={4} md={4} sm={4} xs={4}>
+                  <Image src="./cartimages/cart3.jpg" alt="item1" fluid />
+                </Col>
+                <Col lg={6} md={6} sm={6} xs={6} className="cart-item-detail">
+                  <p>Men's Shirt</p>
+                </Col>
+                <Col lg={2} md={2} sm={2} xs={2} className="cart-item-price">
+                  <p>$150</p>
+                </Col>
+              </Row>
+              <div className="cart-value">
+                <DeleteIcon className="cart-remove-btn" />
+                <input type="number" min="1" defaultValue="1" />
+              </div>
 
-            <div className="cart-item">
-              <p>
-                <Image src="./cartimages/cart2.jpeg" alt="item1" fluid />
-                <button className="cart-remove-btn">D</button>
-                <input type="number" defaultValue="1" />{" "}
-              </p>{" "}
-            </div>
-
-            <div className="cart-item">
-              <p>
-                <Image src="./cartimages/cart3.jpg" alt="item1" fluid />
-                <button className="cart-remove-btn">D</button>
-                <input type="number" defaultValue="1" />
-              </p>{" "}
-            </div>
-
-            <div className="cart-item">
-              <p>
-                <Image src="./cartimages/cart4.jpg" alt="item1" fluid />
-                <button className="cart-remove-btn">D</button>
-                <input type="number" defaultValue="1" />{" "}
-              </p>{" "}
+              <Row className="cart-item">
+                <Col lg={4} md={4} sm={4} xs={4}>
+                  <Image src="./cartimages/cart4.jpg" alt="item1" fluid />
+                </Col>
+                <Col lg={6} md={6} sm={6} xs={6} className="cart-item-detail">
+                  <p>Men's Shirt</p>
+                </Col>
+                <Col lg={2} md={2} sm={2} xs={2} className="cart-item-price">
+                  <p>$200</p>
+                </Col>
+              </Row>
+              <div className="cart-value">
+                <DeleteIcon className="cart-remove-btn" />
+                <input type="number" min="1" defaultValue="1" />
+              </div>
             </div>
           </div>
         </Col>
@@ -92,7 +125,11 @@ const Cart = () => {
                   </Col>
                   <Col lg={9} md={9}>
                     <div className="cart-input">
-                      <input type="text" autoComplete="disable" />
+                      <input
+                        type="text"
+                        placeholder="8999102345"
+                        autoComplete="disable"
+                      />
                     </div>
                   </Col>
                 </Row>
@@ -104,7 +141,11 @@ const Cart = () => {
                   </Col>
                   <Col lg={9} md={9}>
                     <div className="cart-input">
-                      <input type="email" autoComplete="disable" />
+                      <input
+                        type="email"
+                        placeholder="adityamc@lora.com"
+                        autoComplete="disable"
+                      />
                     </div>
                   </Col>
                 </Row>

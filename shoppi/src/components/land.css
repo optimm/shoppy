@@ -19,9 +19,8 @@
   transition: all 0.5s ease-in-out;
 }
 .main-image {
-  height: 95vh;
-  /* max-width: 680px; */
-  max-height: 650px;
+  height: 91vh;
+  max-height: 660px;
   margin-left: -230px;
   transition: all 0.5s ease-in-out;
 }
@@ -63,6 +62,7 @@
     font-size: 3.5rem;
   }
   .main-image {
+    max-height: 600px;
     height: 85vh;
   }
   .yellow {
