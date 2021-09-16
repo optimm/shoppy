@@ -6,12 +6,10 @@
   margin-top: 20px;
   width: 100%;
 }
-img {
-  margin-top: -50px;
-}
 .logo {
   width: 200px;
   height: 120px;
+  margin-top: -50px;
 }
 .me-auto {
   margin-top: -30px;

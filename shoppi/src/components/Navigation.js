@@ -27,7 +27,7 @@ function Navigation() {
           <Link className="nav-item" to="/women">
             Women
           </Link>
-          <Link className="nav-item item" to="/sign">
+          <Link className="nav-item item" to="/signin">
             <FaceOutlinedIcon style={{ fontSize: 25 }} />
           </Link>
           <Link className="nav-item" to="/cart">
