@@ -151,8 +151,9 @@ const Cart = () => {
                 </Row>
               </label>
               <h3 className="total">Total</h3>
-
-              <button className="cart-btn">Checkout</button>
+              <Link to="/check">
+                <button className="cart-btn">Checkout</button>
+              </Link>
             </div>
           </div>
         </Col>
