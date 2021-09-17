@@ -1,11 +1,31 @@
 import React from "react";
 import Navigation from "../Navigation";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+} from "react-router-dom";
 import "./signup.css";
-
+import Axios from "axios";
 const Signup = () => {
+  let history = useHistory();
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  const register = () => {
+    console.log("hello");
+    Axios.post("http://localhost:8000/register", {
+      email: email,
+      pass: pass,
+    }).then((response) => {
+      console.log(response);
+    });
+    history.push("/signin");
+  };
   return (
     <div>
       <Navigation />
@@ -52,6 +72,7 @@ const Signup = () => {
                       type="email"
                       placeholder="Enter Email"
                       name="email"
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </Col>
                 </Row>
@@ -62,6 +83,7 @@ const Signup = () => {
                       type="password"
                       placeholder="Enter Password"
                       name="password"
+                      onChange={(e) => setPass(e.target.value)}
                     />
                   </Col>
                   <Col lg={6} md={6} style={{ padding: "0" }}>
@@ -75,7 +97,9 @@ const Signup = () => {
                 </Row>
               </div>
 
-              <button className="signup-btn">Login</button>
+              <button className="signup-btn" onClick={register}>
+                Signup
+              </button>
               <p>
                 <span className="signup-foot">
                   Already have an account? <Link to="/signin">Login</Link>

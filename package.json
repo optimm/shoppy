@@ -1,14 +1,13 @@
 {
+  "proxy": "http://localhost:3000",
   "dependencies": {
     "bootstrap": "^5.1.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-<<<<<<< HEAD
-    "nodemon": "^2.0.12",
-    "react-bootstrap": "^2.0.0-beta.6"
-=======
+    "http-proxy": "^1.18.1",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.12"
->>>>>>> 908e4ddc2b2d3234f7660f78aca0f38010523cbd
   },
   "name": "backend_shoppy",
   "version": "1.0.0",

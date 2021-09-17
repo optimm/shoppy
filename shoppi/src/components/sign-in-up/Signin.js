@@ -2,10 +2,74 @@ import React from "react";
 import Navigation from "../Navigation";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import "react-notifications/lib/notifications.css";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+} from "react-router-dom";
 import "./Sign.css";
+import { useState, useEffect } from "react";
+import Axios from "axios";
+Axios.defaults.withCredentials = true;
+// ===========================================
+let arnabu = false;
+const createNotification = (type, message, title) => {
+  switch (type) {
+    case "info":
+      NotificationManager.info(title);
+      break;
+    case "success":
+      NotificationManager.success(message, title);
+      break;
+    case "warning":
+      NotificationManager.warning(message, title, 3000);
+      break;
+    case "error":
+      NotificationManager.error(message, title, 5000);
+      break;
+  }
+};
+// ===========================================
+const Sign = (props) => {
+  const history = useHistory();
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  const login = () => {
+    console.log("hello login");
+    Axios.post("http://localhost:8000/login", {
+      email: email,
+      pass: pass,
+    }).then((response) => {
+      let authenticated = response.data.authenticated;
+      if (authenticated) {
+        history.push("/");
+      } else {
+        alert("Please try again");
+      }
+    });
+    // ======================================================
 
-const Sign = () => {
+    // ======================================================
+  };
+  useEffect(() => {
+    if (
+      props.location.state.detail === "Please Log In to view cart" &&
+      arnabu === false
+    ) {
+      arnabu = true;
+      createNotification("error", "birjumc", "true");
+    } else if (arnabu === true) {
+      arnabu = false;
+    }
+  }, []);
+  // ===========================================
   return (
     <div>
       <Navigation />
@@ -23,6 +87,7 @@ const Sign = () => {
                   type="email"
                   placeholder="Enter Email"
                   name="email"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
 
                 <input
@@ -30,10 +95,13 @@ const Sign = () => {
                   type="password"
                   placeholder="Enter Password"
                   name="password"
+                  onChange={(e) => setPass(e.target.value)}
                 />
               </div>
 
-              <button className="login-btn">Login</button>
+              <button className="login-btn" onClick={login}>
+                Login
+              </button>
               <div className="login-foot">
                 <span>
                   Create New account? <Link to="/signup">Signup</Link>
@@ -48,6 +116,7 @@ const Sign = () => {
           </Col>
         </Row>
       </div>
+      <NotificationContainer />
     </div>
   );
 };

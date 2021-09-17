@@ -2,32 +2,36 @@ import React from "react";
 import { useState } from "react";
 import Navigation from "./Navigation";
 import "./cart.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+} from "react-router-dom";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import DeleteIcon from "@material-ui/icons/Delete";
+import Axios from "axios";
 import "./cart.css";
+Axios.defaults.withCredentials = true;
 const Cart = () => {
+  const history = useHistory();
   let [addres, setaddres] = useState("not filled");
   let [mobile, setmobile] = useState("not filled");
-   let [email, setemail] = useState("please check email");
-const deliveryData = [addres,mobile,email]
+  let [email, setemail] = useState("please check email");
+  const deliveryData = [addres, mobile, email];
+  Axios.post("http://localhost:8000/cart", {
+    name: "ayush",
+  }).then((response) => {
+    if (response.data.data === false) {
+      history.push({
+        pathname: "/signin",
+        state: { detail: "Please Log In to view cart" },
+      });
+    }
+  });
   return (
     <>
-      {/* =====================sending addres =========================== */}
-
-      {/* <div className="cart-container">
-        <img src="./slider4.png" alt="" /> 
-        <h1>this is cart</h1>
-        <input
-          type="text"
-          id="yourName"
-          onChange={(e) => setData(e.target.value)}
-        ></input>
-        <Link to={{ pathname: "/check", state: addres }}>
-          <button>Send addres</button>
-        </Link>
-      </div> */}
-      {/* =====================sending addres =========================== */}
       <Row>
         <Col lg={7} md={12} sm={12} className="left">
           <Navigation />
