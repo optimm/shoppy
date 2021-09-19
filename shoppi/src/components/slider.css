@@ -1,43 +1,51 @@
 .slider {
-  margin-top: 150px;
+  margin-top: 20vw;
   margin-bottom: 250px;
 }
-.slider-item {
-  background-color: #ffa005;
-}
-.slider-color {
-  background-color: white;
-  height: 200px;
-}
+
 .slider-image1 {
-  height: 700px;
-  margin-top: -150px;
-  margin-left: -150px;
+  max-height: 700px;
+  min-height: 300px;
+
+  height: 40vw;
 }
 .slider-image2 {
-  height: 650px;
-  margin-top: -100px;
-  margin-left: 7%;
+  max-height: 700px;
+  min-height: 300px;
+  margin-left: 10%;
+  height: 40vw;
 }
 .slider-image3 {
-  height: 700px;
-  margin-top: -150px;
-  margin-left: -8%;
+  max-height: 700px;
+  min-height: 300px;
+  height: 40vw;
 }
 .slider-image4 {
-  height: 750px;
-  margin-top: -200px;
-  margin-left: -8%;
+  max-height: 700px;
+  min-height: 300px;
+  height: 40vw;
 }
 .slider-main {
   display: flex;
+  background-color: #ffa005;
 }
 .slider-text {
-  font-size: 4rem;
-  font-weight: bold;
+  font-family: "Helvetica Neue";
+  font-size: 7vw;
   color: rgb(255, 255, 255);
-  margin-top: 8%;
+  font-size: 4vw;
+  position: absolute;
+  top: 30%;
+  left: 70%;
 }
 .settle {
   margin-left: -200px;
+}
+@media only screen and (max-width: 700px) {
+  .slider-text {
+    display: none;
+  }
+  .slider {
+    margin-top: 20vh;
+  }
 }
