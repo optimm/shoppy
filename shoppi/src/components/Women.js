@@ -198,28 +198,6 @@ const Women = (props) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           
             </Col>
      
@@ -241,6 +219,33 @@ const Women = (props) => {
 
 
       <Col  lg={3} md={12} sm={12}  className="women-right"  >
+  
+
+        {/* media query div */}
+
+        <div >
+        <Row>
+
+        <Col>
+
+        <div className="women-box-new">Top</div>  
+        
+        </Col>
+
+        <Col >
+        <div className="women-box-new">Bottom</div>    
+        </Col>
+
+ 
+        </Row>  
+
+        </div>
+
+
+
+
+
+        {/* main right div */}
       
 
       <div className="women-filterBox">   

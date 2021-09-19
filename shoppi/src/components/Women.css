@@ -103,3 +103,53 @@ padding: 40px;
       font-family: sans-serif;
       margin-left: 10px;
   }
+
+
+
+
+  .women-box-new{
+    display: none;
+  }
+
+
+
+
+
+
+  
+
+  @media only screen and (max-width: 980px) {
+  
+
+    .women-right{
+      position:absolute;
+      bottom: 0px;
+      left: 0px;
+      top: 106%;
+    }
+   
+
+    .women-filterBox h2{
+      display: none;
+    }
+    
+    .women-filter {
+      display: none;
+    }
+
+    p{
+      font-size: 19px;
+    }
+
+     
+    .women-box-new{
+      display:block;
+      height: 25px;
+      background-color: #ffffff;
+  
+    }
+
+  }
+
+
+
