@@ -41,6 +41,15 @@ const Sign = (props) => {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  Axios.post("http://localhost:8000/cart", {
+    name: "ayush",
+  }).then((response) => {
+    if (response.data.data === true) {
+      history.push({
+        pathname: "/profile",
+      });
+    }
+  });
   const login = () => {
     console.log("hello login");
     Axios.post("http://localhost:8000/login", {
@@ -49,7 +58,6 @@ const Sign = (props) => {
     }).then((response) => {
       let authenticated = response.data.authenticated;
       if (authenticated) {
-        alert("hi");
         history.push("/");
       } else {
         alert("Please try again");

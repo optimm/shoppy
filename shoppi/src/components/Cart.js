@@ -26,7 +26,6 @@ const Cart = () => {
   Axios.post("http://localhost:8000/cart", {
     name: "ayush",
   }).then((response) => {
-    alert(response.data.data);
     if (response.data.data === false) {
       history.push({
         pathname: "/nlog",

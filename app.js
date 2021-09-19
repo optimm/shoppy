@@ -15,7 +15,7 @@ app.use(
     credentials: true,
   })
 );
-
+let name;
 app.use("/cart", auth);
 const db = mysql.createConnection({
   host: "localhost",
@@ -27,17 +27,24 @@ app.post("/register", (req, res) => {
   console.log("hello register");
   const email = req.body.email;
   const pass = req.body.pass;
-  console.log(email, pass);
+  const fname = req.body.fname;
+  const lname = req.body.lname;
+  const mobile = req.body.mobile;
+  console.log(email, pass, fname, lname, mobile);
   db.query(
-    "INSERT INTO authentication (email,pass) VALUES (?,?)",
-    [email, pass],
+    "INSERT INTO authentication (email,pass,fname,lname,mobile) VALUES (?,?,?,?,?)",
+    [email, pass, fname, lname, mobile],
     (err, result) => {
       console.log(err);
     }
   );
 });
+app.get("/", (req, res) => {
+  console.log(req.cookies);
+});
 
 app.post("/cart", (req, res) => {
+  console.log(name);
   if (req.isAuthenticated) {
     console.log("IN FIRST");
     res.send({ data: "CartData" });
@@ -60,13 +67,14 @@ app.post("/login", (req, res) => {
         res.send({ err: err });
       }
       if (result.length > 0) {
-        console.log(result);
+        console.log(...result);
+        name = result.fname + result.lname;
+
         res
           .status(200)
           .cookie("LogedIn", true, {
             httpOnly: true,
             sameSite: "strict",
-            path: "/login",
             expires: new Date(
               new Date().getTime() + 3600 * 15 * 1000
             ) /*, secure: true*/,
