@@ -19,7 +19,7 @@ import { useState, useEffect } from "react";
 import Axios from "axios";
 Axios.defaults.withCredentials = true;
 // ===========================================
-let arnabu = false;
+
 const createNotification = (type, message, title) => {
   switch (type) {
     case "info":
@@ -49,6 +49,7 @@ const Sign = (props) => {
     }).then((response) => {
       let authenticated = response.data.authenticated;
       if (authenticated) {
+        alert("hi");
         history.push("/");
       } else {
         alert("Please try again");
@@ -58,21 +59,13 @@ const Sign = (props) => {
 
     // ======================================================
   };
-  useEffect(() => {
-    if (
-      props.location.state.detail === "Please Log In to view cart" &&
-      arnabu === false
-    ) {
-      arnabu = true;
-      createNotification("error", "birjumc", "true");
-    } else if (arnabu === true) {
-      arnabu = false;
-    }
-  }, []);
+
   // ===========================================
   return (
     <div>
-      <Navigation />
+      <div className="check-nav">
+        <Navigation />
+      </div>
 
       <div className="login-main">
         <Row>

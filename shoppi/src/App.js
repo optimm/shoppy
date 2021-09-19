@@ -6,7 +6,7 @@ import Women from "./components/Women";
 import Kids from "./components/Kids";
 import Signin from "./components/sign-in-up/Signin";
 import Signup from "./components/sign-in-up/Signup";
-
+import Nlog from "./components/sign-in-up/Nlog";
 import Checkout from "./components/Checkout";
 import { Route, Switch } from "react-router-dom";
 
@@ -22,6 +22,7 @@ function App() {
         <Route exact path="/signin" component={Signin}></Route>
         <Route exact path="/signup" component={Signup}></Route>
         <Route exact path="/check" component={Checkout}></Route>
+        <Route exact path="/nlog" component={Nlog}></Route>
       </Switch>
     </>
   );

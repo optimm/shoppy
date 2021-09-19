@@ -28,7 +28,9 @@ const Signup = () => {
   };
   return (
     <div>
-      <Navigation />
+      <div className="check-nav">
+        <Navigation />
+      </div>
 
       <div className="signup-main">
         <Row>

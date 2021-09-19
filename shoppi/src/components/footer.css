@@ -45,17 +45,19 @@ body {
 .foot-text {
   color: rgb(37, 37, 37);
   margin: auto;
-  font-size: 0.9rem;
-  line-height: 3;
-  margin-top: 50px;
+
+  margin-top: 30px;
   margin-left: 10%;
   transition: all 0.5s ease-in-out;
 }
-
+.foot-text p {
+  font-size: 0.9rem;
+  line-height: 3.8;
+}
 .copyright {
   font-size: 1rem;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 80px;
   transition: all 0.5s ease-in-out;
 }
 @media only screen and (max-width: 1100px) {
@@ -71,7 +73,7 @@ body {
   .icons {
     width: 25%;
   }
-  .foot-text {
+  .foot-text p {
     font-size: 0.75rem;
     line-height: 3;
   }

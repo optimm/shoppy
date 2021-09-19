@@ -9,11 +9,14 @@ import {
   Link,
   useHistory,
 } from "react-router-dom";
+
 import { Container, Row, Col, Image } from "react-bootstrap";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Axios from "axios";
 import "./cart.css";
+
 Axios.defaults.withCredentials = true;
+// =====================================================
 const Cart = () => {
   const history = useHistory();
   let [addres, setaddres] = useState("not filled");
@@ -23,10 +26,10 @@ const Cart = () => {
   Axios.post("http://localhost:8000/cart", {
     name: "ayush",
   }).then((response) => {
+    alert(response.data.data);
     if (response.data.data === false) {
       history.push({
-        pathname: "/signin",
-        state: { detail: "Please Log In to view cart" },
+        pathname: "/nlog",
       });
     }
   });

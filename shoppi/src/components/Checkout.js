@@ -5,12 +5,13 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./check.css";
 
 const Checkout = (props) => {
-  const [addres,mobile,email] = Object.values(props.location.state);
+  const [addres, mobile, email] = Object.values(props.location.state);
   return (
     <>
       <div>
-        <Navigation />
-
+        <div className="check-nav">
+          <Navigation />
+        </div>
         <div className="check-main">
           <Row>
             <Col className="check" lg={7} md={7} style={{ padding: "0" }}>
@@ -35,7 +36,7 @@ const Checkout = (props) => {
                     </Col>
                     <Col lg={7} md={7} sm={7} xs={7} style={{ padding: "0" }}>
                       <p className="check-data" id="check-d">
-                         <nobr>{addres}</nobr>
+                        <nobr>{addres}</nobr>
                       </p>
                     </Col>
                   </Row>
@@ -45,7 +46,7 @@ const Checkout = (props) => {
                     </Col>
                     <Col lg={7} md={7} sm={7} xs={7} style={{ padding: "0" }}>
                       <p className="check-data" id="check-d">
-                         <nobr>{email}</nobr>
+                        <nobr>{email}</nobr>
                       </p>
                     </Col>
                   </Row>

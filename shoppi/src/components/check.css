@@ -11,7 +11,9 @@
   width: 450px;
   height: 500px;
 }
-
+.check-nav {
+  margin-left: 25px;
+}
 .check-left {
   position: relative;
   height: 500px;

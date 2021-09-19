@@ -48,9 +48,7 @@ function Foot() {
             </Col>
           </Row>
         </div>
-        <div className="copyright">
-          <p>Ⓒ &nbsp; &nbsp;Ayush Saxena</p>
-        </div>
+        <div className="copyright">Ⓒ &nbsp; &nbsp;Ayush Saxena</div>
       </div>
     </>
   );
