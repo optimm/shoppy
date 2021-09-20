@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import "./signup.css";
 import Axios from "axios";
+Axios.defaults.withCredentials = true;
 const Signup = () => {
   let history = useHistory();
   const [email, setEmail] = useState("");
@@ -19,7 +20,15 @@ const Signup = () => {
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [mobile, setMobile] = useState("");
-
+  Axios.post("http://localhost:8000/cart", {
+    name: "ayush",
+  }).then((response) => {
+    if (response.data.data === true) {
+      history.push({
+        pathname: "/profile",
+      });
+    }
+  });
   const register = () => {
     alert("called");
     console.log("hello");

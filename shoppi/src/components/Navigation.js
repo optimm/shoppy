@@ -11,22 +11,28 @@ import {
 } from "react-router-dom";
 import "./nav.css";
 import Axios from "axios";
+Axios.defaults.withCredentials = true;
 function Navigation() {
   const history = useHistory();
   const check = () => {
     Axios.post("http://localhost:8000/cart", {
       name: "ayush",
-    }).then((response) => {
-      if (response.data.data === false) {
-        history.push({
-          pathname: "/signin",
-        });
-      } else {
-        history.push({
-          pathname: "/profile",
-        });
-      }
-    });
+    })
+      .then((response) => {
+        if (response.data.data === false) {
+          history.push({
+            pathname: "/signin",
+          });
+        } else {
+          history.push({
+            pathname: "/profile",
+          });
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        history.push("/signin");
+      });
   };
   return (
     <Navbar collapseOnSelect expand="lg" className="nav">

@@ -77,7 +77,7 @@
   opacity: 0.8;
   font-size: 13px;
 }
-input {
+.cart-left input {
   width: 95%;
   height: 30px;
   padding: 0 5px 0 10px;
