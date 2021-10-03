@@ -13,6 +13,7 @@ const Slider = () => {
             src="./slider3.png"
             alt="First slide"
           />
+          <div class="slider-white"></div>
           <h1 className="slider-text">Best offers</h1>
         </div>
       </Carousel.Item>
@@ -24,7 +25,8 @@ const Slider = () => {
             src="./slider2.png"
             alt="Second slide"
           />
-          <h1 className="slider-text" style={{ marginLeft: -250 }}>
+           <div class="slider-white"></div>
+          <h1 className="slider-text" >
             Shop by Category
           </h1>
         </div>
@@ -37,6 +39,7 @@ const Slider = () => {
             src="./slider1.png"
             alt="Third slide"
           />
+           <div class="slider-white"></div>
           <h1 className="slider-text">Hot Brands</h1>
         </div>
       </Carousel.Item>
@@ -48,7 +51,8 @@ const Slider = () => {
             src="./slider4.png"
             alt="Fourth slide"
           />
-          <h1 className="slider-text" style={{ marginLeft: -80 }}>
+           <div class="slider-white"></div>
+          <h1 className="slider-text" >
             Free Delivery
           </h1>
         </div>
