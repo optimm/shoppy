@@ -44,6 +44,7 @@ const Sign = (props) => {
   Axios.post("http://localhost:8000/cart", {
     name: "ayush",
   }).then((response) => {
+    console.log(response);
     if (response.data.data === true) {
       history.push({
         pathname: "/profile",

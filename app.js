@@ -15,7 +15,7 @@ app.use(
     credentials: true,
   })
 );
-let name;
+
 app.use("/cart", auth);
 const db = mysql.createConnection({
   host: "localhost",
@@ -44,10 +44,11 @@ app.get("/", (req, res) => {
 });
 
 app.post("/cart", (req, res) => {
-  console.log(name);
   if (req.isAuthenticated) {
+    console.log("hi", res.name);
+    let user = res.name;
     console.log("IN FIRST");
-    res.send({ data: "CartData" });
+    res.send({ data: true, name: user });
   } else {
     res.send({ data: false });
   }
@@ -57,7 +58,7 @@ app.post("/login", (req, res) => {
   console.log("hello login");
   const email = req.body.email;
   const pass = req.body.pass;
-  console.log(email, pass);
+
   db.query(
     "SELECT * FROM authentication WHERE email = ? AND pass = ?",
     [email, pass],
@@ -67,18 +68,21 @@ app.post("/login", (req, res) => {
         res.send({ err: err });
       }
       if (result.length > 0) {
-        console.log(...result);
-        name = result.fname + result.lname;
-
+        console.log(result[0].fname);
+        let uname = result[0].fname + " " + result[0].lname;
         res
           .status(200)
-          .cookie("LogedIn", true, {
-            httpOnly: true,
-            sameSite: "strict",
-            expires: new Date(
-              new Date().getTime() + 3600 * 15 * 1000
-            ) /*, secure: true*/,
-          })
+          .cookie(
+            "LogedIn",
+            { name: uname, LogedIn: true },
+            {
+              httpOnly: true,
+              sameSite: "strict",
+              expires: new Date(
+                new Date().getTime() + 3600 * 15 * 1000
+              ) /*, secure: true*/,
+            }
+          )
           .send({ authenticated: true, user: email });
       } else {
         console.log("no user found");
