@@ -9,6 +9,7 @@ import Signup from "./components/sign-in-up/Signup";
 import Nlog from "./components/sign-in-up/Nlog";
 import Checkout from "./components/Checkout";
 import Profile from "./components/Profile";
+import Product from "./components/product/Product";
 
 import { Route, Switch } from "react-router-dom";
 
@@ -26,6 +27,7 @@ function App() {
         <Route exact path="/check" component={Checkout}></Route>
         <Route exact path="/nlog" component={Nlog}></Route>
         <Route exact path="/profile" component={Profile}></Route>
+        <Route exact path="/product" component={Product}></Route>
       </Switch>
     </>
   );

@@ -50,6 +50,7 @@ app.post("/cart", (req, res) => {
     console.log("IN FIRST");
     res.send({ data: true, name: user });
   } else {
+    console.log("IN Second");
     res.send({ data: false });
   }
 });
