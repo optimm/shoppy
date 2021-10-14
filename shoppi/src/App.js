@@ -8,7 +8,7 @@ import Signin from "./components/sign-in-up/Signin";
 import Signup from "./components/sign-in-up/Signup";
 import Nlog from "./components/sign-in-up/Nlog";
 import Checkout from "./components/Checkout";
-import Profile from "./components/Profile";
+import Profile from "./components/profile/Profile";
 import Product from "./components/product/Product";
 
 import { Route, Switch } from "react-router-dom";

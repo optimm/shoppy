@@ -17,8 +17,7 @@ const Signup = () => {
   let history = useHistory();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  const [fname, setFname] = useState("");
-  const [lname, setLname] = useState("");
+  const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
   Axios.post("http://localhost:8000/cart", {
     name: "ayush",
@@ -35,8 +34,7 @@ const Signup = () => {
     Axios.post("http://localhost:8000/register", {
       email: email,
       pass: pass,
-      fname: fname,
-      lname: lname,
+      name: name,
       mobile: mobile,
     }).then((response) => {
       console.log(response);
@@ -59,24 +57,14 @@ const Signup = () => {
                 </div>
                 <div className="signup-inputs">
                   <Row>
-                    <Col lg={6} md={6} style={{ padding: "0" }}>
+                    <Col lg={12} md={12} style={{ padding: "0" }}>
                       <input
-                        className="signup-input"
+                        className="signup-input name"
                         type="text"
-                        placeholder="Enter First Name"
-                        name="firstname"
+                        placeholder="Enter Name"
+                        name="name"
                         required
-                        onChange={(e) => setFname(e.target.value)}
-                      />
-                    </Col>
-                    <Col lg={6} md={6} style={{ padding: "0" }}>
-                      <input
-                        className="signup-input"
-                        type="text"
-                        placeholder="Enter Last Name"
-                        name="lastname"
-                        required
-                        onChange={(e) => setLname(e.target.value)}
+                        onChange={(e) => setName(e.target.value)}
                       />
                     </Col>
                   </Row>

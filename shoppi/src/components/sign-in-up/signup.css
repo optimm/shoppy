@@ -52,6 +52,9 @@
   background: rgba(255, 255, 255, 0.9);
   padding: 0.1em 1em;
 }
+.name {
+  width: 95%;
+}
 .signup-btn {
   width: 250px;
   height: 40px;
@@ -142,6 +145,9 @@
     width: 85%;
     font-size: 13px;
     padding: 1px 5px;
+  }
+  .name {
+    width: 93%;
   }
   .signup-inputs {
     padding-left: 20px;

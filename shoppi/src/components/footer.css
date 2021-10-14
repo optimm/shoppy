@@ -10,7 +10,7 @@ body {
 }
 .foot-about {
   text-align: center;
-  width: 75%;
+  width: 70%;
   margin: auto;
   margin-bottom: 80px;
   transition: all 0.5s ease-in-out;
@@ -27,7 +27,7 @@ body {
 .foot-about p {
   color: rgb(114, 114, 114);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.4em;
   transition: all 0.5s ease-in-out;
 }
 .icons {
@@ -47,11 +47,11 @@ body {
   margin: auto;
 
   margin-top: 30px;
-  margin-left: 10%;
+  margin-left: 15%;
   transition: all 0.5s ease-in-out;
 }
 .foot-text p {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   line-height: 3.8;
 }
 .copyright {

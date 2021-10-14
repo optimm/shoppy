@@ -27,13 +27,12 @@ app.post("/register", (req, res) => {
   console.log("hello register");
   const email = req.body.email;
   const pass = req.body.pass;
-  const fname = req.body.fname;
-  const lname = req.body.lname;
+  const name = req.body.name;
   const mobile = req.body.mobile;
-  console.log(email, pass, fname, lname, mobile);
+  console.log(email, pass, name, mobile);
   db.query(
-    "INSERT INTO authentication (email,pass,fname,lname,mobile) VALUES (?,?,?,?,?)",
-    [email, pass, fname, lname, mobile],
+    "INSERT INTO customer (email,pass,name,mobile) VALUES (?,?,?,?)",
+    [email, pass, name, mobile],
     (err, result) => {
       console.log(err);
     }
@@ -61,7 +60,7 @@ app.post("/login", (req, res) => {
   const pass = req.body.pass;
 
   db.query(
-    "SELECT * FROM authentication WHERE email = ? AND pass = ?",
+    "SELECT * FROM customer WHERE email = ? AND pass = ?",
     [email, pass],
     (err, result) => {
       if (err) {
@@ -69,8 +68,8 @@ app.post("/login", (req, res) => {
         res.send({ err: err });
       }
       if (result.length > 0) {
-        console.log(result[0].fname);
-        let uname = result[0].fname + " " + result[0].lname;
+        console.log(result[0].name);
+        let uname = result[0].name;
         res
           .status(200)
           .cookie(

@@ -6,6 +6,7 @@ import {
   Link,
   useHistory,
 } from "react-router-dom";
+import "./nlog.css";
 const Nlog = () => {
   return (
     <div className="nlog-container">
