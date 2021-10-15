@@ -32,6 +32,22 @@
 .nav-item:hover {
   color: black;
 }
+
+
+.nav-ani::after{
+content: "";
+display: block;
+background-color: #ffa005;  
+width: 0%;
+height: 3px;
+transition:width .3;
+}
+
+.nav-ani:hover::after{
+  width: 110%;
+  transition: width .3s;
+}
+
 .toggle {
   transition: all 0.5s ease-in-out;
   position: absolute;

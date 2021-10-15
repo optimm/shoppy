@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Carousel from "react-bootstrap/Carousel";
 import "./slider.css";
+import Aos from "aos";
+import "aos/dist/aos.css";
+
+
 const Slider = () => {
+  
+    useEffect(() => {
+    Aos.init({duration: 2000});
+    }, []);
+
   return (
-    <Carousel className="slider">
+    <Carousel className="slider"  data-aos="slide-up">
       <Carousel.Item className="slider-item" interval={1000}>
         <div className="slider-color"></div>
         <div className="slider-main">

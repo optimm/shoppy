@@ -19,23 +19,33 @@ body {
   font-size: 1.7rem;
   color: rgb(78, 77, 77);
   margin-bottom: 50px;
-  transition: all 0.5s ease-in-out;
+  /* transition: all 0.5s ease-in-out; */
+  /* animation: Slide_up 1.4s ease; */
 }
 .foot-icon {
   color: rgb(37, 37, 37);
+  /* background-color: blue; */
+  border-radius: 100%;
+  padding: 5px;
 }
+
+.foot-icon:hover{
+background-color: #ffa005;
+}
+
 .foot-about p {
   color: rgb(114, 114, 114);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 1.4em;
-  transition: all 0.5s ease-in-out;
+  /* transition: all 0.5s ease-in-out; */
+  /* animation: Slide_up 2.1s ease; */
 }
 .icons {
   display: flex;
   width: 20%;
   justify-content: space-between;
   margin: 30px auto 50px auto;
-  transition: all 0.5s ease-in-out;
+  /* transition: all 0.5s ease-in-out; */
 }
 .foot-bottom {
   padding: 100px 50px 10px 50px;
@@ -51,8 +61,8 @@ body {
   transition: all 0.5s ease-in-out;
 }
 .foot-text p {
-  font-size: 0.85rem;
-  line-height: 3.8;
+  font-size: 1.4rem;
+  line-height: 3.4;
 }
 .copyright {
   font-size: 1rem;
@@ -152,3 +162,5 @@ body {
     width: 70%;
   }
 }
+
+

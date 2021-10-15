@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Container, Row, Col } from "react-bootstrap";
 import "./card.css";
+import Aos from "aos";
+import "aos/dist/aos.css";
+
+
+
 const Cards = () => {
   const data = ["ayush", "birju"];
+
+  useEffect(() => {
+    Aos.init({duration: 2000});
+    }, []);
+
+
   return (
     <>
-      <div className="card-head">
+      <div className="card-head" data-aos="fade-up">
         <h1>SHOP BY CATEGORY</h1>
       </div>
-      <div className="cards">
+      <div className="cards" data-aos = "fade-up">
         <Row>
           <Col lg={4} md={4} sm={12}>
             <Link
