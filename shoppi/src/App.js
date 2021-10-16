@@ -10,12 +10,13 @@ import Nlog from "./components/sign-in-up/Nlog";
 import Checkout from "./components/Checkout";
 import Profile from "./components/profile/Profile";
 import Product from "./components/product/Product";
-
+import MyOrder from "./components/MyOrder"
 import { Route, Switch } from "react-router-dom";
 
 function App() {
   return (
     <>
+        {/* <MyOrder/> */}
       <Switch>
         <Route exact path="/" component={Main}></Route>
         <Route exact path="/cart" component={Cart}></Route>
@@ -28,6 +29,8 @@ function App() {
         <Route exact path="/nlog" component={Nlog}></Route>
         <Route exact path="/profile" component={Profile}></Route>
         <Route exact path="/product" component={Product}></Route>
+
+
       </Switch>
     </>
   );

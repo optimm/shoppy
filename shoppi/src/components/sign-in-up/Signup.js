@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect} from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
 import Navigation from "../Navigation";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -41,6 +43,13 @@ const Signup = () => {
     });
     history.push("/signin");
   };
+
+  useEffect(() => {
+    Aos.init({duration: 2000});
+    }, []);
+
+
+
   return (
     <div>
       <div className="check-nav">
@@ -50,7 +59,7 @@ const Signup = () => {
       <div className="signup-main">
         <Row>
           <Col className="signup" lg={7} md={7} style={{ padding: "0" }}>
-            <div className="signup-left">
+            <div className="signup-left" data-aos="slide-left">
               <form onSubmit={register}>
                 <div className="signup-heading">
                   <h2>Sign Up</h2>
@@ -124,7 +133,7 @@ const Signup = () => {
             </div>
           </Col>
 
-          <Col className="signup-image" lg={5} md={5} style={{ padding: "0" }}>
+          <Col className="signup-image" data-aos="slide-right" lg={5} md={5} style={{ padding: "0" }}>
             <img src="./sign-images/signup.jpg" />
           </Col>
         </Row>
