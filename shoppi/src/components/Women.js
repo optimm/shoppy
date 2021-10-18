@@ -106,7 +106,6 @@ const Women = () => {
               </div>
 
               <h3>Type</h3>                
-    
                  Select Type 
                 <select className="type"> 
                          <option value="1">Shirt</option>

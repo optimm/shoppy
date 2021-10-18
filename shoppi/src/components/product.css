@@ -126,6 +126,15 @@
   margin-left: 40%;
   margin-top: 10%;
 }
+
+.type{
+  border: none;
+  margin-left: 10px;
+  width: 50%;
+  outline: none;
+}
+
+
 @media only screen and (max-width: 980px) {
   .product-right {
     display: none;
