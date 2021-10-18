@@ -18,74 +18,49 @@ const Women = (props) => {
           <div className="product-left-box" id="scroll">
             <Row className="product-cloth">
               <Col lg={4} md={4} sm={4} xs={4}>
-                <div className="product-image">
-                  <Image
-                    src="./cartimages/cart1.jpeg"
-                    alt="Cloth image"
-                    fluid
-                  />
-                </div>
+                <Image
+                  src="https://images.unsplash.com/photo-1633114073758-c4be9aeb15ac?ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8Y29tcHV0ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                  alt="Cloth image"
+                  fluid
+                />
+
                 <div className="product-detail">
                   <p className="product-heading">
-                    Girls Hoody <br />
-                    Rs 499/-{" "}
+                    Women's hoodie
+                    <br />
+                    Rs 1200/-{" "}
                   </p>
                   <p className="add-cart">&hearts;</p>
                 </div>
               </Col>
 
               <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+                <Image
+                  src="https://images.unsplash.com/photo-1633114073758-c4be9aeb15ac?ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8Y29tcHV0ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                  alt="Cloth image"
+                  fluid
+                />
                 <div className="product-detail">
                   <p className="product-heading">
-                    Girls Hoody <br />
-                    Rs 499/-{" "}
+                    Women's hoodie
+                    <br />
+                    Rs 1200/-{" "}
                   </p>
                   <p className="add-cart">&hearts;</p>
                 </div>
               </Col>
 
               <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+                <Image
+                  src="https://images.unsplash.com/photo-1633114073758-c4be9aeb15ac?ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8Y29tcHV0ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                  alt="Cloth image"
+                  fluid
+                />
                 <div className="product-detail">
                   <p className="product-heading">
-                    Girls Hoody <br />
-                    Rs 499/-{" "}
-                  </p>
-                  <p className="add-cart">&hearts;</p>
-                </div>
-              </Col>
-            </Row>
-
-            <Row className="product-cloth">
-              <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
-                <div className="product-detail">
-                  <p className="product-heading">
-                    Girls Hoody <br />
-                    Rs 499/-{" "}
-                  </p>
-                  <p className="add-cart">&hearts;</p>
-                </div>
-              </Col>
-
-              <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
-                <div className="product-detail">
-                  <p className="product-heading">
-                    Girls Hoody <br />
-                    Rs 499/-{" "}
-                  </p>
-                  <p className="add-cart">&hearts;</p>
-                </div>
-              </Col>
-
-              <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
-                <div className="product-detail">
-                  <p className="product-heading">
-                    Girls Hoody <br />
-                    Rs 499/-{" "}
+                    Women's hoodie
+                    <br />
+                    Rs 1200/-{" "}
                   </p>
                   <p className="add-cart">&hearts;</p>
                 </div>
@@ -94,68 +69,48 @@ const Women = (props) => {
 
             <Row className="product-cloth">
               <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+                <Image
+                  src="https://images.unsplash.com/photo-1633114073758-c4be9aeb15ac?ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8Y29tcHV0ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                  alt="Cloth image"
+                  fluid
+                />
                 <div className="product-detail">
                   <p className="product-heading">
-                    Girls Hoody <br />
-                    Rs 499/-{" "}
+                    Women's hoodie
+                    <br />
+                    Rs 1200/-{" "}
                   </p>
                   <p className="add-cart">&hearts;</p>
                 </div>
               </Col>
 
               <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+                <Image
+                  src="https://images.unsplash.com/photo-1633114073758-c4be9aeb15ac?ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8Y29tcHV0ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                  alt="Cloth image"
+                  fluid
+                />
                 <div className="product-detail">
                   <p className="product-heading">
-                    Girls Hoody <br />
-                    Rs 499/-{" "}
+                    Women's hoodie
+                    <br />
+                    Rs 1200/-{" "}
                   </p>
                   <p className="add-cart">&hearts;</p>
                 </div>
               </Col>
 
               <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+                <Image
+                  src="https://images.unsplash.com/photo-1633114073758-c4be9aeb15ac?ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8Y29tcHV0ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                  alt="Cloth image"
+                  fluid
+                />
                 <div className="product-detail">
                   <p className="product-heading">
-                    Girls Hoody <br />
-                    Rs 499/-{" "}
-                  </p>
-                  <p className="add-cart">&hearts;</p>
-                </div>
-              </Col>
-            </Row>
-
-            <Row className="product-cloth">
-              <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
-                <div className="product-detail">
-                  <p className="product-heading">
-                    Girls Hoody <br />
-                    Rs 499/-{" "}
-                  </p>
-                  <p className="add-cart">&hearts;</p>
-                </div>
-              </Col>
-
-              <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
-                <div className="product-detail">
-                  <p className="product-heading">
-                    Girls Hoody <br />
-                    Rs 499/-{" "}
-                  </p>
-                  <p className="add-cart">&hearts;</p>
-                </div>
-              </Col>
-
-              <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
-                <div className="product-detail">
-                  <p className="product-heading">
-                    Girls Hoody <br />
-                    Rs 499/-{" "}
+                    Women's hoodie
+                    <br />
+                    Rs 1200/-{" "}
                   </p>
                   <p className="add-cart">&hearts;</p>
                 </div>
@@ -164,33 +119,148 @@ const Women = (props) => {
 
             <Row className="product-cloth">
               <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+                <Image
+                  src="https://images.unsplash.com/photo-1633114073758-c4be9aeb15ac?ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8Y29tcHV0ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                  alt="Cloth image"
+                  fluid
+                />
                 <div className="product-detail">
                   <p className="product-heading">
-                    Girls Hoody <br />
-                    Rs 499/-{" "}
+                    Women's hoodie
+                    <br />
+                    Rs 1200/-{" "}
                   </p>
                   <p className="add-cart">&hearts;</p>
                 </div>
               </Col>
 
               <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+                <Image
+                  src="https://images.unsplash.com/photo-1633114073758-c4be9aeb15ac?ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8Y29tcHV0ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                  alt="Cloth image"
+                  fluid
+                />
                 <div className="product-detail">
                   <p className="product-heading">
-                    Girls Hoody <br />
-                    Rs 499/-{" "}
+                    Women's hoodie
+                    <br />
+                    Rs 1200/-{" "}
                   </p>
                   <p className="add-cart">&hearts;</p>
                 </div>
               </Col>
 
               <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart1.jpeg" alt="Cloth image" fluid />
+                <Image
+                  src="https://images.unsplash.com/photo-1633114073758-c4be9aeb15ac?ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8Y29tcHV0ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                  alt="Cloth image"
+                  fluid
+                />
                 <div className="product-detail">
                   <p className="product-heading">
-                    Girls Hoody <br />
-                    Rs 499/-{" "}
+                    Women's hoodie
+                    <br />
+                    Rs 1200/-{" "}
+                  </p>
+                  <p className="add-cart">&hearts;</p>
+                </div>
+              </Col>
+            </Row>
+
+            <Row className="product-cloth">
+              <Col lg={4} md={4} sm={4} xs={4}>
+                <Image
+                  src="https://images.unsplash.com/photo-1633114073758-c4be9aeb15ac?ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8Y29tcHV0ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                  alt="Cloth image"
+                  fluid
+                />
+                <div className="product-detail">
+                  <p className="product-heading">
+                    Women's hoodie
+                    <br />
+                    Rs 1200/-{" "}
+                  </p>
+                  <p className="add-cart">&hearts;</p>
+                </div>
+              </Col>
+
+              <Col lg={4} md={4} sm={4} xs={4}>
+                <Image
+                  src="https://images.unsplash.com/photo-1633114073758-c4be9aeb15ac?ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8Y29tcHV0ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                  alt="Cloth image"
+                  fluid
+                />
+                <div className="product-detail">
+                  <p className="product-heading">
+                    Women's hoodie
+                    <br />
+                    Rs 1200/-{" "}
+                  </p>
+                  <p className="add-cart">&hearts;</p>
+                </div>
+              </Col>
+
+              <Col lg={4} md={4} sm={4} xs={4}>
+                <Image
+                  src="https://images.unsplash.com/photo-1633114073758-c4be9aeb15ac?ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8Y29tcHV0ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                  alt="Cloth image"
+                  fluid
+                />
+                <div className="product-detail">
+                  <p className="product-heading">
+                    Women's hoodie
+                    <br />
+                    Rs 1200/-{" "}
+                  </p>
+                  <p className="add-cart">&hearts;</p>
+                </div>
+              </Col>
+            </Row>
+
+            <Row className="product-cloth">
+              <Col lg={4} md={4} sm={4} xs={4}>
+                <Image
+                  src="https://images.unsplash.com/photo-1633114073758-c4be9aeb15ac?ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8Y29tcHV0ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                  alt="Cloth image"
+                  fluid
+                />
+                <div className="product-detail">
+                  <p className="product-heading">
+                    Women's hoodie
+                    <br />
+                    Rs 1200/-{" "}
+                  </p>
+                  <p className="add-cart">&hearts;</p>
+                </div>
+              </Col>
+
+              <Col lg={4} md={4} sm={4} xs={4}>
+                <Image
+                  src="https://images.unsplash.com/photo-1633114073758-c4be9aeb15ac?ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8Y29tcHV0ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                  alt="Cloth image"
+                  fluid
+                />
+                <div className="product-detail">
+                  <p className="product-heading">
+                    Women's hoodie
+                    <br />
+                    Rs 1200/-{" "}
+                  </p>
+                  <p className="add-cart">&hearts;</p>
+                </div>
+              </Col>
+
+              <Col lg={4} md={4} sm={4} xs={4}>
+                <Image
+                  src="https://images.unsplash.com/photo-1633114073758-c4be9aeb15ac?ixid=MnwxMjA3fDF8MHxzZWFyY2h8MXx8Y29tcHV0ZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                  alt="Cloth image"
+                  fluid
+                />
+                <div className="product-detail">
+                  <p className="product-heading">
+                    Women's hoodie
+                    <br />
+                    Rs 1200/-{" "}
                   </p>
                   <p className="add-cart">&hearts;</p>
                 </div>
@@ -207,7 +277,7 @@ const Women = (props) => {
           {/* main right div */}
 
           <div className="product-filterBox">
-            <h2>Women Fashion</h2>
+            <h2>Men Fashion</h2>
 
             <Col className="product-filter">
               <div className="sort-price">

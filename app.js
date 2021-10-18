@@ -22,7 +22,19 @@ const db = mysql.createConnection({
   user: "root",
   database: "shoppy",
 });
-console.log("hello server");
+
+// fetching data from the table
+app.post("/data", (req, res) => {
+  db.query("SELECT * FROM product", (err, result) => {
+    if (err) {
+      console.log(err);
+      res.send({ err: err });
+    }
+    console.log(result);
+    res.send(result);
+  });
+});
+
 app.post("/register", (req, res) => {
   console.log("hello register");
   const email = req.body.email;

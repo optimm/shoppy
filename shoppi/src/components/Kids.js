@@ -18,9 +18,8 @@ const Kid = (props) => {
           <div className="product-left-box" id="scroll">
             <Row className="product-cloth">
               <Col lg={4} md={4} sm={4} xs={4}>
-                <div className="product-image">
-                  <Image src="./cartimages/kid.png" alt="Cloth image" fluid />
-                </div>
+                <Image src="./cartimages/kid.png" alt="Cloth image" fluid />
+
                 <div className="product-detail">
                   <p className="product-heading">
                     Kid's Jacket

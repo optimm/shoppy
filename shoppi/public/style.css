@@ -20,7 +20,7 @@ body {
 .white {
   background-color: rgb(255, 253, 253);
   /* border-bottom: 1px soPhoto by NASA Image Librarylid rgb(207, 206, 206, 0.5); */
-  animation: updown 2s;
+  /* animation: updown 2s; */
 }
 @keyframes updown {
   0% {

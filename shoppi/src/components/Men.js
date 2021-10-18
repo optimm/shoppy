@@ -3,208 +3,59 @@ import Navigation from "./Navigation";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import { Container, Row, Col, Image } from "react-bootstrap";
-import "./product.css";
+import { useState, useEffect } from "react";
 
-const Men = (props) => {
-  console.log(props.location.state);
+import "./product.css";
+import Axios from "axios";
+Axios.defaults.withCredentials = true;
+const Men = () => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    Axios.post("http://localhost:8000/data", {
+      category: "men",
+    }).then((response) => {
+      setData(response.data);
+    });
+  }, []);
+
+  const [sort, setSort] = useState("");
   return (
     <>
-      {/* <Navigation /> */}
-
       <Row className="product">
         <Col lg={9} md={12} sm={12} className="product-left">
           <Navigation />
 
           <div className="product-left-box" id="scroll">
             <Row className="product-cloth">
-              <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart3.jpg" alt="Cloth image" fluid />
-
-                <div className="product-detail">
-                  <p className="product-heading">
-                    Men's Shirt
-                    <br />
-                    Rs 999/-{" "}
-                  </p>
-                  <p className="add-cart">&hearts;</p>
-                </div>
-              </Col>
-
-              <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart3.jpg" alt="Cloth image" fluid />
-                <div className="product-detail">
-                  <p className="product-heading">
-                    Men's Shirt
-                    <br />
-                    Rs 999/-{" "}
-                  </p>
-                  <p className="add-cart">&hearts;</p>
-                </div>
-              </Col>
-
-              <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart3.jpg" alt="Cloth image" fluid />
-                <div className="product-detail">
-                  <p className="product-heading">
-                    Men's Shirt
-                    <br />
-                    Rs 999/-{" "}
-                  </p>
-                  <p className="add-cart">&hearts;</p>
-                </div>
-              </Col>
-            </Row>
-
-            <Row className="product-cloth">
-              <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart3.jpg" alt="Cloth image" fluid />
-                <div className="product-detail">
-                  <p className="product-heading">
-                    Men's Shirt
-                    <br />
-                    Rs 999/-{" "}
-                  </p>
-                  <p className="add-cart">&hearts;</p>
-                </div>
-              </Col>
-
-              <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart3.jpg" alt="Cloth image" fluid />
-                <div className="product-detail">
-                  <p className="product-heading">
-                    Men's Shirt
-                    <br />
-                    Rs 999/-{" "}
-                  </p>
-                  <p className="add-cart">&hearts;</p>
-                </div>
-              </Col>
-
-              <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart3.jpg" alt="Cloth image" fluid />
-                <div className="product-detail">
-                  <p className="product-heading">
-                    Men's Shirt
-                    <br />
-                    Rs 999/-{" "}
-                  </p>
-                  <p className="add-cart">&hearts;</p>
-                </div>
-              </Col>
-            </Row>
-
-            <Row className="product-cloth">
-              <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart3.jpg" alt="Cloth image" fluid />
-                <div className="product-detail">
-                  <p className="product-heading">
-                    Men's Shirt
-                    <br />
-                    Rs 999/-{" "}
-                  </p>
-                  <p className="add-cart">&hearts;</p>
-                </div>
-              </Col>
-
-              <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart3.jpg" alt="Cloth image" fluid />
-                <div className="product-detail">
-                  <p className="product-heading">
-                    Men's Shirt
-                    <br />
-                    Rs 999/-{" "}
-                  </p>
-                  <p className="add-cart">&hearts;</p>
-                </div>
-              </Col>
-
-              <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart3.jpg" alt="Cloth image" fluid />
-                <div className="product-detail">
-                  <p className="product-heading">
-                    Men's Shirt
-                    <br />
-                    Rs 999/-{" "}
-                  </p>
-                  <p className="add-cart">&hearts;</p>
-                </div>
-              </Col>
-            </Row>
-
-            <Row className="product-cloth">
-              <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart3.jpg" alt="Cloth image" fluid />
-                <div className="product-detail">
-                  <p className="product-heading">
-                    Men's Shirt
-                    <br />
-                    Rs 999/-{" "}
-                  </p>
-                  <p className="add-cart">&hearts;</p>
-                </div>
-              </Col>
-
-              <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart3.jpg" alt="Cloth image" fluid />
-                <div className="product-detail">
-                  <p className="product-heading">
-                    Men's Shirt
-                    <br />
-                    Rs 999/-{" "}
-                  </p>
-                  <p className="add-cart">&hearts;</p>
-                </div>
-              </Col>
-
-              <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart3.jpg" alt="Cloth image" fluid />
-                <div className="product-detail">
-                  <p className="product-heading">
-                    Men's Shirt
-                    <br />
-                    Rs 999/-{" "}
-                  </p>
-                  <p className="add-cart">&hearts;</p>
-                </div>
-              </Col>
-            </Row>
-
-            <Row className="product-cloth">
-              <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart3.jpg" alt="Cloth image" fluid />
-                <div className="product-detail">
-                  <p className="product-heading">
-                    Men's Shirt
-                    <br />
-                    Rs 999/-{" "}
-                  </p>
-                  <p className="add-cart">&hearts;</p>
-                </div>
-              </Col>
-
-              <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart3.jpg" alt="Cloth image" fluid />
-                <div className="product-detail">
-                  <p className="product-heading">
-                    Men's Shirt
-                    <br />
-                    Rs 999/-{" "}
-                  </p>
-                  <p className="add-cart">&hearts;</p>
-                </div>
-              </Col>
-
-              <Col lg={4} md={4} sm={4} xs={4}>
-                <Image src="./cartimages/cart3.jpg" alt="Cloth image" fluid />
-                <div className="product-detail">
-                  <p className="product-heading">
-                    Men's Shirt
-                    <br />
-                    Rs 999/-{" "}
-                  </p>
-                  <p className="add-cart">&hearts;</p>
-                </div>
-              </Col>
+              {data.map((item) => {
+                if (item.p_category === "men") {
+                  return (
+                    <Col
+                      lg={4}
+                      md={4}
+                      sm={4}
+                      xs={4}
+                      className="category-section"
+                    >
+                      <Image
+                        src={item.p_image}
+                        alt="Cloth image"
+                        fluid
+                        className="category-image"
+                      />
+                      <div className="product-detail">
+                        <p className="product-heading">
+                          <span className="product-name">{item.p_name}</span>
+                          <br />
+                          <span className="product-price">
+                            Rs. {item.p_price}
+                          </span>
+                        </p>
+                      </div>
+                    </Col>
+                  );
+                }
+              })}
             </Row>
           </div>
         </Col>
@@ -222,20 +73,28 @@ const Men = (props) => {
             <Col className="product-filter">
               <div className="sort-price">
                 <h3>Price</h3>
-                <input type="radio" id="lth" name="sort" value="lth" />
+                <input
+                  type="radio"
+                  id="lth"
+                  name="sort"
+                  value="lth"
+                  onChange={(e) => setSort(e.target.value)}
+                />
                 <label for="lth">Low to High</label>
                 <br />
-                <input type="radio" id="htl" name="sort" value="htl" />
+                <input
+                  type="radio"
+                  id="htl"
+                  name="sort"
+                  value="htl"
+                  onChange={(e) => setSort(e.target.value)}
+                />
                 <label for="htl">High to Low</label>
                 <br />
-                <input
-                  type="submit"
-                  value="Apply"
-                  class="product-apply"
-                ></input>
+                <button class="product-apply">Apply</button>
               </div>
               <div className="sort-price">
-                <h3>Review</h3>
+                <h3>Type</h3>
                 <input type="radio" id="lth" name="sort" value="lth" />
                 <label for="lth">Low to High</label>
                 <br />
