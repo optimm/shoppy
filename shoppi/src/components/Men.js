@@ -17,6 +17,15 @@ const Men = () => {
       setData(response.data);
     });
   }, []);
+  const price = () => {
+    console.log("called");
+
+    data.sort((a, b) => {
+      if (sort === "lth") return a.p_price - b.p_price;
+      else return b.p_price - a.p_price;
+    });
+    setData([...data]);
+  };
 
   const [sort, setSort] = useState("");
   return (
@@ -91,8 +100,11 @@ const Men = () => {
                 />
                 <label for="htl">High to Low</label>
                 <br />
-                <button class="product-apply">Apply</button>
+                <button class="product-apply" onClick={price}>
+                  Apply
+                </button>
               </div>
+
               <div className="sort-price">
                 <h3>Type</h3>
                 <input type="radio" id="lth" name="sort" value="lth" />

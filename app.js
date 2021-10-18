@@ -49,6 +49,22 @@ app.post("/register", (req, res) => {
       console.log(err);
     }
   );
+
+  // shopping cart
+  const q = "CREATE TABLE  cart_" + mobile + " ( p_size char(5))";
+  db.query(q, (err, result) => {
+    console.log(err);
+  });
+  /////////////////////////
+  //my orders
+  const o =
+    "CREATE TABLE  myorder_" +
+    mobile +
+    " ( id varchar(50), delivery_address varchar(300), delivery_mobile bigint, status varchar(20), PRIMARY KEY (id))";
+  db.query(o, (err, result) => {
+    console.log(err);
+  });
+  ////////////////////////
 });
 app.get("/", (req, res) => {
   console.log(req.cookies);

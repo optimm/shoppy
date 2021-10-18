@@ -29,7 +29,7 @@ function App() {
         <Route exact path="/nlog" component={Nlog}></Route>
         <Route exact path="/profile" component={Profile}></Route>
         <Route exact path="/product" component={Product}></Route>
-        {/* <Route exact path="/myorder" component={MyOrder}></Route> */}
+        <Route exact path="/myorder" component={MyOrder}></Route>
       </Switch>
     </>
   );
