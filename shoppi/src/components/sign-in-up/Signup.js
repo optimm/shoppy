@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import Navigation from "../Navigation";
@@ -31,24 +31,20 @@ const Signup = () => {
     }
   });
   const register = () => {
-    alert("called");
-    console.log("hello");
     Axios.post("http://localhost:8000/register", {
       email: email,
       pass: pass,
       name: name,
       mobile: mobile,
     }).then((response) => {
-      console.log(response);
+      alert(response.data);
     });
     history.push("/signin");
   };
 
   useEffect(() => {
-    Aos.init({duration: 2000});
-    }, []);
-
-
+    Aos.init({ duration: 2000 });
+  }, []);
 
   return (
     <div>
@@ -133,7 +129,13 @@ const Signup = () => {
             </div>
           </Col>
 
-          <Col className="signup-image" data-aos="slide-right" lg={5} md={5} style={{ padding: "0" }}>
+          <Col
+            className="signup-image"
+            data-aos="slide-right"
+            lg={5}
+            md={5}
+            style={{ padding: "0" }}
+          >
             <img src="./sign-images/signup.jpg" />
           </Col>
         </Row>

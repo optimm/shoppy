@@ -63,6 +63,9 @@ app.post("/register", (req, res) => {
     " ( id varchar(50), delivery_address varchar(300), delivery_mobile bigint, status varchar(20), PRIMARY KEY (id))";
   db.query(o, (err, result) => {
     console.log(err);
+    if (!err) {
+      res.send("User registered");
+    }
   });
   ////////////////////////
 });

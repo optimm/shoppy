@@ -109,6 +109,7 @@
   padding: 10px 10px;
   background-color: rgb(185, 241, 255);
 }
+
 .sort-price h3 {
   text-align: center;
   font-size: 1.3rem;
@@ -126,15 +127,24 @@
   margin-left: 40%;
   margin-top: 10%;
 }
-
-.type{
-  border: none;
-  margin-left: 10px;
-  width: 50%;
+.product-apply-type {
+  background-color: white;
+  color: rgb(82, 82, 82);
   outline: none;
+  border: none;
+  font-size: 12px;
+  width: 60px;
+  height: 25px;
+  margin-left: 40%;
+
+  margin-top: 10%;
 }
 
-
+.sort-type-choice {
+  max-height: 90px;
+  height: 100%;
+  overflow-y: scroll;
+}
 @media only screen and (max-width: 980px) {
   .product-right {
     display: none;

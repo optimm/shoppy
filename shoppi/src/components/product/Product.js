@@ -21,10 +21,10 @@ const Product = () => {
             <p className="product-data">Rs 2000</p>
             <p className="product-data-s">Select size</p>
             <div className="product-size">
-                   S  <input  className="product-inp" type="radio" id="S" name="S" value="S" />
-                   M  <input  className="product-inp"  type="radio" id="S" name="S" value="S" />
-                   L  <input  className="product-inp" type="radio" id="S" name="S" value="S" />
-                   XL <input  className="product-inp" type="radio" id="S" name="S" value="S" />
+                   S  <input  className="product-inp" type="radio" id="S" name="size" value="S" />
+                   M  <input  className="product-inp"  type="radio" id="M" name="size" value="M" />
+                   L  <input  className="product-inp" type="radio" id="L" name="size" value="L" />
+                   XL <input  className="product-inp" type="radio" id="XL" name="size" value="XL" />
             </div>
             <button className="product-button">Add to cart</button>
           </Col>

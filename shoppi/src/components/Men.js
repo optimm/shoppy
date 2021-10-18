@@ -105,19 +105,32 @@ const Men = () => {
                 </button>
               </div>
 
-              <div className="sort-price">
+              <div className="sort-price sort-type">
                 <h3>Type</h3>
-                <input type="radio" id="lth" name="sort" value="lth" />
-                <label for="lth">Low to High</label>
-                <br />
-                <input type="radio" id="htl" name="sort" value="htl" />
-                <label for="htl">High to Low</label>
-                <br />
-                <input
-                  type="submit"
-                  value="Apply"
-                  class="product-apply"
-                ></input>
+                <div className="sort-type-choice">
+                  <input type="radio" id="pants" name="sort" value="pants" />
+                  <label for="lth">pants</label>
+                  <br />
+                  <input type="radio" id="shirt" name="sort" value="shirt" />
+                  <label for="htl">shirt</label>
+                  <br />
+                  <input type="radio" id="suit" name="sort" value="suit" />
+                  <label for="htl">suit</label>
+                  <br />
+                  <input type="radio" id="jeans" name="sort" value="jeans" />
+                  <label for="htl">jeans</label>
+                  <br />
+                  <input type="radio" id="kurta" name="sort" value="kurta" />
+                  <label for="htl">kurta</label>
+                  <br />
+                  <input type="radio" id="jacket" name="sort" value="jacket" />
+                  <label for="htl">jacket</label>
+                  <br />
+                  <input type="radio" id="shirt" name="sort" value="shirt" />
+                  <label for="htl">shirt</label>
+                </div>
+
+                <button class="product-apply-type">Apply</button>
               </div>
             </Col>
           </div>
