@@ -1,14 +1,21 @@
 import React from "react";
 import Navigation from "./Navigation";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+} from "react-router-dom";
 
 import "./product.css";
 import Axios from "axios";
 Axios.defaults.withCredentials = true;
 const Women = () => {
+   const history = useHistory();
   const [data, setData] = useState([]);
   useEffect(() => {
     Axios.post("http://localhost:8000/data", {
@@ -26,7 +33,12 @@ const Women = () => {
     });
     setData([...data]);
   };
-
+ const prodPage = (index) => {
+   history.push({
+     pathname: "/product",
+     state: { data: data[index] },
+   });
+ };
   const [sort, setSort] = useState("");
   return (
     <>
@@ -36,7 +48,7 @@ const Women = () => {
 
           <div className="product-left-box" id="scroll">
             <Row className="product-cloth">
-              {data.map((item) => {
+              {data.map((item,index) => {
                 if (item.p_category === "women") {
                   return (
                     <Col
@@ -51,6 +63,7 @@ const Women = () => {
                         alt="Cloth image"
                         fluid
                         className="category-image"
+                        onClick={() => prodPage(index)}
                       />
                       <div className="product-detail">
                         <p className="product-heading">

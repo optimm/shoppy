@@ -2,7 +2,8 @@ import React from "react";
 import Navigation from "../Navigation";
 import "./prod.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
-const Product = () => {
+const Product = (props) => {
+
   return (
     <>
       <div className="product-nav">
@@ -11,14 +12,14 @@ const Product = () => {
       <div className="product-container">
         <Row>
           <Col lg={6} md={6} sm={12}>
-            <img className="product-image" src="./cartimages/cart4.jpg" />
+            <img className="product-image" src={props.location.state.data.p_image} />
           </Col>
           <Col lg={6} md={6} sm={12} className="product-description">
-            <h2 className="product-data-h">Mens Shirt</h2>
+            <h2 className="product-data-h">{props.location.state.data.p_name}</h2>
             <p className="product-data">
-              Men Black Sweatshirt With Printed Detailing
+              {props.location.state.data.p_description}
             </p>
-            <p className="product-data">Rs 2000</p>
+            <p className="product-data">Rs. {props.location.state.data.p_price}</p>
             <p className="product-data-s">Select size</p>
             <div className="product-size">
                    S  <input  className="product-inp" type="radio" id="S" name="size" value="S" />
