@@ -107,12 +107,13 @@ const Women = () => {
 
               <div className="sort-price">
                 <h3>Type</h3>
-                <input type="radio" id="lth" name="sort" value="lth" />
-                <label for="lth">Low to High</label>
-                <br />
-                <input type="radio" id="htl" name="sort" value="htl" />
-                <label for="htl">High to Low</label>
-                <br />
+                Select Type
+                <select className="type">
+                  <option value="1">Shirt</option>
+                  <option value="2">T-Shirt</option>
+                  <option value="3">Jeans</option>
+                  <option value="4">Pant</option>
+                </select>
                 <input
                   type="submit"
                   value="Apply"
