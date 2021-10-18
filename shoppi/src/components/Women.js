@@ -105,21 +105,22 @@ const Women = () => {
                 </button>
               </div>
 
-              <div className="sort-price">
-                <h3>Type</h3>
-                Select Type
-                <select className="type">
-                  <option value="1">Shirt</option>
-                  <option value="2">T-Shirt</option>
-                  <option value="3">Jeans</option>
-                  <option value="4">Pant</option>
-                </select>
-                <input
+              <h3>Type</h3>                
+    
+                 Select Type 
+                <select className="type"> 
+                         <option value="1">Shirt</option>
+                         <option value="2">T-Shirt</option>
+                         <option value="3">Jeans</option>
+                         <option value="4">Pant</option>
+                         </select>
+
+
+                  <input
                   type="submit"
                   value="Apply"
                   class="product-apply"
                 ></input>
-              </div>
             </Col>
           </div>
         </Col>
