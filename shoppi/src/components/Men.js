@@ -1,7 +1,6 @@
 import React from "react";
 import Navigation from "./Navigation";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
@@ -52,6 +51,7 @@ const Men = () => {
                         fluid
                         className="category-image"
                       />
+
                       <div className="product-detail">
                         <p className="product-heading">
                           <span className="product-name">{item.p_name}</span>
