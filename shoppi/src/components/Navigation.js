@@ -61,10 +61,10 @@ function Navigation() {
             <Link className="nav-item nav-ani" to="/women">
               Women
             </Link>
-            <div className="nav-item item" onClick={check}>
+            <div className="nav-item item nav-hover" onClick={check}>
               <FaceOutlinedIcon style={{ fontSize: 25 }} />
             </div>
-            <Link className="nav-item" to="/cart">
+            <Link className="nav-item nav-hover" to="/cart">
               <ShoppingCartOutlinedIcon style={{ fontSize: 25 }} />
             </Link>
           </Nav>
