@@ -9,15 +9,13 @@ import "aos/dist/aos.css";
 
 import "./footer.css";
 function Foot() {
-
   useEffect(() => {
-  Aos.init({duration: 2000});
+    Aos.init({ duration: 1000 });
   }, []);
-
   return (
     <>
-      <div className="foot-container">
-        <div data-aos="fade-up" className="foot-about">
+      <div className="foot-container" data-aos="fade-up">
+        <div className="foot-about">
           <h4>At Shoppy </h4>
           <p>
             We provide latest designs and a wide variety of products for online
@@ -25,14 +23,14 @@ function Foot() {
             fashion and help you explore a new life style at minimum price.
           </p>
         </div>
-        <div  data-aos="fade-left" className="icons">
-          <InstagramIcon  style = {{ fontSize: 40 }} className="foot-icon" />
-          <TwitterIcon    style = {{ fontSize: 40 }} className="foot-icon" />
-          <YouTubeIcon    style = {{ fontSize: 40 }} className="foot-icon" />
-          <FacebookIcon   style = {{ fontSize: 40 }} className="foot-icon" />
+        <div className="icons">
+          <InstagramIcon style={{ fontSize: 30 }} className="foot-icon" />
+          <TwitterIcon style={{ fontSize: 30 }} className="foot-icon" />
+          <YouTubeIcon style={{ fontSize: 30 }} className="foot-icon" />
+          <FacebookIcon style={{ fontSize: 30 }} className="foot-icon" />
         </div>
       </div>
-      <div className="foot-bottom" data-aos = "fade-up">
+      <div className="foot-bottom">
         <div className="foot-text">
           <Row>
             <Col lg={4} md={4}>

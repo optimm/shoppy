@@ -9,7 +9,7 @@ const Land = () => {
       <div className="main-heading">
         <h1 className="land-heading">Makes you feel like shopping</h1>
         <p className="land-sub-heading">Favorite brands and hottest trends</p>
-        <button className="btn" size="lg">Explore Clothes</button>
+        <a href="#card-section"><button className="btn" size="lg">Explore Clothes</button></a>
       </div>
     </>
   );

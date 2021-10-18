@@ -11,7 +11,7 @@ const Kid = (props) => {
     <>
       {/* <Navigation /> */}
 
-      <Row>
+      <Row className="product">
         <Col lg={9} md={12} sm={12} className="product-left">
           <Navigation />
 

@@ -9,12 +9,9 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 
 const Main = () => {
-
   useEffect(() => {
-    Aos.init({duration: 2000});
-    }, []);
-
-
+    Aos.init({ duration: 2000 });
+  }, []);
   return (
     <>
       <div className="main">
@@ -26,7 +23,7 @@ const Main = () => {
             </div>
           </Col>
           <Col lg={5} md={5}>
-            <div  data-aos="fade-left" className="yellow">
+            <div className="yellow">
               <img src="./bg.png" className="main-image" />
             </div>
           </Col>

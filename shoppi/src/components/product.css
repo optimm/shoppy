@@ -19,6 +19,7 @@
 .product-left-box {
   height: 82.5vh;
   overflow-y: scroll;
+  animation: glow 1s;
 }
 
 .product-cloth {

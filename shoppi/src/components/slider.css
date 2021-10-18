@@ -1,6 +1,6 @@
 .slider {
   margin-top: 20vw;
-  margin-bottom: 250px;
+  margin-bottom: 200px;
 }
 
 .slider-image1 {
@@ -35,12 +35,12 @@
 .slider-text {
   font-family: "Helvetica Neue";
   font-size: 7vw;
-  color: rgb(255, 255, 255);
+  color: rgb(243, 243, 243);
   font-size: 4vw;
   position: absolute;
   top: 40%;
   /* left: 70%; */
-  background-color: rgb(36, 36, 36);
+  /* background-color: rgb(36, 36, 36); */
   padding: 17px;
   width: 112vw;
   padding-left: 52vw;
@@ -58,12 +58,13 @@
 }
 @media only screen and (max-width: 700px) {
   .slider-text {
+    font-size: 4.5vw;
     padding-left: 59vw;
     background-color: #ffa005;
   }
   .slider-white {
     background-color: rgb(255, 255, 255);
-    padding: 4%;
+    padding: 5%;
     width: 200vw;
     height: 0px;
     margin-left: -120%;
@@ -72,30 +73,34 @@
     max-height: 700px;
     min-height: 200px;
     z-index: 1;
-    height: 40vw;
+    margin-left: -20%;
+    height: 65vw;
   }
   .slider-image2 {
     max-height: 700px;
     min-height: 200px;
-    margin-left: 10%;
-    height: 40vw;
+    margin-left: 0%;
+    height: 65vw;
     z-index: 1;
   }
   .slider-image3 {
     max-height: 700px;
     min-height: 200px;
-    height: 40vw;
+    margin-left: -15%;
+    height: 65vw;
     z-index: 1;
   }
   .slider-image4 {
     max-height: 700px;
     min-height: 200px;
-    height: 40vw;
+    margin-left: -15%;
+    height: 65vw;
     z-index: 1;
   }
 
   .slider {
     margin-top: 20vh;
+    margin-bottom: 150px;
   }
 }
 @media only screen and (max-width: 400px) {

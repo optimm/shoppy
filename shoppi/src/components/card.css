@@ -31,16 +31,12 @@
   letter-spacing: 1px;
 }
 .card-item:hover {
-  /* transform: scale(1.05); */
-  transform: translateY(-35px);
-
+  transform: scale(1.05);
 }
-
 
 /* .card-item.aos-init.aos-animate:hover{
   transform: translateY(-35px);
 } */
-
 
 .card-text {
   width: 98%;
@@ -80,8 +76,8 @@
 }
 @media only screen and (max-width: 767px) {
   .card-item {
-    max-width: 250px;
-    max-height: 250px;
+    max-width: 220px;
+    max-height: 220px;
     margin: auto;
     margin-bottom: 100px;
   }
@@ -96,8 +92,8 @@
 }
 @media only screen and (max-width: 400px) {
   .card-item {
-    max-width: 180px;
-    max-height: 180px;
+    max-width: 170px;
+    max-height: 170px;
     margin: auto;
     margin-bottom: 100px;
   }
