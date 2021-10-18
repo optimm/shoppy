@@ -16,18 +16,25 @@ const Profile = () => {
         pathname: "/signin",
       });
     } else {
-      console.log(response);
       setName(response.data.name);
     }
   });
-
+  const logout = () => {
+    console.log("hey");
+    Axios.post("http://localhost:8000/logout").then((response) => {
+      console.log(response.data);
+      history.push({
+        pathname: "/",
+      });
+    });
+  };
   return (
     <div className="profile-container">
       <h1>Hi {name}</h1>
       <div className="profile-buttons">
-        <Link to="/profile">
-          <button className="profile-button">Log Out</button>
-        </Link>
+        <button className="profile-button" onClick={logout}>
+          Log Out
+        </button>
         <Link to="/">
           <button className="profile-button">Home</button>
         </Link>
