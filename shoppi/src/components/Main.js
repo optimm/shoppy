@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar, Nav, NavDropdown, Container, Row, Col } from "react-bootstrap";
 import Navigation from "./Navigation";
 import Cards from "./Cards";
 import Land from "./Land";
 import Slider from "./Slider";
-
 import Foot from "./Foot";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const Main = () => {
+
+  useEffect(() => {
+    Aos.init({duration: 2000});
+    }, []);
+
+
   return (
     <>
       <div className="main">
@@ -19,7 +26,7 @@ const Main = () => {
             </div>
           </Col>
           <Col lg={5} md={5}>
-            <div className="yellow">
+            <div  data-aos="fade-left" className="yellow">
               <img src="./bg.png" className="main-image" />
             </div>
           </Col>

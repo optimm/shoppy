@@ -1,0 +1,155 @@
+
+/* .women-nav{
+    z-index: 0;
+} */
+
+.women-right{
+background-color: #ffa005;
+padding: 40px;
+}
+
+.women-filterBox{
+
+    background-color: #000000;
+    margin-top: 60px;
+
+}
+
+
+.women-filterBox h2{
+  font-size: 2rem;
+  text-align: center;
+  padding: 12%;
+  color: #ffffff;
+  font-family: inherit;
+  background-color: black;
+  
+
+}
+
+.women-sort1{
+    background-color: rgb(185, 241, 255);
+    height: 180px;
+     padding: 0 5px 0 10px;
+   margin-bottom: 20px;
+   color: rgb(0, 0, 0);
+
+}
+
+
+
+
+.women-filter{
+
+    background-color: rgb(255, 255, 255);
+    padding: 9% 9% 9% 9%;
+ 
+
+}
+
+
+
+
+
+
+
+
+
+
+/* _______________________left_______________ */
+
+
+
+
+
+
+/* 
+.women-left{
+    background-color: aqua;
+} */
+
+
+.women-left-box{
+
+    /* background-color: chartreuse; */
+    /* height: 10px; */
+    padding-left: 2%;
+}
+
+/* #scroll::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  #scroll::-webkit-scrollbar-thumb {
+    background-color: rgb(216, 216, 216);
+  } */
+
+  .women-left-box{
+      height: 100vh;
+      overflow-y: scroll;
+  }
+
+
+
+  .women-cloth{
+    /* background-color: rgb(251, 255, 0); */
+    margin: 20px 20px 10px 20px;
+    position: relative;
+
+  }
+
+  p{
+      font-size: 23px;
+      font-family: sans-serif;
+      margin-left: 10px;
+  }
+
+
+
+
+  .women-box-new{
+    display: none;
+  }
+
+
+
+
+
+
+  
+
+  @media only screen and (max-width: 980px) {
+  
+
+    .women-right{
+      position:absolute;
+      bottom: 0px;
+      left: 0px;
+      top: 106%;
+    }
+   
+
+    .women-filterBox h2{
+      display: none;
+    }
+    
+    .women-filter {
+      display: none;
+    }
+
+    p{
+      font-size: 19px;
+    }
+
+     
+    .women-box-new{
+      display:block;
+      height: 25px;
+      background-color: #ffffff;
+  
+    }
+
+  }
+
+
+

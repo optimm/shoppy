@@ -68,6 +68,11 @@
   border: none;
   margin-top: 50px;
   margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.signup-btn:hover{
+  background-color: orange;
 }
 .signup-foot-dark {
   width: 100%;

@@ -52,13 +52,13 @@ function Navigation() {
         />
         <Navbar.Collapse id="responsive-navbar-nav" className="nav-col">
           <Nav className="me-auto">
-            <Link className="nav-item" to="/men">
+            <Link className="nav-item nav-ani" to="/men">
               Men
             </Link>
-            <Link className="nav-item" to="/kids">
+            <Link className="nav-item nav-ani" to="/kids">
               Kids
             </Link>
-            <Link className="nav-item" to="/women">
+            <Link className="nav-item nav-ani" to="/women">
               Women
             </Link>
             <div className="nav-item item" onClick={check}>
