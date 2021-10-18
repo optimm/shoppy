@@ -69,6 +69,11 @@ app.post("/register", (req, res) => {
 app.get("/", (req, res) => {
   console.log(req.cookies);
 });
+//clear coookie
+app.post("/logout", (req, res) => {
+  res.clearCookie("LogedIn");
+  res.send("done");
+});
 
 app.post("/cart", (req, res) => {
   if (req.isAuthenticated) {
