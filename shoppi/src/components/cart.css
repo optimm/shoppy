@@ -76,12 +76,14 @@
 }
 .total {
   margin: 75px 20px 25px 40px;
-  color: #4d4d4d;
+  color: #7c7c7c;
   font-size: 1.5rem;
 }
 .price {
-  color: #8d8d8d;
   font-weight: 400;
+  margin: 75px 0px 25px 0px;
+  max-width: 80%;
+  overflow-x: scroll;
 }
 .cart-details {
   color: #474747;

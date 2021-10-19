@@ -42,6 +42,10 @@ const Cart = () => {
       setData(response.data);
     });
   }, []);
+  data.map((e) => {
+    total += e.p_price;
+  });
+  console.log(total);
   return (
     <>
       <Row>
@@ -165,10 +169,15 @@ const Cart = () => {
                   <h3 className="total">Total</h3>
                 </Col>
                 <Col lg={6} md={6} sm={6} xs={6}>
-                  <h3 className="total price">Rs. {total}</h3>
+                  <p className="total price" id="check-d">
+                    <nobr>Rs. {total}</nobr>
+                  </p>
                 </Col>
               </Row>
-              <Link to={{ pathname: "/check", state: deliveryData }}>
+              <Link
+                to={{ pathname: "/check", state: deliveryData }}
+                style={{ textDecoration: "none" }}
+              >
                 <button className="cart-btn">Checkout</button>
               </Link>
             </div>
