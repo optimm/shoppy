@@ -20,6 +20,7 @@
 }
 .category-section {
   border: 1px solid rgb(104, 104, 104, 0.2);
+  border-radius: 10px;
 }
 /* .category-image:hover + .product-detail {
 } */

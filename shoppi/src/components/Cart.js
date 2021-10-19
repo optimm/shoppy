@@ -37,6 +37,9 @@ const Cart = () => {
         });
       }
     });
+    showdata();
+  }, []);
+  function showdata() {
     Axios.post("http://localhost:8000/data", {
       category: "cart",
     }).then((response) => {
@@ -49,7 +52,7 @@ const Cart = () => {
       setQuantity([...quantity]);
       setTotal(v);
     });
-  }, []);
+  }
 
   function totalValue(value, index) {
     quantity[index].qty = value;
@@ -64,6 +67,16 @@ const Cart = () => {
     // console.log(val);
     total = val;
     setTotal(total);
+  }
+  ///////// delete from cart/////////////////
+  function del(index) {
+    Axios.post("http://localhost:8000/del", {
+      p_id: data[index].p_id,
+      p_size: data[index].p_size,
+    }).then((response) => {
+      alert(response.data);
+    });
+    showdata();
   }
   return (
     <>
@@ -114,7 +127,10 @@ const Cart = () => {
                       </Col>
                     </Row>
                     <div className="cart-value">
-                      <DeleteIcon className="cart-remove-btn" />
+                      <DeleteIcon
+                        className="cart-remove-btn"
+                        onClick={() => del(index)}
+                      />
                       <input
                         type="number"
                         min="1"

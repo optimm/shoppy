@@ -19,6 +19,7 @@ app.use(
 app.use("/cart", auth);
 app.use("/addtocart", auth);
 app.use("/data", auth);
+app.use("/del", auth);
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -26,7 +27,7 @@ const db = mysql.createConnection({
   database: "shoppy",
 });
 
-/////////////////// fetching data from the product table/////////////////////
+/////////////////// fetching data from the  table/////////////////////
 app.post("/data", (req, res) => {
   const value = req.body.category;
   let t = "product";
@@ -47,7 +48,29 @@ app.post("/data", (req, res) => {
     res.send(result);
   });
 });
-/////////////////// fetching data from the product table end/////////////////////
+/////////////////// fetching data from the  table end/////////////////////
+
+////////////////////del from table start/////////////////
+app.post("/del", (req, res) => {
+  let t;
+  const p_id = req.body.p_id;
+  const p_size = req.body.p_size;
+  if (req.isAuthenticated) {
+    t = `cart_0${res.mobile}`;
+    const q = `DELETE FROM ${t} WHERE p_id = ? AND p_size = ?`;
+    db.query(q, [p_id, p_size], (err, result) => {
+      if (err) {
+        console.log(err);
+        res.send("Error! could not delete");
+      }
+      if (!err) {
+        res.send("item deleted");
+      }
+    });
+  } else {
+    console.log("not authenticated");
+  }
+});
 
 ///////////////////////register route////////////////////////////////
 app.post("/register", (req, res) => {
@@ -69,7 +92,7 @@ app.post("/register", (req, res) => {
   const q =
     "CREATE TABLE  cart_" +
     mobile +
-    " ( p_size char(5),p_name varchar(100), p_image varchar(300), p_price varchar(100), p_id bigint(20),FOREIGN KEY (p_id) REFERENCES product(p_id))";
+    " ( p_size char(5), p_name varchar(100), p_image varchar(300), p_price bigint(20), p_id bigint(20), PRIMARY KEY (p_id,p_size), FOREIGN KEY (p_id) REFERENCES product(p_id))";
   db.query(q, (err, result) => {
     console.log(err);
     if (!err) {
