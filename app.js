@@ -69,7 +69,7 @@ app.post("/register", (req, res) => {
   const q =
     "CREATE TABLE  cart_" +
     mobile +
-    " ( p_size char(5), p_qty bigint(20), p_name varchar(100), p_image varchar(300), p_price varchar(100), p_id bigint(20), PRIMARY KEY (p_id), FOREIGN KEY (p_id) REFERENCES product(p_id))";
+    " ( p_size char(5), p_qty bigint(20), p_name varchar(100), p_image varchar(300), p_price varchar(100), p_id bigint(20),FOREIGN KEY (p_id) REFERENCES product(p_id))";
   db.query(q, (err, result) => {
     console.log(err);
     if (!err) {
