@@ -47,25 +47,16 @@ const Men = () => {
           <Navigation />
 
           <div className="product-left-box" id="scroll">
-            <Row className="product-cloth">
+            <div className="product-cloth">
               {data.map((item, index) => {
                 if (item.p_category === "men") {
                   return (
-                    <Col
-                      lg={4}
-                      md={4}
-                      sm={4}
-                      xs={4}
-                      className="category-section"
-                    >
-                      <Image
-                        src={item.p_image}
-                        alt="Cloth image"
-                        fluid
-                        className="category-image"
+                    <div className="category-section">
+                      <div
+                        className="category"
+                        style={{ backgroundImage: `url("${item.p_image}")` }}
                         onClick={() => prodPage(index)}
-                      />
-
+                      ></div>
                       <div className="product-detail">
                         <p className="product-heading">
                           <span className="product-name">{item.p_name}</span>
@@ -75,11 +66,11 @@ const Men = () => {
                           </span>
                         </p>
                       </div>
-                    </Col>
+                    </div>
                   );
                 }
               })}
-            </Row>
+            </div>
           </div>
         </Col>
 
@@ -118,7 +109,6 @@ const Men = () => {
                   Apply
                 </button>
               </div>
-
               <div className="sort-price sort-type">
                 <h3>Type</h3>
                 <div className="sort-type-choice">
