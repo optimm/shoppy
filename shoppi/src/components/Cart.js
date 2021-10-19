@@ -21,6 +21,7 @@ const Cart = () => {
   const history = useHistory();
   // total price
   let [total, setTotal] = useState(0);
+  let [quantity, setQuantity] = useState([]);
   let [addres, setaddres] = useState("not filled");
   let [mobile, setmobile] = useState("not filled");
   let [email, setemail] = useState("please check email");
@@ -40,12 +41,30 @@ const Cart = () => {
       category: "cart",
     }).then((response) => {
       setData(response.data);
+      let v = 0;
+      response.data.map((e) => {
+        quantity.push({ p_id: e.p_id, qty: 1 });
+        v += e.p_price;
+      });
+      setQuantity([...quantity]);
+      setTotal(v);
     });
   }, []);
-  data.map((e) => {
-    total += e.p_price;
-  });
-  console.log(total);
+
+  function totalValue(value, index) {
+    quantity[index].qty = value;
+    setQuantity([...quantity]);
+    //  console.log(quantity);
+    let val = 0;
+    // total = 0;
+    data.map((e, i) => {
+      val += e.p_price * quantity[i].qty;
+    });
+    // console.log(quantity);
+    // console.log(val);
+    total = val;
+    setTotal(total);
+  }
   return (
     <>
       <Row>
@@ -101,6 +120,7 @@ const Cart = () => {
                         min="1"
                         defaultValue="1"
                         className="p-qty"
+                        onChange={(e) => totalValue(e.target.value, index)}
                       />
                     </div>
                   </>
