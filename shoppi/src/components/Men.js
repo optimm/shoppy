@@ -29,7 +29,7 @@ const Men = () => {
 
     data.sort((a, b) => {
       if (sort === "lth") return a.p_price - b.p_price;
-      else return b.p_price - a.p_price;
+      else if (sort === "htl") return b.p_price - a.p_price;
     });
     setData([...data]);
   };

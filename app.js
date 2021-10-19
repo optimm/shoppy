@@ -17,6 +17,8 @@ app.use(
 );
 
 app.use("/cart", auth);
+app.use("/addtocart", auth);
+
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -49,34 +51,66 @@ app.post("/register", (req, res) => {
       console.log(err);
     }
   );
-
+  let status = 0;
   // shopping cart
-  const q = "CREATE TABLE  cart_" + mobile + " ( p_size char(5))";
+  const q =
+    "CREATE TABLE  cart_" +
+    mobile +
+    " ( p_size char(5), p_qty bigint(20), p_name varchar(100), p_image varchar(300), p_price varchar(100), p_id bigint(20), PRIMARY KEY (p_id), FOREIGN KEY (p_id) REFERENCES product(p_id))";
   db.query(q, (err, result) => {
     console.log(err);
+    if (!err) {
+      status++;
+    }
   });
   /////////////////////////
   //my orders
   const o =
     "CREATE TABLE  myorder_" +
     mobile +
-    " ( id varchar(50), delivery_address varchar(300), delivery_mobile bigint, status varchar(20), PRIMARY KEY (id))";
+    " (p_size char(5), p_qty bigint, p_name varchar(100), p_image varchar(300), p_price varchar(100), p_id bigint, id varchar(50), delivery_address varchar(300), delivery_mobile bigint, status varchar(20), PRIMARY KEY (id))";
   db.query(o, (err, result) => {
     console.log(err);
     if (!err) {
-      res.send("User registered");
+      status++;
     }
   });
+
+  console.log(status);
   ////////////////////////
 });
 app.get("/", (req, res) => {
   console.log(req.cookies);
 });
-//clear coookie
+
+///////////////////////clear coookie start////////////////////////////////
 app.post("/logout", (req, res) => {
   res.clearCookie("LogedIn");
   res.send("done");
 });
+///////////////////////clear coookie end////////////////////////////////
+
+///////////////////////// add to cart start///////////////////////////////
+app.post("/addtocart", (req, res) => {
+  console.log("add to cart ke andra");
+  const product_id = req.body.product_id;
+  const size = req.body.product_size;
+  let mobile;
+  if (req.isAuthenticated) {
+    console.log("hi", res.mobile, product_id, size);
+    mobile = res.mobile;
+  } else {
+    console.log("not authenticated");
+  }
+  const q = `INSERT INTO cart_0${mobile} (p_id, p_size, p_qty, p_name, p_image, p_price) SELECT ${product_id}, "${size}", 1, p_name, p_image, p_price FROM product WHERE p_id= ${product_id} `;
+  db.query(q, (err, result) => {
+    console.log(err);
+    if (!err) {
+      res.send("Item added to cart");
+    }
+  });
+});
+///////////////////////// add to cart end ///////////////////////////////
 
 app.post("/cart", (req, res) => {
   if (req.isAuthenticated) {
@@ -106,11 +140,13 @@ app.post("/login", (req, res) => {
       if (result.length > 0) {
         console.log(result[0].name);
         let uname = result[0].name;
+        let mobile = result[0].mobile;
+        console.log(mobile);
         res
           .status(200)
           .cookie(
             "LogedIn",
-            { name: uname, LogedIn: true },
+            { mobile: mobile, name: uname, LogedIn: true },
             {
               httpOnly: true,
               sameSite: "strict",

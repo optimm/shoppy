@@ -15,11 +15,11 @@ import "./product.css";
 import Axios from "axios";
 Axios.defaults.withCredentials = true;
 const Kid = () => {
-   const history = useHistory();
+  const history = useHistory();
   const [data, setData] = useState([]);
   useEffect(() => {
     Axios.post("http://localhost:8000/data", {
-      category: "women",
+      category: "kids",
     }).then((response) => {
       setData(response.data);
     });
@@ -29,7 +29,7 @@ const Kid = () => {
 
     data.sort((a, b) => {
       if (sort === "lth") return a.p_price - b.p_price;
-      else return b.p_price - a.p_price;
+      else if (sort === "htl") return b.p_price - a.p_price;
     });
     setData([...data]);
   };
@@ -48,7 +48,7 @@ const Kid = () => {
 
           <div className="product-left-box" id="scroll">
             <Row className="product-cloth">
-              {data.map((item,index) => {
+              {data.map((item, index) => {
                 if (item.p_category === "kids") {
                   return (
                     <Col
