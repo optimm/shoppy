@@ -19,6 +19,8 @@ Axios.defaults.withCredentials = true;
 // =====================================================
 const Cart = () => {
   const history = useHistory();
+  // total price
+  let [total, setTotal] = useState(0);
   let [addres, setaddres] = useState("not filled");
   let [mobile, setmobile] = useState("not filled");
   let [email, setemail] = useState("please check email");
@@ -51,30 +53,55 @@ const Cart = () => {
             </div>
             <div className="cart-items" id="scroll">
               {data.map((item, index) => {
-               return (
-                 <>
-                <Row className="cart-item">
-                <Col lg={4} md={4} sm={4} xs={4}>
-                  <div className="cart-image" style={{ backgroundImage: `url("${item.p_image}")` }}></div>
-                </Col>
-                <Col lg={4} md={4} sm={4} xs={4} className="cart-item-detail">
-                  <p>{item.p_name}</p>
-                </Col>
-                 <Col lg={2} md={2} sm={2} xs={2} className="cart-item-detail">
-                  <p className="cart-size">{item.p_size}</p>
-                </Col>
-                <Col lg={2} md={2} sm={2} xs={2} className="cart-item-price">
-                  <p>Rs. {item.p_price}</p>
-                </Col>
-              </Row>
-              <div className="cart-value">
-                <DeleteIcon className="cart-remove-btn" />
-                <input type="number" min="1" defaultValue="1" className="p-qty" />
-              </div>
-              </>
-               )
-               }) }
-              
+                return (
+                  <>
+                    <Row className="cart-item">
+                      <Col lg={4} md={4} sm={4} xs={4}>
+                        <div
+                          className="cart-image"
+                          style={{ backgroundImage: `url("${item.p_image}")` }}
+                        ></div>
+                      </Col>
+                      <Col
+                        lg={4}
+                        md={4}
+                        sm={4}
+                        xs={4}
+                        className="cart-item-detail"
+                      >
+                        <p>{item.p_name}</p>
+                      </Col>
+                      <Col
+                        lg={2}
+                        md={2}
+                        sm={2}
+                        xs={2}
+                        className="cart-item-detail"
+                      >
+                        <p className="cart-size">{item.p_size}</p>
+                      </Col>
+                      <Col
+                        lg={2}
+                        md={2}
+                        sm={2}
+                        xs={2}
+                        className="cart-item-price"
+                      >
+                        <p>Rs. {item.p_price}</p>
+                      </Col>
+                    </Row>
+                    <div className="cart-value">
+                      <DeleteIcon className="cart-remove-btn" />
+                      <input
+                        type="number"
+                        min="1"
+                        defaultValue="1"
+                        className="p-qty"
+                      />
+                    </div>
+                  </>
+                );
+              })}
             </div>
           </div>
         </Col>
@@ -84,10 +111,10 @@ const Cart = () => {
             <div className="cart-details">
               <label className="cart-enters">
                 <Row>
-                  <Col lg={3} md={3}>
+                  <Col lg={3} md={3} sm={3} xs={3}>
                     <span className="label">Address</span>
                   </Col>
-                  <Col lg={9} md={9}>
+                  <Col lg={9} md={9} sm={9} xs={9}>
                     <div className="cart-input">
                       <input
                         type="text"
@@ -101,10 +128,10 @@ const Cart = () => {
               </label>
               <label className="cart-enters">
                 <Row>
-                  <Col lg={3} md={3}>
+                  <Col lg={3} md={3} sm={3} xs={3}>
                     <span className="label">Mobile</span>
                   </Col>
-                  <Col lg={9} md={9}>
+                  <Col lg={9} md={9} sm={9} xs={9}>
                     <div className="cart-input">
                       <input
                         type="text"
@@ -118,10 +145,10 @@ const Cart = () => {
               </label>
               <label className="cart-enters">
                 <Row>
-                  <Col lg={3} md={3}>
+                  <Col lg={3} md={3} sm={3} xs={3}>
                     <span className="label">Email</span>
                   </Col>
-                  <Col lg={9} md={9}>
+                  <Col lg={9} md={9} sm={9} xs={9}>
                     <div className="cart-input">
                       <input
                         type="email"
@@ -133,7 +160,14 @@ const Cart = () => {
                   </Col>
                 </Row>
               </label>
-              <h3 className="total">Total</h3>
+              <Row>
+                <Col lg={6} md={6} sm={6} xs={6}>
+                  <h3 className="total">Total</h3>
+                </Col>
+                <Col lg={6} md={6} sm={6} xs={6}>
+                  <h3 className="total price">Rs. {total}</h3>
+                </Col>
+              </Row>
               <Link to={{ pathname: "/check", state: deliveryData }}>
                 <button className="cart-btn">Checkout</button>
               </Link>
