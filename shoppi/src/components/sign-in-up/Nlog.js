@@ -10,7 +10,7 @@ import "./nlog.css";
 const Nlog = () => {
   return (
     <div className="nlog-container">
-      <h1>Please log in and have your cart!</h1>
+      <h1>Please log in to continue!</h1>
       <div className="nlog-buttons">
         <Link to="/signin">
           <button className="nlog-button">Log in</button>

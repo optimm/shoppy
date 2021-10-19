@@ -18,6 +18,7 @@ app.use(
 
 app.use("/cart", auth);
 app.use("/addtocart", auth);
+app.use("/data", auth);
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -25,18 +26,30 @@ const db = mysql.createConnection({
   database: "shoppy",
 });
 
-// fetching data from the table
+/////////////////// fetching data from the product table/////////////////////
 app.post("/data", (req, res) => {
-  db.query("SELECT * FROM product", (err, result) => {
+  const value = req.body.category;
+  let t = "product";
+  if (req.isAuthenticated) {
+    if (value === "cart") {
+      t = `cart_0${res.mobile}`;
+    }
+  } else {
+    console.log("not authenticated");
+  }
+  console.log(`data from ${t}`);
+  const q = `SELECT * FROM ${t}`;
+  db.query(q, (err, result) => {
     if (err) {
       console.log(err);
       res.send({ err: err });
     }
-    console.log(result);
     res.send(result);
   });
 });
+/////////////////// fetching data from the product table end/////////////////////
 
+///////////////////////register route////////////////////////////////
 app.post("/register", (req, res) => {
   console.log("hello register");
   const email = req.body.email;
@@ -101,10 +114,16 @@ app.post("/addtocart", (req, res) => {
     mobile = res.mobile;
   } else {
     console.log("not authenticated");
+    res.send("");
   }
-  const q = `INSERT INTO cart_0${mobile} (p_id, p_size, p_qty, p_name, p_image, p_price) SELECT ${product_id}, "${size}", 1, p_name, p_image, p_price FROM product WHERE p_id= ${product_id} `;
+  const q = `INSERT INTO cart_0${mobile} (p_id, p_size, p_name, p_image, p_price) SELECT ${product_id}, "${size}", p_name, p_image, p_price FROM product WHERE p_id= ${product_id} `;
   db.query(q, (err, result) => {
-    console.log(err);
+    if (err) {
+      console.log(err.errno);
+      if (err.errno === 1062) {
+        res.send("Item already present in cart");
+      }
+    }
     if (!err) {
       res.send("Item added to cart");
     }
@@ -123,7 +142,7 @@ app.post("/cart", (req, res) => {
     res.send({ data: false });
   }
 });
-
+///////////////////////login start/////////////////////////////////////////
 app.post("/login", (req, res) => {
   console.log("hello login");
   const email = req.body.email;

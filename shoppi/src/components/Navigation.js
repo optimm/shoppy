@@ -62,10 +62,10 @@ function Navigation() {
               Women
             </Link>
             <div className="nav-item item nav-hover" onClick={check}>
-              <FaceOutlinedIcon style={{ fontSize: 25 }} />
+              <FaceOutlinedIcon style={{ fontSize: 22 }} />
             </div>
             <Link className="nav-item nav-hover" to="/cart">
-              <ShoppingCartOutlinedIcon style={{ fontSize: 25 }} />
+              <ShoppingCartOutlinedIcon style={{ fontSize: 22 }} />
             </Link>
           </Nav>
         </Navbar.Collapse>

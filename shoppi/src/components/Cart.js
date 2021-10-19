@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navigation from "./Navigation";
 import "./cart.css";
 import {
@@ -23,15 +23,23 @@ const Cart = () => {
   let [mobile, setmobile] = useState("not filled");
   let [email, setemail] = useState("please check email");
   const deliveryData = [addres, mobile, email];
-  Axios.post("http://localhost:8000/cart", {
-    name: "ayush",
-  }).then((response) => {
-    if (response.data.data === false) {
-      history.push({
-        pathname: "/nlog",
-      });
-    }
-  });
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    Axios.post("http://localhost:8000/cart", {
+      name: "ayush",
+    }).then((response) => {
+      if (response.data.data === false) {
+        history.push({
+          pathname: "/nlog",
+        });
+      }
+    });
+    Axios.post("http://localhost:8000/data", {
+      category: "cart",
+    }).then((response) => {
+      setData(response.data);
+    });
+  }, []);
   return (
     <>
       <Row>
@@ -42,67 +50,31 @@ const Cart = () => {
               <h2>Cart</h2>
             </div>
             <div className="cart-items" id="scroll">
-              <Row className="cart-item">
+              {data.map((item, index) => {
+               return (
+                 <>
+                <Row className="cart-item">
                 <Col lg={4} md={4} sm={4} xs={4}>
-                  <Image src="./cartimages/cart1.jpeg" alt="item1" fluid />
+                  <div className="cart-image" style={{ backgroundImage: `url("${item.p_image}")` }}></div>
                 </Col>
-                <Col lg={6} md={6} sm={6} xs={6} className="cart-item-detail">
-                  <p>Gucci Hoodie</p>
+                <Col lg={4} md={4} sm={4} xs={4} className="cart-item-detail">
+                  <p>{item.p_name}</p>
+                </Col>
+                 <Col lg={2} md={2} sm={2} xs={2} className="cart-item-detail">
+                  <p className="cart-size">{item.p_size}</p>
                 </Col>
                 <Col lg={2} md={2} sm={2} xs={2} className="cart-item-price">
-                  <p>$250</p>
+                  <p>Rs. {item.p_price}</p>
                 </Col>
               </Row>
               <div className="cart-value">
                 <DeleteIcon className="cart-remove-btn" />
-                <input type="number" min="1" defaultValue="1" />
+                <input type="number" min="1" defaultValue="1" className="p-qty" />
               </div>
-              <Row className="cart-item">
-                <Col lg={4} md={4} sm={4} xs={4}>
-                  <Image src="./cartimages/cart2.jpeg" alt="item1" fluid />
-                </Col>
-                <Col lg={6} md={6} sm={6} xs={6} className="cart-item-detail">
-                  <p>Womens Top</p>
-                </Col>
-                <Col lg={2} md={2} sm={2} xs={2} className="cart-item-price">
-                  <p>$550</p>
-                </Col>
-              </Row>
-              <div className="cart-value">
-                <DeleteIcon className="cart-remove-btn" />
-                <input type="number" min="1" defaultValue="1" />
-              </div>
-              <Row className="cart-item">
-                <Col lg={4} md={4} sm={4} xs={4}>
-                  <Image src="./cartimages/cart3.jpg" alt="item1" fluid />
-                </Col>
-                <Col lg={6} md={6} sm={6} xs={6} className="cart-item-detail">
-                  <p>Men's Shirt</p>
-                </Col>
-                <Col lg={2} md={2} sm={2} xs={2} className="cart-item-price">
-                  <p>$150</p>
-                </Col>
-              </Row>
-              <div className="cart-value">
-                <DeleteIcon className="cart-remove-btn" />
-                <input type="number" min="1" defaultValue="1" />
-              </div>
-
-              <Row className="cart-item">
-                <Col lg={4} md={4} sm={4} xs={4}>
-                  <Image src="./cartimages/cart4.jpg" alt="item1" fluid />
-                </Col>
-                <Col lg={6} md={6} sm={6} xs={6} className="cart-item-detail">
-                  <p>Men's Shirt</p>
-                </Col>
-                <Col lg={2} md={2} sm={2} xs={2} className="cart-item-price">
-                  <p>$200</p>
-                </Col>
-              </Row>
-              <div className="cart-value">
-                <DeleteIcon className="cart-remove-btn" />
-                <input type="number" min="1" defaultValue="1" />
-              </div>
+              </>
+               )
+               }) }
+              
             </div>
           </div>
         </Col>

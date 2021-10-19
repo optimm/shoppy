@@ -13,6 +13,7 @@ import {
 import Axios from "axios";
 Axios.defaults.withCredentials = true;
 const Product = (props) => {
+  const history = useHistory();
   // add to cart function
   const addtocart = () => {
     if (size.length === 0) {
@@ -22,7 +23,11 @@ const Product = (props) => {
         product_id: props.location.state.data.p_id,
         product_size: size,
       }).then((response) => {
-        alert(response.data);
+        if (response.data.length > 0) {
+          alert(response.data);
+        } else if (response.data.length === 0) {
+          history.push("/nlog");
+        }
       });
     }
   };
