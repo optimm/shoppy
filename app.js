@@ -36,6 +36,9 @@ app.post("/data", (req, res) => {
     if (value === "cart") {
       t = `cart_${res.mobile}`;
     }
+    if (value === "myorder") {
+      t = `myorder_${res.mobile}`;
+    }
   } else {
     console.log("not authenticated");
   }
@@ -68,27 +71,42 @@ app.post("/addorders", (req, res) => {
       console.log(p_id, qty, p_name, p_price, p_image, p_size);
       const q = `INSERT INTO ${t} (p_size, p_qty, p_name, p_image, p_price, p_id,id, delivery_address, delivery_mobile, delivery_email, status) VALUES (?,?,?,?,?,?,?,?,?,?,?)`;
       console.log(q);
-      db.query(q, [p_size,qty,p_name,p_image,p_price,p_id,id,d_addres,d_mobile,d_email,"pending"], (err, result) => {
+      db.query(
+        q,
+        [
+          p_size,
+          qty,
+          p_name,
+          p_image,
+          p_price,
+          p_id,
+          id,
+          d_addres,
+          d_mobile,
+          d_email,
+          "pending",
+        ],
+        (err, result) => {
+          if (err) {
+            console.log(err);
+            flag = false;
+          }
+        }
+      );
+    });
+    if (flag) {
+      const cart_emp = `DELETE FROM cart_${res.mobile}`;
+      console.log(cart_emp);
+      db.query(cart_emp, (err, result) => {
         if (err) {
           console.log(err);
-flag=false;
+        }
+        if (!err) {
+          console.log("cart made empty");
+          res.send("Thank you! Order was placed successfully");
         }
       });
-    });
-    if (flag){
-    const cart_emp = `DELETE FROM cart_${res.mobile}`;
-    console.log(cart_emp);
-    db.query(cart_emp, (err, result) => {
-      if (err) {
-        console.log(err);
-      }
-      if (!err) {
-        console.log("cart made empty");
-        res.send("Thank you! Order was placed successfully");
-      }
-    });
     }
-
   } else {
     console.log("not authenticated");
   }

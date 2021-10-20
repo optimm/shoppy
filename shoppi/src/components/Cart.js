@@ -1,15 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Navigation from "./Navigation";
-import "./cart.css";
 import { BrowserRouter as Router, Link, useHistory } from "react-router-dom";
 import createNotification from "./notification/notification";
 import { NotificationContainer } from "react-notifications"; //notification
 import { Container, Row, Col, Image } from "react-bootstrap";
 import DeleteIcon from "@material-ui/icons/Delete";
-import "./cart.css";
 import Axios from "axios";
-
+import "./cart.css";
 Axios.defaults.withCredentials = true;
 // =====================================================
 const Cart = () => {
@@ -165,6 +163,7 @@ const Cart = () => {
                         <input
                           type="number"
                           min="1"
+                          max="10"
                           defaultValue="1"
                           className="p-qty"
                           onChange={(e) => totalValue(e.target.value, index)}
