@@ -7,8 +7,8 @@ import createNotification from "./notification/notification";
 import { NotificationContainer } from "react-notifications"; //notification
 import { Container, Row, Col, Image } from "react-bootstrap";
 import DeleteIcon from "@material-ui/icons/Delete";
-import Axios from "axios";
 import "./cart.css";
+import Axios from "axios";
 
 Axios.defaults.withCredentials = true;
 // =====================================================

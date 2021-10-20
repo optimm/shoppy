@@ -3,12 +3,26 @@ import Navigation from "./Navigation";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./check.css";
-
+import Axios from "axios";
+Axios.defaults.withCredentials = true;
 const Checkout = (props) => {
   const [name, addres, mobile, email, total] = Object.values(
     props.location.state.d_data
   );
   console.log(props.location.state.p_data);
+  function confirm() {
+    if (window.confirm("Place order")) {
+      Axios.post("http://localhost:8000/addorders", {
+        o_data: props.location.state.p_data,
+        d_addres: addres,
+        d_mobile: mobile,
+        d_email: email,
+      }).then((response) => {
+        // alert(response.data);
+      });
+    }
+  }
+
   return (
     <>
       <div>
@@ -75,7 +89,9 @@ const Checkout = (props) => {
                   </Row>
                 </div>
 
-                <button className="check-btn">Confirm and pay</button>
+                <button className="check-btn" onClick={confirm}>
+                  Confirm and pay
+                </button>
 
                 <div className="check-foot-dark"></div>
               </div>

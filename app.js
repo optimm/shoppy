@@ -20,6 +20,7 @@ app.use("/cart", auth);
 app.use("/addtocart", auth);
 app.use("/data", auth);
 app.use("/del", auth);
+app.use("/addorders", auth);
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -49,6 +50,49 @@ app.post("/data", (req, res) => {
   });
 });
 /////////////////// fetching data from the  table end/////////////////////
+//==========================================================================================
+//// add to my orders table
+app.post("/addorders", (req, res) => {
+  const id = new Date().toLocaleString();
+  const d_addres = req.body.d_addres;
+  const d_mobile = req.body.d_mobile;
+  const d_email = req.body.d_email;
+  const o_data = req.body.o_data;
+
+  console.log(o_data);
+  if (req.isAuthenticated) {
+    const t = `myorder_${res.mobile}`;
+    let flag = true;
+    o_data.map((e, i) => {
+      const [p_id, qty, p_name, p_price, p_image, p_size] = Object.values(e);
+      console.log(p_id, qty, p_name, p_price, p_image, p_size);
+      const q = `INSERT INTO ${t} (p_size, p_qty, p_name, p_image, p_price, p_id,id, delivery_address, delivery_mobile, delivery_email, status) VALUES (?,?,?,?,?,?,?,?,?,?,?)`;
+      console.log(q);
+      db.query(q, [p_size,qty,p_name,p_image,p_price,p_id,id,d_addres,d_mobile,d_email,"pending"], (err, result) => {
+        if (err) {
+          console.log(err);
+flag=false;
+        }
+      });
+    });
+    if (flag){
+    const cart_emp = `DELETE FROM cart_${res.mobile}`;
+    console.log(cart_emp);
+    db.query(cart_emp, (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+      if (!err) {
+        console.log("cart made empty");
+        res.send("Thank you! Order was placed successfully");
+      }
+    });
+    }
+
+  } else {
+    console.log("not authenticated");
+  }
+});
 
 ////////////////////del from table start/////////////////
 app.post("/del", (req, res) => {
