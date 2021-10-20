@@ -10,13 +10,13 @@ const createNotification = (type, message, title) => {
       NotificationManager.info(title);
       break;
     case "success":
-      NotificationManager.success(message, title);
+      NotificationManager.success(message, title, 2000);
       break;
     case "warning":
       NotificationManager.warning(message, title, 3000);
       break;
     case "error":
-      NotificationManager.error(message, title, 5000);
+      NotificationManager.error(message, title, 3000);
       break;
   }
 };

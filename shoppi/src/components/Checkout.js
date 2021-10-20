@@ -6,8 +6,9 @@ import "./check.css";
 
 const Checkout = (props) => {
   const [name, addres, mobile, email, total] = Object.values(
-    props.location.state
+    props.location.state.d_data
   );
+  console.log(props.location.state.p_data);
   return (
     <>
       <div>

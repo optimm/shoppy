@@ -44,7 +44,14 @@ const Cart = () => {
       setData(response.data);
       let v = 0;
       response.data.map((e) => {
-        quantity.push({ p_id: e.p_id, qty: 1 });
+        quantity.push({
+          p_id: e.p_id,
+          qty: 1,
+          p_name: e.p_name,
+          p_price: e.p_price,
+          p_image: e.p_image,
+          p_size: e.p_size,
+        });
         v += e.p_price;
       });
       setQuantity([...quantity]);
@@ -68,24 +75,31 @@ const Cart = () => {
   }
   ///////// delete from cart/////////////////
   function del(index) {
-    Axios.post("http://localhost:8000/del", {
-      p_id: data[index].p_id,
-      p_size: data[index].p_size,
-    }).then((response) => {
-      if (response.data.length > 0) {
-        createNotification("success", response.data, "Deleted");
-      } else {
-        createNotification("error", "Sorry some error was caught", "Error");
-      }
-    });
-    showdata();
+    if (window.confirm("Are you sure you want to delete this!")) {
+      Axios.post("http://localhost:8000/del", {
+        p_id: data[index].p_id,
+        p_size: data[index].p_size,
+      }).then((response) => {
+        if (response.data.length > 0) {
+          createNotification("success", response.data, "Deleted");
+        } else {
+          createNotification("error", "Sorry some error was caught", "Error");
+        }
+      });
+      showdata();
+    }
   }
   //////////////////////checkout data send////////////
   function checkout() {
-    history.push({
-      pathname: "/check",
-      state: deliveryData,
-    });
+    if (total === 0) {
+      alert("Nothing to Buy");
+      // createNotification("warning", "Nothing to buy", "Shop please");
+    } else {
+      history.push({
+        pathname: "/check",
+        state: { p_data: quantity, d_data: deliveryData },
+      });
+    }
   }
   return (
     <>
