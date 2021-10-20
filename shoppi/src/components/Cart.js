@@ -113,7 +113,7 @@ const Cart = () => {
             <div className="cart-items" id="scroll">
               {data.map((item, index) => {
                 return (
-                  <>
+                  <React.Fragment key={index}>
                     <Row className="cart-item">
                       <Col lg={4} md={4} sm={4} xs={4}>
                         <div
@@ -162,7 +162,7 @@ const Cart = () => {
                         onChange={(e) => totalValue(e.target.value, index)}
                       />
                     </div>
-                  </>
+                  </React.Fragment>
                 );
               })}
             </div>
@@ -201,8 +201,8 @@ const Cart = () => {
                         <input
                           type="text"
                           pattern="\d*"
-                          minlength="10"
-                          maxlength="10"
+                          minLength="10"
+                          maxLength="10"
                           placeholder="8999102345"
                           autoComplete="disable"
                           onChange={(e) => setmobile(parseInt(e.target.value))}

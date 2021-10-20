@@ -51,7 +51,7 @@ const Men = () => {
               {data.map((item, index) => {
                 if (item.p_category === "men") {
                   return (
-                    <div className="category-section">
+                    <div className="category-section" key={index}>
                       <div
                         className="category"
                         style={{ backgroundImage: `url("${item.p_image}")` }}
