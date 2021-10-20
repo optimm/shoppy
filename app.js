@@ -33,7 +33,7 @@ app.post("/data", (req, res) => {
   let t = "product";
   if (req.isAuthenticated) {
     if (value === "cart") {
-      t = `cart_0${res.mobile}`;
+      t = `cart_${res.mobile}`;
     }
   } else {
     console.log("not authenticated");
@@ -56,7 +56,7 @@ app.post("/del", (req, res) => {
   const p_id = req.body.p_id;
   const p_size = req.body.p_size;
   if (req.isAuthenticated) {
-    t = `cart_0${res.mobile}`;
+    t = `cart_${res.mobile}`;
     const q = `DELETE FROM ${t} WHERE p_id = ? AND p_size = ?`;
     db.query(q, [p_id, p_size], (err, result) => {
       if (err) {
@@ -139,7 +139,7 @@ app.post("/addtocart", (req, res) => {
     console.log("not authenticated");
     res.send("");
   }
-  const q = `INSERT INTO cart_0${mobile} (p_id, p_size, p_name, p_image, p_price) SELECT ${product_id}, "${size}", p_name, p_image, p_price FROM product WHERE p_id= ${product_id} `;
+  const q = `INSERT INTO cart_${mobile} (p_id, p_size, p_name, p_image, p_price) SELECT ${product_id}, "${size}", p_name, p_image, p_price FROM product WHERE p_id= ${product_id} `;
   db.query(q, (err, result) => {
     if (err) {
       console.log(err.errno);

@@ -77,12 +77,15 @@ const Signup = () => {
                     <Col lg={6} md={6} style={{ padding: "0" }}>
                       <input
                         className="signup-input"
-                        type="number"
-                        id="signup-mobile"
                         placeholder="Enter Mobile No."
                         name="mobile"
                         required
                         onChange={(e) => setMobile(e.target.value)}
+                        type="text"
+                        pattern="\d*"
+                        minLength="10"
+                        maxLength="10"
+                        onChange={(e) => setMobile(parseInt(e.target.value))}
                       />
                     </Col>
                     <Col lg={6} md={6} style={{ padding: "0" }}>
