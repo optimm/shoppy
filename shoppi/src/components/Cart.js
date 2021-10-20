@@ -2,14 +2,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Navigation from "./Navigation";
 import "./cart.css";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useHistory,
-} from "react-router-dom";
-
+import { BrowserRouter as Router, Link, useHistory } from "react-router-dom";
+import createNotification from "./notification/notification";
+import { NotificationContainer } from "react-notifications"; //notification
 import { Container, Row, Col, Image } from "react-bootstrap";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Axios from "axios";
@@ -74,7 +69,11 @@ const Cart = () => {
       p_id: data[index].p_id,
       p_size: data[index].p_size,
     }).then((response) => {
-      alert(response.data);
+      if (response.data.length > 0) {
+        createNotification("success", response.data, "Deleted");
+      } else {
+        createNotification("error", "Sorry some error was caught", "Error");
+      }
     });
     showdata();
   }
@@ -219,6 +218,7 @@ const Cart = () => {
             </div>
           </div>
         </Col>
+        <NotificationContainer />
       </Row>
     </>
   );

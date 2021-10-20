@@ -23,22 +23,7 @@ import Axios from "axios";
 Axios.defaults.withCredentials = true;
 // ===========================================
 
-const createNotification = (type, message, title) => {
-    switch (type) {
-        case "info":
-            NotificationManager.info(title);
-            break;
-        case "success":
-            NotificationManager.success(message, title);
-            break;
-        case "warning":
-            NotificationManager.warning(message, title, 3000);
-            break;
-        case "error":
-            NotificationManager.error(message, title, 5000);
-            break;
-    }
-};
+
 // ===========================================
 const Sign = (props) => {
     const history = useHistory();

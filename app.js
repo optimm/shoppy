@@ -61,7 +61,7 @@ app.post("/del", (req, res) => {
     db.query(q, [p_id, p_size], (err, result) => {
       if (err) {
         console.log(err);
-        res.send("Error! could not delete");
+        res.send("");
       }
       if (!err) {
         res.send("item deleted");
