@@ -21,6 +21,7 @@ app.use("/addtocart", auth);
 app.use("/data", auth);
 app.use("/del", auth);
 app.use("/addorders", auth);
+app.use("/adminDel" ,auth);
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -115,6 +116,34 @@ app.post("/del", (req, res) => {
     console.log("not authenticated");
   }
 });
+
+
+
+
+//////////////////// Admin Delete /////////////////
+app.post("/adminDel", (req, res) => {
+  let pt;
+  const p_id = req.body.p_id;
+ 
+  if (req.isAuthenticated) {
+    pt = `product`;
+    const q = `DELETE FROM ${pt} WHERE p_id = ? `;
+    db.query(q, [p_id], (err, result) => {
+      if (err) {
+        console.log(err);
+        res.send("");
+      }
+      if (!err) {
+        res.send("item deleted");
+      }
+    });
+  } else {
+    console.log("not authenticated");
+  }
+});
+
+
+
 
 ///////////////////////register route////////////////////////////////
 app.post("/register", (req, res) => {
