@@ -104,7 +104,7 @@ app.post("/register", (req, res) => {
   const o =
     "CREATE TABLE  myorder_" +
     mobile +
-    " (p_size char(5), p_qty bigint, p_name varchar(100), p_image varchar(300), p_price varchar(100), p_id bigint, id varchar(50), delivery_address varchar(300), delivery_mobile bigint, status varchar(20), PRIMARY KEY (id))";
+    " (p_size char(5), p_qty bigint, p_name varchar(100), p_image varchar(300), p_price varchar(100), p_id bigint, id varchar(50), delivery_address varchar(300), delivery_mobile bigint, status varchar(20), PRIMARY KEY (id,p_id,p_size))";
   db.query(o, (err, result) => {
     console.log(err);
     if (!err) {

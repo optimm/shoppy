@@ -263,3 +263,14 @@ input[type="number"]::-webkit-outer-spin-button {
     font-size: 12px;
   }
 }
+
+#mobile::-webkit-outer-spin-button,
+#mobile::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+#mobile {
+  -moz-appearance: textfield;
+}

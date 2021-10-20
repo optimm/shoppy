@@ -18,9 +18,10 @@ const Cart = () => {
   let [total, setTotal] = useState(0);
   let [quantity, setQuantity] = useState([]);
   let [addres, setaddres] = useState("not filled");
-  let [mobile, setmobile] = useState("not filled");
+  let [mobile, setmobile] = useState(0);
+  let [name, setName] = useState("");
   let [email, setemail] = useState("please check email");
-  const deliveryData = [addres, mobile, email];
+  const deliveryData = [name, addres, mobile, email, total];
   const [data, setData] = useState([]);
   useEffect(() => {
     Axios.post("http://localhost:8000/cart", {
@@ -31,6 +32,8 @@ const Cart = () => {
           pathname: "/nlog",
         });
       }
+      name = response.data.name;
+      setName(name);
     });
     showdata();
   }, []);
@@ -76,6 +79,13 @@ const Cart = () => {
       }
     });
     showdata();
+  }
+  //////////////////////checkout data send////////////
+  function checkout() {
+    history.push({
+      pathname: "/check",
+      state: deliveryData,
+    });
   }
   return (
     <>
@@ -147,75 +157,85 @@ const Cart = () => {
         <Col lg={5} md={12} sm={12} className="right">
           <div className="cart-form">
             <h2>Delivery</h2>
-            <div className="cart-details">
-              <label className="cart-enters">
+            <form onSubmit={checkout}>
+              <div className="cart-details">
+                <label className="cart-enters">
+                  <Row>
+                    <Col lg={3} md={3} sm={3} xs={3}>
+                      <span className="label">Address</span>
+                    </Col>
+                    <Col lg={9} md={9} sm={9} xs={9}>
+                      <div className="cart-input">
+                        <input
+                          type="text"
+                          autoComplete="disable"
+                          placeholder="Sector 82 Noida"
+                          onChange={(e) => setaddres(e.target.value)}
+                          required
+                        />
+                      </div>
+                    </Col>
+                  </Row>
+                </label>
+                <label className="cart-enters">
+                  <Row>
+                    <Col lg={3} md={3} sm={3} xs={3}>
+                      <span className="label">Mobile</span>
+                    </Col>
+                    <Col lg={9} md={9} sm={9} xs={9}>
+                      <div className="cart-input">
+                        <input
+                          type="text"
+                          pattern="\d*"
+                          minlength="10"
+                          maxlength="10"
+                          placeholder="8999102345"
+                          autoComplete="disable"
+                          onChange={(e) => setmobile(parseInt(e.target.value))}
+                          required
+                        />
+                      </div>
+                    </Col>
+                  </Row>
+                </label>
+                <label className="cart-enters">
+                  <Row>
+                    <Col lg={3} md={3} sm={3} xs={3}>
+                      <span className="label">Email</span>
+                    </Col>
+                    <Col lg={9} md={9} sm={9} xs={9}>
+                      <div className="cart-input">
+                        <input
+                          type="email"
+                          placeholder="adityamc@lora.com"
+                          autoComplete="disable"
+                          onChange={(e) => setemail(e.target.value)}
+                          required
+                        />
+                      </div>
+                    </Col>
+                  </Row>
+                </label>
                 <Row>
-                  <Col lg={3} md={3} sm={3} xs={3}>
-                    <span className="label">Address</span>
+                  <Col lg={6} md={6} sm={6} xs={6}>
+                    <h3 className="total">Total</h3>
                   </Col>
-                  <Col lg={9} md={9} sm={9} xs={9}>
-                    <div className="cart-input">
-                      <input
-                        type="text"
-                        autoComplete="disable"
-                        placeholder="Sector 82 Noida"
-                        onChange={(e) => setaddres(e.target.value)}
-                      />
-                    </div>
+                  <Col lg={6} md={6} sm={6} xs={6}>
+                    <p className="total price" id="check-d">
+                      <nobr>Rs. {total}</nobr>
+                    </p>
                   </Col>
                 </Row>
-              </label>
-              <label className="cart-enters">
-                <Row>
-                  <Col lg={3} md={3} sm={3} xs={3}>
-                    <span className="label">Mobile</span>
-                  </Col>
-                  <Col lg={9} md={9} sm={9} xs={9}>
-                    <div className="cart-input">
-                      <input
-                        type="text"
-                        placeholder="8999102345"
-                        autoComplete="disable"
-                        onChange={(e) => setmobile(e.target.value)}
-                      />
-                    </div>
-                  </Col>
-                </Row>
-              </label>
-              <label className="cart-enters">
-                <Row>
-                  <Col lg={3} md={3} sm={3} xs={3}>
-                    <span className="label">Email</span>
-                  </Col>
-                  <Col lg={9} md={9} sm={9} xs={9}>
-                    <div className="cart-input">
-                      <input
-                        type="email"
-                        placeholder="adityamc@lora.com"
-                        autoComplete="disable"
-                        onChange={(e) => setemail(e.target.value)}
-                      />
-                    </div>
-                  </Col>
-                </Row>
-              </label>
-              <Row>
-                <Col lg={6} md={6} sm={6} xs={6}>
-                  <h3 className="total">Total</h3>
-                </Col>
-                <Col lg={6} md={6} sm={6} xs={6}>
-                  <p className="total price" id="check-d">
-                    <nobr>Rs. {total}</nobr>
-                  </p>
-                </Col>
-              </Row>
-              <Link
-                to={{ pathname: "/check", state: deliveryData }}
-                style={{ textDecoration: "none" }}
-              >
-                <button className="cart-btn">Checkout</button>
-              </Link>
-            </div>
+                {/* <Link
+                  to={{ pathname: "/check", state: deliveryData }}
+                  style={{ textDecoration: "none" }}
+                > */}
+                <button type="submit" className="cart-btn">
+                  Checkout
+                </button>
+                {/* </Link> */}
+              </div>
+            </form>
           </div>
         </Col>
         <NotificationContainer />
