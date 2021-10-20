@@ -11,6 +11,8 @@ import Checkout from "./components/Checkout";
 import Profile from "./components/profile/Profile";
 import Product from "./components/product/Product";
 import MyOrder from "./components/MyOrder";
+import Error from "./components/error/Error";
+
 import { Route, Switch } from "react-router-dom";
 
 function App() {
@@ -30,6 +32,7 @@ function App() {
         <Route exact path="/profile" component={Profile}></Route>
         <Route exact path="/product" component={Product}></Route>
         <Route exact path="/myorder" component={MyOrder}></Route>
+        <Route exact path="/404" component={Error}></Route>
       </Switch>
     </>
   );

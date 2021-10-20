@@ -40,23 +40,28 @@ const Cart = () => {
   function showdata() {
     Axios.post("http://localhost:8000/data", {
       category: "cart",
-    }).then((response) => {
-      setData(response.data);
-      let v = 0;
-      response.data.map((e) => {
-        quantity.push({
-          p_id: e.p_id,
-          qty: 1,
-          p_name: e.p_name,
-          p_price: e.p_price,
-          p_image: e.p_image,
-          p_size: e.p_size,
+    })
+      .then((response) => {
+        setData(response.data);
+        let v = 0;
+        response.data.map((e) => {
+          quantity.push({
+            p_id: e.p_id,
+            qty: 1,
+            p_name: e.p_name,
+            p_price: e.p_price,
+            p_image: e.p_image,
+            p_size: e.p_size,
+          });
+          v += e.p_price;
         });
-        v += e.p_price;
+        setQuantity([...quantity]);
+        setTotal(v);
+      })
+      .catch((error) => {
+        console.log(error);
+        history.push("/404");
       });
-      setQuantity([...quantity]);
-      setTotal(v);
-    });
   }
 
   function totalValue(value, index) {
@@ -111,60 +116,63 @@ const Cart = () => {
               <h2>Cart</h2>
             </div>
             <div className="cart-items" id="scroll">
-              {data.map((item, index) => {
-                return (
-                  <React.Fragment key={index}>
-                    <Row className="cart-item">
-                      <Col lg={4} md={4} sm={4} xs={4}>
-                        <div
-                          className="cart-image"
-                          style={{ backgroundImage: `url("${item.p_image}")` }}
-                        ></div>
-                      </Col>
-                      <Col
-                        lg={4}
-                        md={4}
-                        sm={4}
-                        xs={4}
-                        className="cart-item-detail"
-                      >
-                        <p>{item.p_name}</p>
-                      </Col>
-                      <Col
-                        lg={2}
-                        md={2}
-                        sm={2}
-                        xs={2}
-                        className="cart-item-detail"
-                      >
-                        <p className="cart-size">{item.p_size}</p>
-                      </Col>
-                      <Col
-                        lg={2}
-                        md={2}
-                        sm={2}
-                        xs={2}
-                        className="cart-item-price"
-                      >
-                        <p>Rs. {item.p_price}</p>
-                      </Col>
-                    </Row>
-                    <div className="cart-value">
-                      <DeleteIcon
-                        className="cart-remove-btn"
-                        onClick={() => del(index)}
-                      />
-                      <input
-                        type="number"
-                        min="1"
-                        defaultValue="1"
-                        className="p-qty"
-                        onChange={(e) => totalValue(e.target.value, index)}
-                      />
-                    </div>
-                  </React.Fragment>
-                );
-              })}
+              {data.length > 0 &&
+                data.map((item, index) => {
+                  return (
+                    <React.Fragment key={index}>
+                      <Row className="cart-item">
+                        <Col lg={4} md={4} sm={4} xs={4}>
+                          <div
+                            className="cart-image"
+                            style={{
+                              backgroundImage: `url("${item.p_image}")`,
+                            }}
+                          ></div>
+                        </Col>
+                        <Col
+                          lg={4}
+                          md={4}
+                          sm={4}
+                          xs={4}
+                          className="cart-item-detail"
+                        >
+                          <p>{item.p_name}</p>
+                        </Col>
+                        <Col
+                          lg={2}
+                          md={2}
+                          sm={2}
+                          xs={2}
+                          className="cart-item-detail"
+                        >
+                          <p className="cart-size">{item.p_size}</p>
+                        </Col>
+                        <Col
+                          lg={2}
+                          md={2}
+                          sm={2}
+                          xs={2}
+                          className="cart-item-price"
+                        >
+                          <p>Rs. {item.p_price}</p>
+                        </Col>
+                      </Row>
+                      <div className="cart-value">
+                        <DeleteIcon
+                          className="cart-remove-btn"
+                          onClick={() => del(index)}
+                        />
+                        <input
+                          type="number"
+                          min="1"
+                          defaultValue="1"
+                          className="p-qty"
+                          onChange={(e) => totalValue(e.target.value, index)}
+                        />
+                      </div>
+                    </React.Fragment>
+                  );
+                })}
             </div>
           </div>
         </Col>
