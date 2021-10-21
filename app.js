@@ -87,6 +87,7 @@ app.post("/addorders", (req, res) => {
         (err, result) => {
           if (err) {
             console.log(err);
+            res.send("");
             flag = false;
           }
         }

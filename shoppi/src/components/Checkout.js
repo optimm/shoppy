@@ -7,6 +7,7 @@ import "./check.css";
 import Axios from "axios";
 Axios.defaults.withCredentials = true;
 const Checkout = (props) => {
+  console.log(props);
   let name, addres, mobile, total;
   const history = useHistory();
   useEffect(() => {
@@ -20,11 +21,14 @@ const Checkout = (props) => {
       }
     });
   }, []);
-
   if (props.location.state) {
+    window.history.replaceState(null, "");
     [name, addres, mobile, total] = Object.values(props.location.state.d_data);
     console.log(props.location.state.p_data);
-  } else if (props.location.state === undefined) {
+  } else if (
+    props.location.state === undefined ||
+    props.location.state === null
+  ) {
     history.push({
       pathname: "/cart",
     });
@@ -37,7 +41,12 @@ const Checkout = (props) => {
         d_addres: addres,
         d_mobile: mobile,
       }).then((response) => {
-        // alert(response.data);
+        if (response.data.length > 0) {
+          alert(response.data);
+          history.push({
+            pathname: "/myorder",
+          });
+        }
       });
     }
   }

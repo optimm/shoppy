@@ -1,6 +1,3 @@
-.myorder {
-  height: 100vh;
-}
 .myorder h2 {
   font-size: 1.6rem;
   text-align: center;
@@ -52,8 +49,8 @@
 }
 .order-btn {
   outline: none;
-  font-size: 13px;
-  padding: 5px;
+  font-size: 12px;
+  padding: 4px;
   border: 1px solid rgb(172, 172, 172, 0.6);
   background-color: rgb(0, 174, 255, 0.7);
   border-radius: 4px;
@@ -69,19 +66,21 @@
     margin-left: 3%;
   }
   .order-data {
+    font-size: 11px;
+  }
+  .order-object {
+    height: 180px;
+  }
+  .order-image-column {
+    height: 180px;
+  }
+  .order-btn {
     font-size: 12px;
-    font-size: 12px;
-    padding: 4px;
+    padding: 3px;
   }
 }
 
 @media only screen and (max-width: 900px) {
-  .order-object {
-    height: 190px;
-  }
-  .order-image-column {
-    height: 190px;
-  }
   .order-btn {
     margin-top: 8px;
   }
@@ -105,13 +104,16 @@
   .order-detail {
     margin-top: 8%;
   }
+  .order-list {
+    padding: 0px 5%;
+  }
 }
 @media only screen and (max-width: 550px) {
   .order-object {
-    height: 185px;
+    height: 150px;
   }
   .order-image-column {
-    height: 185px;
+    height: 150px;
   }
   .order-image-column {
     max-width: 160px;
