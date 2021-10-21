@@ -12,7 +12,8 @@ import Profile from "./components/profile/Profile";
 import Product from "./components/product/Product";
 import MyOrder from "./components/MyOrder";
 import Error from "./components/error/Error";
-import Admin from "./components/Admin";
+import Admin from "./components/admin/Admin";
+import AdminADD from "./components/admin/AddProd";
 
 import { Route, Switch } from "react-router-dom";
 
@@ -35,6 +36,8 @@ function App() {
         <Route exact path="/myorder" component={MyOrder}></Route>
         <Route exact path="/404" component={Error}></Route>
         <Route exact path="/admin" component={Admin}></Route>
+        <Route exact path="/adminadd" component={AdminADD}></Route>
+
 
       </Switch>
     </>
