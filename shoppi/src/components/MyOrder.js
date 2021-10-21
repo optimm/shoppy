@@ -100,46 +100,65 @@ const MyOrder = () => {
                 <Modal.Body>
                   <Row>
                     <Col lg={3} md={3} sm={3} xs={3}>
-                      <p>Product</p>
+                      <p className="more-detail">
+                        <b>Product</b>
+                      </p>
                     </Col>
                     <Col lg={9} md={9} sm={9} xs={9}>
-                      <p>{item.p_name} </p>
+                      <p className="more-detail">
+                        {item.p_name} - {item.p_qty}{" "}
+                      </p>
                     </Col>
                     <Col lg={3} md={3} sm={3} xs={3}>
-                      <p>Size</p>
+                      <p className="more-detail">
+                        <b>Size</b>
+                      </p>
                     </Col>
                     <Col lg={9} md={9} sm={9} xs={9}>
-                      <p>{item.p_size}</p>
+                      <p className="more-detail">{item.p_size}</p>
                     </Col>
                     <Col lg={3} md={3} sm={3} xs={3}>
-                      <p>Total Price</p>
+                      <p className="more-detail">
+                        <b>Total Price</b>
+                      </p>
                     </Col>
                     <Col lg={9} md={9} sm={9} xs={9}>
-                      <p>{item.p_qty * item.p_price}</p>
+                      <p className="more-detail">{item.p_qty * item.p_price}</p>
+                    </Col>
+                    <hr />
+                    <p className="delivery-detais">Delivery Details</p>
+                    {/* <hr /> */}
+                    <Col lg={3} md={3} sm={3} xs={3}>
+                      <p className="more-detail">
+                        <b>Address</b>
+                      </p>
+                    </Col>
+                    <Col lg={9} md={9} sm={9} xs={9}>
+                      <p className="more-detail">{item.delivery_address}</p>
                     </Col>
                     <Col lg={3} md={3} sm={3} xs={3}>
-                      <p>Delivery address</p>
+                      <p className="more-detail">
+                        <b>Mobile</b>
+                      </p>
                     </Col>
                     <Col lg={9} md={9} sm={9} xs={9}>
-                      <p>{item.delivery_address}</p>
+                      <p className="more-detail">{item.delivery_mobile}</p>
                     </Col>
                     <Col lg={3} md={3} sm={3} xs={3}>
-                      <p>Delivery mobile</p>
+                      <p className="more-detail">
+                        <b>Email</b>
+                      </p>
                     </Col>
                     <Col lg={9} md={9} sm={9} xs={9}>
-                      <p>{item.delivery_mobile}</p>
+                      <p className="more-detail">{item.delivery_email}</p>
                     </Col>
                     <Col lg={3} md={3} sm={3} xs={3}>
-                      <p>Delivery email</p>
+                      <p className="more-detail">
+                        <b>Ordered</b>
+                      </p>
                     </Col>
                     <Col lg={9} md={9} sm={9} xs={9}>
-                      <p>{item.delivery_email}</p>
-                    </Col>
-                    <Col lg={3} md={3} sm={3} xs={3}>
-                      <p>Ordered</p>
-                    </Col>
-                    <Col lg={9} md={9} sm={9} xs={9}>
-                      <p>{item.id}</p>
+                      <p className="more-detail">{item.id}</p>
                     </Col>
                   </Row>
                 </Modal.Body>
