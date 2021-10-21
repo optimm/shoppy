@@ -1,15 +1,11 @@
 import React from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
-
 import Navigation from "../Navigation";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
-import "react-notifications/lib/notifications.css";
-import {
-  NotificationContainer,
-  NotificationManager,
-} from "react-notifications";
+import createNotification from "../notification/notification";
+import { NotificationContainer } from "react-notifications"; //notification
 import {
   BrowserRouter as Router,
   Switch,
@@ -43,15 +39,21 @@ const Sign = (props) => {
 
   function login() {
     if (email === 0 || pass === "") {
-      alert("please fill out all fields");
+      // createNotification("info", "Please fill all the fields");
+      alert("Please fill all the fields");
     } else {
-      if (email === "shoppy@shoppy.com" && pass === "12345") {
+      if (email === 9999999999 && pass === "12345") {
         if (window.confirm("Admin Login is ready! You want to proceed?")) {
-          history.push({
-            pathname: "/admin",
+          Axios.post("http://localhost:8000/logout").then((response) => {
+            console.log(response.data);
+            if (response.data === "done") {
+              history.push({
+                pathname: "/admin",
+              });
+            } else {
+              alert("Sorry some error was encountered");
+            }
           });
-        } else {
-          alert("Wrong combination or the user does not exist");
         }
       } else {
         Axios.post("http://localhost:8000/login", {
@@ -61,12 +63,12 @@ const Sign = (props) => {
           let authenticated = response.data.authenticated;
           console.log(authenticated);
           if (authenticated === undefined) {
-            alert("Sorry there was some error please try again");
+            alert("Sorry some error was encountered");
           } else {
             if (authenticated) {
               history.push("/profile");
             } else if (authenticated === false) {
-              alert("Wrong combination or the user does not exist");
+              alert("Wrong credentials or user does not exists");
             }
           }
         });
@@ -85,63 +87,65 @@ const Sign = (props) => {
   }, []);
 
   return (
-    <div>
-      <div className="check-nav">
-        <Navigation />
-      </div>
+    <>
+      <div>
+        <div className="check-nav">
+          <Navigation />
+        </div>
 
-      <div className="login-main">
-        <Row>
-          <Col className="login" lg={7} md={7} style={{ padding: "0" }}>
-            <div className="login-left" data-aos="slide-left">
-              <div className="login-heading">
-                <h2> Sign In </h2>{" "}
-              </div>
+        <div className="login-main">
+          <Row>
+            <Col className="login" lg={7} md={7} style={{ padding: "0" }}>
+              <div className="login-left" data-aos="slide-left">
+                <div className="login-heading">
+                  <h2> Sign In </h2>{" "}
+                </div>
 
-              <div className="login-inputs">
-                <input
-                  className="login-input"
-                  placeholder="Enter Mobile no"
-                  type="number"
-                  name="email"
-                  id="mobile"
-                  required
-                  onChange={(e) => setEmail(e.target.value)}
-                />
+                <div className="login-inputs">
+                  <input
+                    className="login-input"
+                    placeholder="Enter Mobile no"
+                    type="number"
+                    name="email"
+                    id="mobile"
+                    required
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
 
-                <input
-                  className="login-input"
-                  type="password"
-                  placeholder="Enter Password"
-                  name="password"
-                  required
-                  onChange={(e) => setPass(e.target.value)}
-                />
+                  <input
+                    className="login-input"
+                    type="password"
+                    placeholder="Enter Password"
+                    name="password"
+                    required
+                    onChange={(e) => setPass(e.target.value)}
+                  />
+                </div>
+                <button className="login-btn" onClick={login}>
+                  Login
+                </button>
+                <div className="login-foot">
+                  <span>
+                    Create New account ? <Link to="/signup"> Signup </Link>
+                  </span>
+                </div>
+                <div className="login-foot-dark"> </div>
               </div>
-              <button className="login-btn" onClick={login}>
-                Login
-              </button>
-              <div className="login-foot">
-                <span>
-                  Create New account ? <Link to="/signup"> Signup </Link>
-                </span>
-              </div>
-              <div className="login-foot-dark"> </div>
-            </div>
-          </Col>
-          <Col
-            className="login-image"
-            lg={5}
-            md={5}
-            style={{ padding: "0" }}
-            data-aos="slide-right"
-          >
-            <img src="./sign-images/SignImg2.jpg" />
-          </Col>{" "}
-        </Row>{" "}
+            </Col>
+            <Col
+              className="login-image"
+              lg={5}
+              md={5}
+              style={{ padding: "0" }}
+              data-aos="slide-right"
+            >
+              <img src="./sign-images/SignImg2.jpg" />
+            </Col>{" "}
+          </Row>{" "}
+        </div>
       </div>
       <NotificationContainer />
-    </div>
+    </>
   );
 };
 
