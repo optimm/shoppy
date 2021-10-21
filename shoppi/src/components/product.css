@@ -96,7 +96,7 @@
 }
 
 .product-filterBox h2 {
-  font-size: 2rem;
+  font-size: 1.6rem;
   text-align: center;
   padding: 10%;
   color: #ffffff;
@@ -149,7 +149,7 @@
 }
 
 .sort-type-choice {
-  max-height: 90px;
+  max-height: 160px;
   height: 100%;
   overflow-y: scroll;
 }

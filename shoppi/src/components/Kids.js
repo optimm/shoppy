@@ -15,6 +15,7 @@ import "./product.css";
 import Axios from "axios";
 Axios.defaults.withCredentials = true;
 const Kid = () => {
+  const [category, setCategory] = useState("all");
   const history = useHistory();
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -50,7 +51,10 @@ const Kid = () => {
             <div className="product-cloth">
               {data.length > 0 &&
                 data.map((item, index) => {
-                  if (item.p_category === "kids") {
+                  if (
+                    item.p_category === "kids" &&
+                    (item.p_type === category || category === "all")
+                  ) {
                     return (
                       <div className="category-section" key={index}>
                         <div
@@ -83,7 +87,7 @@ const Kid = () => {
           {/* main right div */}
 
           <div className="product-filterBox">
-            <h2>Kid Fashion</h2>
+            <h2>Kids Fashion</h2>
 
             <Col className="product-filter">
               <div className="sort-price">
@@ -113,29 +117,78 @@ const Kid = () => {
               <div className="sort-price sort-type">
                 <h3>Type</h3>
                 <div className="sort-type-choice">
-                  <input type="radio" id="pants" name="sort" value="pants" />
-                  <label for="lth">pants</label>
+                  <input
+                    type="radio"
+                    id="all"
+                    name="sort"
+                    value="all"
+                    onChange={(e) => setCategory(e.target.value)}
+                  />
+                  <label for="all">All</label>
                   <br />
-                  <input type="radio" id="shirt" name="sort" value="shirt" />
-                  <label for="htl">shirt</label>
+                  <input
+                    type="radio"
+                    id="pants"
+                    name="sort"
+                    value="pants"
+                    onChange={(e) => setCategory(e.target.value)}
+                  />
+                  <label for="pants">Pants</label>
                   <br />
-                  <input type="radio" id="suit" name="sort" value="suit" />
-                  <label for="htl">suit</label>
+                  <input
+                    type="radio"
+                    id="shirt"
+                    name="sort"
+                    value="shirt"
+                    onChange={(e) => setCategory(e.target.value)}
+                  />
+                  <label for="shirt">Shirt</label>
                   <br />
-                  <input type="radio" id="jeans" name="sort" value="jeans" />
-                  <label for="htl">jeans</label>
+                  <input
+                    type="radio"
+                    id="suit"
+                    name="sort"
+                    value="suit"
+                    onChange={(e) => setCategory(e.target.value)}
+                  />
+                  <label for="suit">Suit</label>
                   <br />
-                  <input type="radio" id="kurta" name="sort" value="kurta" />
-                  <label for="htl">kurta</label>
+                  <input
+                    type="radio"
+                    id="jeans"
+                    name="sort"
+                    value="jeans"
+                    onChange={(e) => setCategory(e.target.value)}
+                  />
+                  <label for="jeans">Jeans</label>
                   <br />
-                  <input type="radio" id="jacket" name="sort" value="jacket" />
-                  <label for="htl">jacket</label>
+                  <input
+                    type="radio"
+                    id="kurta"
+                    name="sort"
+                    value="kurta"
+                    onChange={(e) => setCategory(e.target.value)}
+                  />
+                  <label for="kurta">Kurta</label>
                   <br />
-                  <input type="radio" id="shirt" name="sort" value="shirt" />
-                  <label for="htl">shirt</label>
+                  <input
+                    type="radio"
+                    id="jacket"
+                    name="sort"
+                    value="jacket"
+                    onChange={(e) => setCategory(e.target.value)}
+                  />
+                  <label for="jacket">Jacket</label>
+                  <br />
+                  <input
+                    type="radio"
+                    id="shirt"
+                    name="sort"
+                    value="shirt"
+                    onChange={(e) => setCategory(e.target.value)}
+                  />
+                  <label for="shirt">Shirt</label>
                 </div>
-
-                <button class="product-apply-type">Apply</button>
               </div>
             </Col>
           </div>

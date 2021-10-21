@@ -4,8 +4,7 @@ import "aos/dist/aos.css";
 import Navigation from "../Navigation";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
-import createNotification from "../notification/notification";
-import { NotificationContainer } from "react-notifications"; //notification
+import CustomizedSnackbars from "../notification/notification";
 import {
   BrowserRouter as Router,
   Switch,
@@ -24,6 +23,10 @@ const Sign = (props) => {
   const history = useHistory();
   const [email, setEmail] = useState(0);
   const [pass, setPass] = useState("");
+  let [m, setm] = useState("");
+  let [o, seto] = useState(false);
+  let [s, sets] = useState("success");
+
   useEffect(() => {
     Axios.post("http://localhost:8000/cart", {
       name: "ayush",
@@ -38,20 +41,26 @@ const Sign = (props) => {
   }, []);
 
   function login() {
+    console.log(email, pass);
     if (email === 0 || pass === "") {
       // createNotification("info", "Please fill all the fields");
-      alert("Please fill all the fields");
+      setm("Please fill all fields");
+      seto(true);
+      sets("info");
     } else {
-      if (email === 9999999999 && pass === "12345") {
+      if (email === "9999999999" && pass === "12345") {
         if (window.confirm("Admin Login is ready! You want to proceed?")) {
           Axios.post("http://localhost:8000/logout").then((response) => {
             console.log(response.data);
             if (response.data === "done") {
               history.push({
                 pathname: "/admin",
+                state: "admin",
               });
             } else {
-              alert("Sorry some error was encountered");
+              setm("Sorry an error was caused");
+              seto(true);
+              sets("error");
             }
           });
         }
@@ -63,12 +72,16 @@ const Sign = (props) => {
           let authenticated = response.data.authenticated;
           console.log(authenticated);
           if (authenticated === undefined) {
-            alert("Sorry some error was encountered");
+            setm("Sorry an error was caused");
+            seto(true);
+            sets("error");
           } else {
             if (authenticated) {
               history.push("/profile");
             } else if (authenticated === false) {
-              alert("Wrong credentials or user does not exists");
+              setm("Wrong credentials or user does not exist");
+              seto(true);
+              sets("warning");
             }
           }
         });
@@ -144,7 +157,12 @@ const Sign = (props) => {
           </Row>{" "}
         </div>
       </div>
-      <NotificationContainer />
+      <CustomizedSnackbars
+        message={m}
+        severity={s}
+        isOpen={o}
+        setisOpen={seto}
+      />
     </>
   );
 };

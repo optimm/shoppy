@@ -2,8 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Navigation from "./Navigation";
 import { BrowserRouter as Router, Link, useHistory } from "react-router-dom";
-import createNotification from "./notification/notification";
-import { NotificationContainer } from "react-notifications"; //notification
+import CustomizedSnackbars from "./notification/notification";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Axios from "axios";
@@ -18,6 +17,9 @@ const Cart = () => {
   let [addres, setaddres] = useState("not filled");
   let [mobile, setmobile] = useState(0);
   let [name, setName] = useState("");
+  let [m, setm] = useState("");
+  let [o, seto] = useState(false);
+  let [s, sets] = useState("success");
 
   const deliveryData = [name, addres, mobile, total];
   const [data, setData] = useState([]);
@@ -84,9 +86,12 @@ const Cart = () => {
         p_size: data[index].p_size,
       }).then((response) => {
         if (response.data.length > 0) {
-          createNotification("success", response.data, "Deleted");
+          setm("Item was deleted");
+          seto(true);
         } else {
-          createNotification("error", "Sorry some error was caught", "Error");
+          setm("Sorry an error was caused");
+          seto(true);
+          sets("error");
         }
       });
       showdata();
@@ -242,7 +247,12 @@ const Cart = () => {
             </form>
           </div>
         </Col>
-        <NotificationContainer />
+        <CustomizedSnackbars
+          message={m}
+          severity={s}
+          isOpen={o}
+          setisOpen={seto}
+        />
       </Row>
     </>
   );
