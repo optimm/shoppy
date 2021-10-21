@@ -90,7 +90,7 @@ const Checkout = (props) => {
                 </div>
 
                 <button className="check-btn" onClick={confirm}>
-                  Confirm and pay
+                  Confirm
                 </button>
 
                 <div className="check-foot-dark"></div>
