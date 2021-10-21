@@ -13,6 +13,7 @@ import {
 import Axios from "axios";
 Axios.defaults.withCredentials = true;
 const Product = (props) => {
+  let p_image, p_name, p_description, p_price, p_category, p_id, p_type;
   const history = useHistory();
   // add to cart function
   const addtocart = () => {
@@ -31,6 +32,15 @@ const Product = (props) => {
       });
     }
   };
+  if (props.location.state) {
+    [p_category, p_description, p_id, p_image, p_name, p_price, p_type] =
+      Object.values(props.location.state.data);
+    console.log(props.location.state.data);
+  } else if (props.location.state === undefined) {
+    history.push({
+      pathname: "/",
+    });
+  }
   const [size, setSize] = useState("");
   return (
     <>
@@ -40,21 +50,12 @@ const Product = (props) => {
       <div className="product-container">
         <Row>
           <Col lg={6} md={6} sm={12}>
-            <img
-              className="product-image"
-              src={props.location.state.data.p_image}
-            />
+            <img className="product-image" src={p_image} />
           </Col>
           <Col lg={6} md={6} sm={12} className="product-description">
-            <h2 className="product-data-h">
-              {props.location.state.data.p_name}
-            </h2>
-            <p className="product-data">
-              {props.location.state.data.p_description}
-            </p>
-            <p className="product-data">
-              Rs. {props.location.state.data.p_price}
-            </p>
+            <h2 className="product-data-h">{p_name}</h2>
+            <p className="product-data">{p_description}</p>
+            <p className="product-data">Rs. {p_price}</p>
             <p className="product-data-s">Select size</p>
             <div className="product-size">
               S

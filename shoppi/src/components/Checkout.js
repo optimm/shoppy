@@ -1,15 +1,37 @@
 import React from "react";
 import Navigation from "./Navigation";
+import { useState, useEffect } from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link, useHistory } from "react-router-dom";
 import "./check.css";
 import Axios from "axios";
 Axios.defaults.withCredentials = true;
 const Checkout = (props) => {
-  const [name, addres, mobile, email, total] = Object.values(
-    props.location.state.d_data
-  );
-  console.log(props.location.state.p_data);
+  let name, addres, mobile, email, total;
+  const history = useHistory();
+  useEffect(() => {
+    Axios.post("http://localhost:8000/cart", {
+      name: "ayush",
+    }).then((response) => {
+      if (response.data.data === false) {
+        history.push({
+          pathname: "/nlog",
+        });
+      }
+    });
+  }, []);
+
+  if (props.location.state) {
+    [name, addres, mobile, email, total] = Object.values(
+      props.location.state.d_data
+    );
+    console.log(props.location.state.p_data);
+  } else if (props.location.state === undefined) {
+    history.push({
+      pathname: "/cart",
+    });
+  }
+
   function confirm() {
     if (window.confirm("Place order")) {
       Axios.post("http://localhost:8000/addorders", {
