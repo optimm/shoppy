@@ -104,6 +104,7 @@ const Sign = (props) => {
                   placeholder="Enter Mobile no"
                   type="number"
                   name="email"
+                  id="mobile"
                   required
                   onChange={(e) => setEmail(e.target.value)}
                 />
