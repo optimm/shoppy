@@ -21,7 +21,6 @@ app.use("/addtocart", auth);
 app.use("/data", auth);
 app.use("/del", auth);
 app.use("/addorders", auth);
-app.use("/adminDel" ,auth);
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -60,7 +59,6 @@ app.post("/addorders", (req, res) => {
   const id = new Date().toLocaleString();
   const d_addres = req.body.d_addres;
   const d_mobile = req.body.d_mobile;
-  const d_email = req.body.d_email;
   const o_data = req.body.o_data;
 
   console.log(o_data);
@@ -70,7 +68,7 @@ app.post("/addorders", (req, res) => {
     o_data.map((e, i) => {
       const [p_id, qty, p_name, p_price, p_image, p_size] = Object.values(e);
       console.log(p_id, qty, p_name, p_price, p_image, p_size);
-      const q = `INSERT INTO ${t} (p_size, p_qty, p_name, p_image, p_price, p_id,id, delivery_address, delivery_mobile, delivery_email, status) VALUES (?,?,?,?,?,?,?,?,?,?,?)`;
+      const q = `INSERT INTO ${t} (p_size, p_qty, p_name, p_image, p_price, p_id,id, delivery_address, delivery_mobile,status) VALUES (?,?,?,?,?,?,?,?,?,?)`;
       console.log(q);
       db.query(
         q,
@@ -84,7 +82,6 @@ app.post("/addorders", (req, res) => {
           id,
           d_addres,
           d_mobile,
-          d_email,
           "pending",
         ],
         (err, result) => {
@@ -135,33 +132,25 @@ app.post("/del", (req, res) => {
   }
 });
 
-
-
-
 //////////////////// Admin Delete /////////////////
 app.post("/adminDel", (req, res) => {
   let pt;
   const p_id = req.body.p_id;
- 
-  if (req.isAuthenticated) {
-    pt = `product`;
-    const q = `DELETE FROM ${pt} WHERE p_id = ? `;
-    db.query(q, [p_id], (err, result) => {
-      if (err) {
-        console.log(err);
-        res.send("");
-      }
-      if (!err) {
-        res.send("item deleted");
-      }
-    });
-  } else {
-    console.log("not authenticated");
-  }
+  console.log("called");
+
+  pt = `product`;
+  console.log("pt");
+  const q = `DELETE FROM ${pt} WHERE p_id = ? `;
+  db.query(q, [p_id], (err, result) => {
+    if (err) {
+      console.log(err);
+      res.send("");
+    }
+    if (!err) {
+      res.send("item deleted");
+    }
+  });
 });
-
-
-
 
 ///////////////////////register route////////////////////////////////
 app.post("/register", (req, res) => {
@@ -263,7 +252,7 @@ app.post("/login", (req, res) => {
   const pass = req.body.pass;
 
   db.query(
-    "SELECT * FROM customer WHERE email = ? AND pass = ?",
+    "SELECT * FROM customer WHERE mobile = ? AND pass = ?",
     [email, pass],
     (err, result) => {
       if (err) {
@@ -291,7 +280,7 @@ app.post("/login", (req, res) => {
           .send({ authenticated: true, user: email });
       } else {
         console.log("no user found");
-        res.send({ message: "wrong combination" });
+        res.send({ authenticated: false, message: "wrong combination" });
       }
     }
   );

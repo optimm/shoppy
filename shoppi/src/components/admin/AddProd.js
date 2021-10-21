@@ -1,7 +1,6 @@
 import React from "react";
 import { Delete, Update, AccountCircle, Add } from "@material-ui/icons";
 import { Container, Row, Col, Image } from "react-bootstrap";
-import Particles from "react-particles-js";
 const AddProd = () => {
   return (
     <>

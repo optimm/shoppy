@@ -18,8 +18,8 @@ const Cart = () => {
   let [addres, setaddres] = useState("not filled");
   let [mobile, setmobile] = useState(0);
   let [name, setName] = useState("");
-  let [email, setemail] = useState("please check email");
-  const deliveryData = [name, addres, mobile, email, total];
+
+  const deliveryData = [name, addres, mobile, total];
   const [data, setData] = useState([]);
   useEffect(() => {
     Axios.post("http://localhost:8000/cart", {
@@ -219,24 +219,7 @@ const Cart = () => {
                     </Col>
                   </Row>
                 </label>
-                <label className="cart-enters">
-                  <Row>
-                    <Col lg={3} md={3} sm={3} xs={3}>
-                      <span className="label">Email</span>
-                    </Col>
-                    <Col lg={9} md={9} sm={9} xs={9}>
-                      <div className="cart-input">
-                        <input
-                          type="email"
-                          placeholder="adityamc@lora.com"
-                          autoComplete="disable"
-                          onChange={(e) => setemail(e.target.value)}
-                          required
-                        />
-                      </div>
-                    </Col>
-                  </Row>
-                </label>
+
                 <Row>
                   <Col lg={6} md={6} sm={6} xs={6}>
                     <h3 className="total">Total</h3>

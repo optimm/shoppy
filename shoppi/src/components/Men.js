@@ -16,11 +16,14 @@ import Axios from "axios";
 Axios.defaults.withCredentials = true;
 const Men = () => {
   const history = useHistory();
+  let full_data = [];
+  let type_data = [];
   const [data, setData] = useState([]);
   useEffect(() => {
     Axios.post("http://localhost:8000/data", {
       category: "men",
     }).then((response) => {
+      full_data = response.data;
       setData(response.data);
     });
   }, []);
@@ -112,7 +115,7 @@ const Men = () => {
               <div className="sort-price sort-type">
                 <h3>Type</h3>
                 <div className="sort-type-choice">
-                  <input type="radio" id="pants" name="sort" value="pants" />
+                  <input type="radio" id="pants" name="sort" value="pants"  />
                   <label for="lth">pants</label>
                   <br />
                   <input type="radio" id="shirt" name="sort" value="shirt" />

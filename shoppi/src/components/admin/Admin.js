@@ -5,6 +5,7 @@ import { Container, Row, Col, Image } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Delete, Update, AccountCircle, Add } from "@material-ui/icons";
 import createNotification from "../notification/notification";
+import { NotificationContainer } from "react-notifications"; //notification
 import "../product/prod.css";
 import {
   BrowserRouter as Router,
@@ -21,16 +22,12 @@ const Admin = () => {
   const history = useHistory();
   const [data, setData] = useState([]);
   useEffect(() => {
-    Axios.post("http://localhost:8000/data", {
-      category: "men",
-    }).then((response) => {
-      setData(response.data);
-    });
+    showdata();
   }, []);
 
-  const refreshPage = () => {
-    window.location.reload();
-  };
+  // const refreshPage = () => {
+  //   window.location.reload();
+  // };
 
   ///////// delete ////////////////
 
@@ -41,12 +38,24 @@ const Admin = () => {
       }).then((response) => {
         if (response.data.length > 0) {
           createNotification("success", response.data, "Deleted");
+          showdata();
         } else {
           createNotification("error", "Sorry some error was caught", "Error");
         }
       });
-      // showdata();
     }
+  }
+  function showdata() {
+    Axios.post("http://localhost:8000/data", {
+      category: "cart",
+    })
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        history.push("/404");
+      });
   }
 
   return (
@@ -90,7 +99,6 @@ const Admin = () => {
                           className="admin-btn"
                           onClick={() => {
                             adminDel(index);
-                            refreshPage();
                           }}
                         >
                           <Delete />
@@ -129,38 +137,11 @@ const Admin = () => {
                   Add product
                 </Link>
               </div>
-
-              {/* 
-                   <h2>Order Placed</h2>
-
-<div className="admin-order" id="scroll">
-
-  <div className="order-box">
-    <p>image <br/> price  <br/> details</p>
-  </div>
-
-  <div className="order-box">
-    <p>image <br/> price  <br/> details</p>
-  </div>
-
-  <div className="order-box">
-    <p>image <br/> price  <br/> details</p>
-  </div>
-
-  <div className="order-box">
-    <p>image <br/> price  <br/> details</p>
-  </div>
-
-  <div className="order-box">
-    <p>image <br/> price  <br/> details</p>
-  </div>
-
-  
-</div> */}
             </Col>
           </div>
         </Col>
       </Row>
+      <NotificationContainer />
     </>
   );
 };
