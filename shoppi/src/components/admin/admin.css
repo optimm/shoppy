@@ -35,6 +35,9 @@
   margin-top: 25px;
   margin-right: 2%;
 }
+.admin-product {
+  margin-top: 10px;
+}
 
 .admin-btn {
   border: none;
@@ -101,9 +104,9 @@
   border-radius: 8px;
 }
 
-.admin-view:hover {
+/* .admin-view:hover {
   background-color: #ffa005;
-}
+} */
 
 .admin-order {
   /* background: #00e747; */
@@ -128,10 +131,6 @@
   margin-left: 27%;
   text-decoration: none;
   color: black;
-}
-
-.addProd-btn:hover {
-  background-color: #ffa005;
 }
 
 .admin-order {

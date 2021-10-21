@@ -21,13 +21,11 @@ Axios.defaults.withCredentials = true;
 const Admin = () => {
   const history = useHistory();
   const [data, setData] = useState([]);
+  const [category, setCategory] = useState("all");
+
   useEffect(() => {
     showdata();
   }, []);
-
-  // const refreshPage = () => {
-  //   window.location.reload();
-  // };
 
   ///////// delete ////////////////
 
@@ -47,15 +45,23 @@ const Admin = () => {
   }
   function showdata() {
     Axios.post("http://localhost:8000/data", {
-      category: "cart",
+      category: "men",
     })
       .then((response) => {
+        console.log(response.data);
         setData(response.data);
+        // full_data;
       })
       .catch((error) => {
         console.log(error);
         history.push("/404");
       });
+  }
+  function view() {
+    if (category === "all") {
+      // console.log(full_data);
+      // setData([...full_data]);
+    }
   }
 
   return (
@@ -68,46 +74,47 @@ const Admin = () => {
         </button>
       </div>
 
-      <Row>
+      <Row className="admin-product">
         <Col lg={9} md={12} sm={12}>
           <div className="product-left-box" id="scroll">
             <div className="product-cloth">
-              {data.map((item, index) => {
-                if (item.p_category === "men") {
-                  return (
-                    <div className="category-section" key={index}>
-                      <div
-                        className="category"
-                        style={{ backgroundImage: `url("${item.p_image}")` }}
-                        // onClick={() => prodPage(index)}
-                      ></div>
-                      <div className="product-detail">
-                        <p className="product-heading">
-                          <span className="product-name">{item.p_name}</span>
-                          <br />
-                          <span className="product-price">
-                            Rs. {item.p_price}
-                          </span>
-                        </p>
-                      </div>
+              {data.length > 0 &&
+                data.map((item, index) => {
+                  if (item.p_category === category || category === "all") {
+                    return (
+                      <div className="category-section" key={index}>
+                        <div
+                          className="category"
+                          style={{ backgroundImage: `url("${item.p_image}")` }}
+                          // onClick={() => prodPage(index)}
+                        ></div>
+                        <div className="product-detail">
+                          <p className="product-heading">
+                            <span className="product-name">{item.p_name}</span>
+                            <br />
+                            <span className="product-price">
+                              Rs. {item.p_price}
+                            </span>
+                          </p>
+                        </div>
 
-                      <div className="admin-buttons">
-                        <button className="admin-btn">
-                          <Update />
-                        </button>
-                        <button
-                          className="admin-btn"
-                          onClick={() => {
-                            adminDel(index);
-                          }}
-                        >
-                          <Delete />
-                        </button>
+                        <div className="admin-buttons">
+                          <button className="admin-btn">
+                            <Update />
+                          </button>
+                          <button
+                            className="admin-btn"
+                            onClick={() => {
+                              adminDel(index);
+                            }}
+                          >
+                            <Delete />
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  );
-                }
-              })}
+                    );
+                  }
+                })}
             </div>
           </div>
         </Col>
@@ -119,16 +126,42 @@ const Admin = () => {
             <Col className="admin-filter-category">
               <h2>Category</h2>
               <div className="sort-category">
-                <input type="radio" id="" name="category" value="" />
-                <label for="">Mens</label>
+                <input
+                  type="radio"
+                  id="all"
+                  name="category"
+                  value="all"
+                  onChange={(e) => setCategory(e.target.value)}
+                />
+                <label for="men">All</label>
                 <br />
-                <input type="radio" id="" name="category" value="" />
-                <label for="">Womens</label>
+                <input
+                  type="radio"
+                  id="men"
+                  name="category"
+                  value="men"
+                  onChange={(e) => setCategory(e.target.value)}
+                />
+                <label for="men">Mens</label>
                 <br />
-                <input type="radio" id="" name="category" value="" />
-                <label for="">Kids</label>
+                <input
+                  type="radio"
+                  id="women"
+                  name="category"
+                  value="women"
+                  onChange={(e) => setCategory(e.target.value)}
+                />
+                <label for="women">Womens</label>
                 <br />
-                <button className="admin-view">View</button>
+                <input
+                  type="radio"
+                  id="kids"
+                  name="category"
+                  value="kids"
+                  onChange={(e) => setCategory(e.target.value)}
+                />
+                <label for="kids">Kids</label>
+                <br />
               </div>
 
               <div className="admin-add-product">

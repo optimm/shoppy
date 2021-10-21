@@ -48,28 +48,29 @@ const Women = () => {
 
           <div className="product-left-box" id="scroll">
             <div className="product-cloth">
-              {data.map((item, index) => {
-                if (item.p_category === "women") {
-                  return (
-                    <div className="category-section" key={index}>
-                      <div
-                        className="category"
-                        style={{ backgroundImage: `url("${item.p_image}")` }}
-                        onClick={() => prodPage(index)}
-                      ></div>
-                      <div className="product-detail">
-                        <p className="product-heading">
-                          <span className="product-name">{item.p_name}</span>
-                          <br />
-                          <span className="product-price">
-                            Rs. {item.p_price}
-                          </span>
-                        </p>
+              {data.length > 0 &&
+                data.map((item, index) => {
+                  if (item.p_category === "women") {
+                    return (
+                      <div className="category-section" key={index}>
+                        <div
+                          className="category"
+                          style={{ backgroundImage: `url("${item.p_image}")` }}
+                          onClick={() => prodPage(index)}
+                        ></div>
+                        <div className="product-detail">
+                          <p className="product-heading">
+                            <span className="product-name">{item.p_name}</span>
+                            <br />
+                            <span className="product-price">
+                              Rs. {item.p_price}
+                            </span>
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  );
-                }
-              })}
+                    );
+                  }
+                })}
             </div>
           </div>
         </Col>

@@ -1,7 +1,7 @@
 import React from "react";
-import Main from "./components/Main";
 import Cart from "./components/Cart";
 import Men from "./components/Men";
+import Main from "./components/Main";
 import Women from "./components/Women";
 import Kids from "./components/Kids";
 import Signin from "./components/sign-in-up/Signin";
@@ -22,8 +22,8 @@ function App() {
     <>
       {/* <MyOrder/> */}
       <Switch>
-        <Route exact path="/" component={Main}></Route>
         <Route exact path="/cart" component={Cart}></Route>
+        <Route exact path="/" component={Main}></Route>
         <Route exact path="/men" component={Men}></Route>
         <Route exact path="/women" foo="birju" component={Women}></Route>
         <Route exact path="/kids" component={Kids}></Route>
@@ -37,8 +37,6 @@ function App() {
         <Route exact path="/404" component={Error}></Route>
         <Route exact path="/admin" component={Admin}></Route>
         <Route exact path="/adminadd" component={AdminADD}></Route>
-
-
       </Switch>
     </>
   );
