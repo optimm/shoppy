@@ -44,7 +44,7 @@ export default function CustomizedSnackbars({
     }, 1000);
   }, []);
   function TransitionLeft(props) {
-    return <Slide {...props} direction="down" />;
+    return <Slide {...props} direction="left" />;
   }
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -56,9 +56,8 @@ export default function CustomizedSnackbars({
     <Stack spacing={2} sx={{ width: "100%" }}>
       <Snackbar
         open={isOpen}
-        autoHideDuration={1700}
+        autoHideDuration={1900}
         onClose={handleClose}
-        TransitionComponent={TransitionLeft}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
         <Alert onClose={handleClose} severity={severity} sx={{ width: "100%" }}>

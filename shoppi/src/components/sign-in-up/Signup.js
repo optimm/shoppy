@@ -5,6 +5,7 @@ import Navigation from "../Navigation";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
+import CustomizedSnackbars from "../notification/notification";
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,8 +20,12 @@ const Signup = () => {
   let history = useHistory();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [rpass, setrPass] = useState("");
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
+  let [m, setm] = useState("");
+  let [o, seto] = useState(false);
+  let [s, sets] = useState("success");
   Axios.post("http://localhost:8000/cart", {
     name: "ayush",
   }).then((response) => {
@@ -37,15 +42,21 @@ const Signup = () => {
     }
   });
   const register = () => {
-    Axios.post("http://localhost:8000/register", {
-      email: email,
-      pass: pass,
-      name: name,
-      mobile: mobile,
-    }).then((response) => {
-      alert(response.data);
-    });
-    history.push("/signin");
+    if (pass !== rpass) {
+      setm("Re-entered password does not matches");
+      seto(true);
+      sets("warning");
+    } else {
+      Axios.post("http://localhost:8000/register", {
+        email: email,
+        pass: pass,
+        name: name,
+        mobile: mobile,
+      }).then((response) => {
+        alert(response.data);
+      });
+      history.push("/signin");
+    }
   };
 
   useEffect(() => {
@@ -98,6 +109,7 @@ const Signup = () => {
                       <input
                         className="signup-input"
                         type="email"
+                        required
                         placeholder="Enter Email"
                         name="email"
                         onChange={(e) => setEmail(e.target.value)}
@@ -109,6 +121,7 @@ const Signup = () => {
                       <input
                         className="signup-input"
                         type="password"
+                        required
                         placeholder="Enter Password"
                         name="password"
                         onChange={(e) => setPass(e.target.value)}
@@ -118,8 +131,10 @@ const Signup = () => {
                       <input
                         className="signup-input"
                         type="password"
+                        required
                         placeholder="Renter Password"
                         name="repassword"
+                        onChange={(e) => setrPass(e.target.value)}
                       />
                     </Col>
                   </Row>
@@ -149,6 +164,12 @@ const Signup = () => {
           </Col>
         </Row>
       </div>
+      <CustomizedSnackbars
+        message={m}
+        severity={s}
+        isOpen={o}
+        setisOpen={seto}
+      />
     </div>
   );
 };

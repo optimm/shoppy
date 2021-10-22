@@ -35,30 +35,22 @@ const Product = (props) => {
           history.push({
             pathname: "/admin",
           });
-        } else {
-          if (props.location.state) {
-            [
-              p_category,
-              p_description,
-              p_id,
-              p_image,
-              p_name,
-              p_price,
-              p_type,
-            ] = Object.values(props.location.state.data);
-            console.log(props.location.state.data);
-          } else if (props.location.state === undefined) {
-            history.push({
-              pathname: "/",
-            });
-          }
         }
       }
     });
   }, []);
+  if (props.location.state) {
+    [p_category, p_description, p_id, p_image, p_name, p_price, p_type] =
+      Object.values(props.location.state.data);
+    console.log(props.location.state.data);
+  } else if (props.location.state === undefined) {
+    history.push({
+      pathname: "/",
+    });
+  }
   const addtocart = () => {
     if (size.length === 0) {
-      setm("Please Select a size");
+      setm("Please select a size");
       seto(true);
       sets("info");
     } else {
@@ -67,12 +59,13 @@ const Product = (props) => {
         product_size: size,
       }).then((response) => {
         if (response.data.length > 1) {
-          setm("Item was added to cart");
+          setm("Item was added successfully");
           seto(true);
+          sets("success");
         } else if (response.data.length === 1) {
-          setm("Item already present in cart");
+          setm("Item is already added to cart");
           seto(true);
-          sets("info");
+          sets("warning");
         } else {
           history.push("/nlog");
         }
@@ -135,13 +128,13 @@ const Product = (props) => {
             </button>
           </Col>
         </Row>
+        <CustomizedSnackbars
+          message={m}
+          severity={s}
+          isOpen={o}
+          setisOpen={seto}
+        />
       </div>
-      <CustomizedSnackbars
-        message={m}
-        severity={s}
-        isOpen={o}
-        setisOpen={seto}
-      />
     </>
   );
 };
