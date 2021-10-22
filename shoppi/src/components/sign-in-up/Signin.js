@@ -41,6 +41,7 @@ const Sign = (props) => {
   }, []);
 
   function login() {
+    let user = "customer";
     console.log(email, pass);
     if (email === 0 || pass === "") {
       // createNotification("info", "Please fill all the fields");
@@ -50,42 +51,34 @@ const Sign = (props) => {
     } else {
       if (email === "9999999999" && pass === "12345") {
         if (window.confirm("Admin Login is ready! You want to proceed?")) {
-          Axios.post("http://localhost:8000/logout").then((response) => {
-            console.log(response.data);
-            if (response.data === "done") {
-              history.push({
-                pathname: "/admin",
-                state: "admin",
-              });
-            } else {
-              setm("Sorry an error was caused");
-              seto(true);
-              sets("error");
-            }
-          });
+          user = "admin";
         }
-      } else {
-        Axios.post("http://localhost:8000/login", {
-          email: email,
-          pass: pass,
-        }).then((response) => {
-          let authenticated = response.data.authenticated;
-          console.log(authenticated);
-          if (authenticated === undefined) {
-            setm("Sorry an error was caused");
-            seto(true);
-            sets("error");
-          } else {
-            if (authenticated) {
-              history.push("/profile");
-            } else if (authenticated === false) {
-              setm("Wrong credentials or user does not exist");
-              seto(true);
-              sets("warning");
-            }
-          }
-        });
       }
+      Axios.post("http://localhost:8000/login", {
+        email: email,
+        pass: pass,
+        usr: user,
+      }).then((response) => {
+        let authenticated = response.data.authenticated;
+        console.log(authenticated);
+        if (authenticated === undefined) {
+          setm("Sorry an error was caused");
+          seto(true);
+          sets("error");
+        } else {
+          if (authenticated) {
+            if (response.data.usr === "admin") {
+              history.push("/admin");
+            } else {
+              history.push("/profile");
+            }
+          } else if (authenticated === false) {
+            setm("Wrong credentials or user does not exist");
+            seto(true);
+            sets("warning");
+          }
+        }
+      });
     }
   }
 

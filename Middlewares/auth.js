@@ -9,6 +9,7 @@ module.exports = (req, res, next) => {
     req.isAuthenticated = true;
     res.name = req.cookies.LogedIn.name;
     res.mobile = req.cookies.LogedIn.mobile;
+    res.usr = req.cookies.LogedIn.usr;
     console.log("auth true");
     console.log(req.cookies.LogedIn.mobile);
     next();

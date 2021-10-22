@@ -23,6 +23,18 @@ const Admin = () => {
   const [category, setCategory] = useState("all");
 
   useEffect(() => {
+    Axios.post("http://localhost:8000/logout").then((response) => {
+      console.log(response.data);
+      if (response.data === "done") {
+        history.push({
+          pathname: "/admin",
+        });
+      } else {
+        history.push({
+          pathname: "/",
+        });
+      }
+    });
     showdata();
   }, []);
 
