@@ -3,6 +3,12 @@ import Axios from "axios";
 import { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import "./profile.css";
+import Home from '@material-ui/icons/Home';
+import Cart from '@material-ui/icons/ShoppingCart';
+import Exit from '@material-ui/icons/ExitToApp';
+import User from '@material-ui/icons/AccountCircle';
+import { Navbar, Nav, NavDropdown, Container, Row, Col } from "react-bootstrap";
+
 Axios.defaults.withCredentials = true;
 
 const Profile = () => {
@@ -38,15 +44,74 @@ const Profile = () => {
   };
   return (
     <div className="profile-container">
-      <h1>Hi {name}</h1>
-      <div className="profile-buttons">
-        <button className="profile-button" onClick={logout}>
-          Log Out
-        </button>
+    
+      <Row className="profile-buttons">
+
+
+
+        <Col lg= {4} className="profile-left">
+        
+        <Row ><div className="profile-img" >
+          {/* <User/>  */}
+        </div> </Row>
+        
+        {/* <h2>Go To -</h2> */}
+        <Row   className="Profile-btn-bg">
+
+          <div className="profile-buttons">
         <Link to="/">
-          <button className="profile-button">Home</button>
+          <button className="profile-button">
+          <Home className="profile-icon"/> <span>Home</span>
+          </button>
         </Link>
-      </div>
+        <br />
+
+        <Link to="/MyOrder">
+          <button className="profile-button">
+            <Cart className="profile-icon"/> <span>My Order</span>
+          </button>
+        </Link>
+        <br />
+        <button className="profile-button" onClick={logout}>
+          <Exit className="profile-icon"/> <span>Log Out</span>
+        </button>
+        </div>
+
+        </Row>
+
+
+      </Col>
+
+
+         {/* right/////////////////// */}
+
+         <Col lg = {8} className="profile-right">
+
+
+         <h1>Hi {name} !!</h1>
+          <div className="profile-data">
+        
+          
+          <p className="line">Email - <br /> email@gmail.com</p>
+          <p className="line">Mob   - <br /> 1234567890</p>
+         
+  
+
+          </div>
+          <div className="profile-vector">
+
+</div>
+
+
+
+         </Col>
+
+
+
+
+    </Row>
+
+
     </div>
   );
 };
