@@ -2,8 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Navigation from "./Navigation";
 import { BrowserRouter as Router, Link, useHistory } from "react-router-dom";
-import createNotification from "./notification/notification";
-import { NotificationContainer } from "react-notifications"; //notification
+// import createNotification from "./notification/notification";
+// import { NotificationContainer } from "react-notifications"; //notification
 import { Container, Row, Col, Image, Modal } from "react-bootstrap";
 import DeleteIcon from "@material-ui/icons/Delete";
 import "./myOrder.css";

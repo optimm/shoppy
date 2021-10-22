@@ -4,8 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Delete, Update, AccountCircle, Add } from "@material-ui/icons";
-import createNotification from "../notification/notification";
-import { NotificationContainer } from "react-notifications"; //notification
+// import createNotification from "../notification/notification";
 import "../product/prod.css";
 import {
   BrowserRouter as Router,
@@ -35,10 +34,10 @@ const Admin = () => {
         p_id: data[index].p_id,
       }).then((response) => {
         if (response.data.length > 0) {
-          createNotification("success", response.data, "Deleted");
+          // createNotification("success", response.data, "Deleted");
           showdata();
         } else {
-          createNotification("error", "Sorry some error was caught", "Error");
+          // createNotification("error", "Sorry some error was caught", "Error");
         }
       });
     }
@@ -174,7 +173,6 @@ const Admin = () => {
           </div>
         </Col>
       </Row>
-      <NotificationContainer />
     </>
   );
 };
