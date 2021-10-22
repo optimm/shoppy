@@ -40,8 +40,11 @@ const Product = (props) => {
     });
   }, []);
   if (props.location.state) {
-    [p_category, p_description, p_id, p_image, p_name, p_price, p_type] =
-      Object.values(props.location.state.data);
+    p_image = props.location.state.data.p_image;
+    p_description = props.location.state.data.p_description;
+    p_name = props.location.state.data.p_name;
+    p_price = props.location.state.data.p_price;
+    p_type = props.location.state.data.p_type;
     console.log(props.location.state.data);
   } else if (props.location.state === undefined) {
     history.push({

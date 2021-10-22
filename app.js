@@ -201,35 +201,43 @@ app.post("/register", (req, res) => {
     "INSERT INTO customer (email,pass,name,mobile) VALUES (?,?,?,?)",
     [email, pass, name, mobile],
     (err, result) => {
-      console.log(err);
+      if (err) {
+        console.log(err.errno);
+        if (err.errno === 1062) {
+          res.send("x");
+        }
+      }
+      if (!err) {
+        create();
+      }
     }
   );
-  let status = 0;
-  // shopping cart
-  const q =
-    "CREATE TABLE  cart_" +
-    mobile +
-    " ( p_size char(5), p_name varchar(100), p_image varchar(300), p_price bigint(20), p_id bigint(20), PRIMARY KEY (p_id,p_size), FOREIGN KEY (p_id) REFERENCES product(p_id))";
-  db.query(q, (err, result) => {
-    console.log(err);
-    if (!err) {
-      status++;
-    }
-  });
-  /////////////////////////
-  //my orders
-  const o =
-    "CREATE TABLE  myorder_" +
-    mobile +
-    " (p_size char(5), p_qty bigint, p_name varchar(100), p_image varchar(300), p_price varchar(100), p_id bigint, id varchar(50), delivery_address varchar(300), delivery_mobile bigint, status varchar(20), PRIMARY KEY (id,p_id,p_size))";
-  db.query(o, (err, result) => {
-    console.log(err);
-    if (!err) {
-      status++;
-    }
-  });
 
-  console.log(status);
+  // shopping cart
+  function create() {
+    const q =
+      "CREATE TABLE  cart_" +
+      mobile +
+      " ( p_size char(5), p_name varchar(100), p_image varchar(300), p_price bigint(20), p_id bigint(20), PRIMARY KEY (p_id,p_size), FOREIGN KEY (p_id) REFERENCES product(p_id))";
+    db.query(q, (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+    });
+    /////////////////////////
+    //my orders
+    const o =
+      "CREATE TABLE  myorder_" +
+      mobile +
+      " (p_size char(5), p_qty bigint, p_name varchar(100), p_image varchar(300), p_price varchar(100), p_id bigint, id varchar(50), delivery_address varchar(300), delivery_mobile bigint, status varchar(20), PRIMARY KEY (id,p_id,p_size))";
+    db.query(o, (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+    });
+    res.send("User registered successfully!");
+  }
+
   ////////////////////////
 });
 app.get("/", (req, res) => {
