@@ -31,11 +31,20 @@ const Cart = () => {
         history.push({
           pathname: "/nlog",
         });
+      } else {
+        if (response.data.usr === "admin") {
+          console.log("admin hai ye ");
+          history.push({
+            pathname: "/admin",
+          });
+        } else {
+          name = response.data.name;
+          setName(name);
+          showdata();
+        }
       }
-      name = response.data.name;
-      setName(name);
     });
-    showdata();
+    // console.log("flag ki value hai ye", flag);
   }, []);
   function showdata() {
     Axios.post("http://localhost:8000/data", {

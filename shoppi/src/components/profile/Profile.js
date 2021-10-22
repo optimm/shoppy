@@ -16,12 +16,20 @@ const Profile = () => {
         pathname: "/signin",
       });
     } else {
-      setName(response.data.name);
+      if (response.data.usr === "admin") {
+        history.push({
+          pathname: "/admin",
+        });
+      } else {
+        setName(response.data.name);
+      }
     }
   });
   const logout = () => {
     console.log("hey");
-    Axios.post("http://localhost:8000/logout").then((response) => {
+    Axios.post("http://localhost:8000/logout", {
+      usr: "customer",
+    }).then((response) => {
       console.log(response.data);
       history.push({
         pathname: "/",

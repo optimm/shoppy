@@ -24,9 +24,15 @@ function Navigation() {
             pathname: "/signin",
           });
         } else {
-          history.push({
-            pathname: "/profile",
-          });
+          if (response.data.usr === "admin") {
+            history.push({
+              pathname: "/admin",
+            });
+          } else {
+            history.push({
+              pathname: "/profile",
+            });
+          }
         }
       })
       .catch((err) => {

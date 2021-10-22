@@ -33,9 +33,15 @@ const Sign = (props) => {
     }).then((response) => {
       console.log(response);
       if (response.data.data === true) {
-        history.push({
-          pathname: "/profile",
-        });
+        if (response.data.usr === "admin") {
+          history.push({
+            pathname: "/admin",
+          });
+        } else {
+          history.push({
+            pathname: "/profile",
+          });
+        }
       }
     });
   }, []);

@@ -4,7 +4,6 @@ import Navigation from "./Navigation";
 import { BrowserRouter as Router, Link, useHistory } from "react-router-dom";
 // import createNotification from "./notification/notification";
 
-
 // import { NotificationContainer } from "react-notifications"; //notification
 import { Container, Row, Col, Image, Modal } from "react-bootstrap";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -23,6 +22,12 @@ const MyOrder = () => {
         history.push({
           pathname: "/nlog",
         });
+      } else {
+        if (response.data.usr === "admin") {
+          history.push({
+            pathname: "/admin",
+          });
+        }
       }
     });
     showOrder();

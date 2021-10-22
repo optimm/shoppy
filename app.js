@@ -153,30 +153,30 @@ app.post("/adminDel", (req, res) => {
   });
 });
 
-
-
-
-
 ///////////////////// Admin Add Product/////////////////////////////
-
 
 app.post("/adminAddProduct", (req, res) => {
   // console.log("hello register");
-  const p_id           = req.body.PiD;
-  const p_name         = req.body.PName;
-  const p_price        = req.body.PPrice;
-  const p_type         = req.body.PType;
-  const p_category     = "men";
-  const p_image        = req.body.PImg;
-  const p_description  = req.body.PDescription;
-  
+  const p_id = req.body.PiD;
+  const p_name = req.body.PName;
+  const p_price = req.body.PPrice;
+  const p_type = req.body.PType;
+  const p_category = "men";
+  const p_image = req.body.PImg;
+  const p_description = req.body.PDescription;
 
-
-
-  console.log(p_id,p_name,p_price,p_image,p_description,p_category,p_type);
+  console.log(
+    p_id,
+    p_name,
+    p_price,
+    p_image,
+    p_description,
+    p_category,
+    p_type
+  );
   db.query(
     "INSERT INTO product (p_id,p_name,p_price,p_image,p_description,p_category,p_type) VALUES (?,?,?,?,?,?,?)",
-    [p_id,p_name,p_price,p_image,p_description,p_category,p_type],
+    [p_id, p_name, p_price, p_image, p_description, p_category, p_type],
     (err, result) => {
       if (err) {
         console.log(err);
@@ -184,19 +184,9 @@ app.post("/adminAddProduct", (req, res) => {
       if (!err) {
         res.send("Product added Successfully !!");
       }
-    });
+    }
+  );
 });
-
-
-
-
-
-
-
-
-
-
-
 
 ///////////////////////register route////////////////////////////////
 app.post("/register", (req, res) => {
@@ -247,7 +237,10 @@ app.get("/", (req, res) => {
 
 ///////////////////////clear coookie start////////////////////////////////
 app.post("/logout", (req, res) => {
-  res.clearCookie("LogedIn");
+  const usr = req.body.usr;
+  if (usr === "customer") {
+    res.clearCookie("LogedIn");
+  }
   res.send("done");
 });
 ///////////////////////clear coookie end////////////////////////////////
@@ -284,8 +277,9 @@ app.post("/cart", (req, res) => {
   if (req.isAuthenticated) {
     console.log("hi", res.name, "this is login check");
     let user = res.name;
+    let usr = res.usr;
     console.log("IN FIRST");
-    res.send({ data: true, name: user });
+    res.send({ data: true, name: user, usr: usr });
   } else {
     console.log("IN Second");
     res.send({ data: false });

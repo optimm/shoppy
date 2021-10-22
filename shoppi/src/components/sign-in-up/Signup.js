@@ -25,9 +25,15 @@ const Signup = () => {
     name: "ayush",
   }).then((response) => {
     if (response.data.data === true) {
-      history.push({
-        pathname: "/profile",
-      });
+      if (response.data.usr === "admin") {
+        history.push({
+          pathname: "/admin",
+        });
+      } else {
+        history.push({
+          pathname: "/profile",
+        });
+      }
     }
   });
   const register = () => {

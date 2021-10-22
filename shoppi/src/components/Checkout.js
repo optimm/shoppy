@@ -18,6 +18,12 @@ const Checkout = (props) => {
         history.push({
           pathname: "/nlog",
         });
+      } else {
+        if (response.data.usr === "admin") {
+          history.push({
+            pathname: "/admin",
+          });
+        }
       }
     });
   }, []);
