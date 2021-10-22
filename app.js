@@ -161,7 +161,7 @@ app.post("/adminAddProduct", (req, res) => {
   const p_name = req.body.PName;
   const p_price = req.body.PPrice;
   const p_type = req.body.PType;
-  const p_category = "men";
+  const p_category = req.body.PCat;
   const p_image = req.body.PImg;
   const p_description = req.body.PDescription;
 
@@ -180,6 +180,7 @@ app.post("/adminAddProduct", (req, res) => {
     (err, result) => {
       if (err) {
         console.log(err);
+        res.send("");
       }
       if (!err) {
         res.send("Product added Successfully !!");
@@ -256,14 +257,13 @@ app.post("/addtocart", (req, res) => {
     mobile = res.mobile;
   } else {
     console.log("not authenticated");
-    res.send("");
   }
   const q = `INSERT INTO cart_${mobile} (p_id, p_size, p_name, p_image, p_price) SELECT ${product_id}, "${size}", p_name, p_image, p_price FROM product WHERE p_id= ${product_id} `;
   db.query(q, (err, result) => {
     if (err) {
       console.log(err.errno);
       if (err.errno === 1062) {
-        res.send("Item already present in cart");
+        res.send("x");
       }
     }
     if (!err) {

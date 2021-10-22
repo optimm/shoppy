@@ -4,9 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Delete, Update, AccountCircle, Add } from "@material-ui/icons";
-
-// import createNotification from "../notification/notification";
-
+import CustomizedSnackbars from "../notification/notification";
 import "../product/prod.css";
 import {
   BrowserRouter as Router,
@@ -23,23 +21,31 @@ const Admin = () => {
   const history = useHistory();
   const [data, setData] = useState([]);
   const [category, setCategory] = useState("all");
+  let [m, setm] = useState("");
+  let [o, seto] = useState(false);
+  let [s, sets] = useState("success");
 
   useEffect(() => {
-    // Axios.post("http://localhost:8000/logout", {
-    //   usr: "customer",
-    // }).then((response) => {
-    //   console.log(response.data);
-    //   if (response.data === "done") {
-    //     history.push({
-    //       pathname: "/admin",
-    //     });
-    //   } else {
-    //     history.push({
-    //       pathname: "/",
-    //     });
-    //   }
-    // });
     showdata();
+    Axios.post("http://localhost:8000/cart", {
+      name: "ayush",
+    }).then((response) => {
+      if (response.data.data === false) {
+        history.push({
+          pathname: "/nlog",
+        });
+      } else {
+        if (response.data.usr === "customer") {
+          history.push({
+            pathname: "/",
+          });
+        } else {
+          setm("Hello admin");
+          seto(true);
+          sets("info");
+        }
+      }
+    });
   }, []);
 
   ///////// delete ////////////////
@@ -50,10 +56,14 @@ const Admin = () => {
         p_id: data[index].p_id,
       }).then((response) => {
         if (response.data.length > 0) {
-          // createNotification("success", response.data, "Deleted");
+          setm("Item was deletd successfully");
+          seto(true);
+          sets("success");
           showdata();
         } else {
-          // createNotification("error", "Sorry some error was caught", "Error");
+          setm("Sorry some error was encountered");
+          seto(true);
+          sets("error");
         }
       });
     }
@@ -71,12 +81,6 @@ const Admin = () => {
         console.log(error);
         history.push("/404");
       });
-  }
-  function view() {
-    if (category === "all") {
-      // console.log(full_data);
-      // setData([...full_data]);
-    }
   }
 
   return (
@@ -189,6 +193,12 @@ const Admin = () => {
           </div>
         </Col>
       </Row>
+      <CustomizedSnackbars
+        message={m}
+        severity={s}
+        isOpen={o}
+        setisOpen={seto}
+      />
     </>
   );
 };

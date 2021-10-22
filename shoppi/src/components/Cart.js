@@ -14,7 +14,7 @@ const Cart = () => {
   // total price
   let [total, setTotal] = useState(0);
   let [quantity, setQuantity] = useState([]);
-  let [addres, setaddres] = useState("not filled");
+  let [addres, setaddres] = useState("");
   let [mobile, setmobile] = useState(0);
   let [name, setName] = useState("");
   let [m, setm] = useState("");
@@ -109,8 +109,9 @@ const Cart = () => {
   //////////////////////checkout data send////////////
   function checkout() {
     if (total === 0) {
-      alert("Nothing to Buy");
-      // createNotification("warning", "Nothing to buy", "Shop please");
+      setm("Nothing to buy");
+      seto(true);
+      sets("warning");
     } else {
       history.push({
         pathname: "/check",
