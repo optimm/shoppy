@@ -6,12 +6,22 @@
   padding-top: 10px;
 }
 
-.admin-nav h1 {
+.adminLogo{
+  text-decoration: none;
+}
+.admin-nav h1{
   font-size: 2rem;
   margin-left: 3%;
   font-weight: 600;
   display: inline;
+  color: black;
 }
+
+.admin-nav h1:hover{
+  color: #ffa005;
+  cursor: pointer;
+}
+
 
 .admin-nav button {
   float: right;
@@ -217,23 +227,6 @@
   color: white;
 }
 
-/* @media (max-width: 1250px) {
-  .admin-add {
-    margin-left: 30vw;
-    margin-right: 30vw;
-  }
+.admin-add-button:hover{
+  background-color: black;
 }
-
-@media (max-width: 950px) {
-  .admin-add {
-    margin-left: 24vw;
-    margin-right: 24vw;
-  }
-}
-
-@media (max-width: 750px) {
-  .admin-add {
-    margin-left: 20vw;
-    margin-right: 20vw;
-  }
-} */

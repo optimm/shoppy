@@ -4,7 +4,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Delete, Update, AccountCircle, Add } from "@material-ui/icons";
+<<<<<<< HEAD
 // import createNotification from "../notification/notification";
+=======
+import createNotification from "../notification/notification";
+// import { NotificationContainer } from "react-notifications"; //notification
+>>>>>>> 56cc4591a5893c43ffed0e302b84300480ddc0d2
 import "../product/prod.css";
 import {
   BrowserRouter as Router,
@@ -185,6 +190,10 @@ const Admin = () => {
           </div>
         </Col>
       </Row>
+<<<<<<< HEAD
+=======
+      {/* <NotificationContainer /> */}
+>>>>>>> 56cc4591a5893c43ffed0e302b84300480ddc0d2
     </>
   );
 };
