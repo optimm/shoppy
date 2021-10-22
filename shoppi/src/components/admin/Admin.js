@@ -5,7 +5,7 @@ import { Container, Row, Col, Image } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { Delete, Update, AccountCircle, Add } from "@material-ui/icons";
 import createNotification from "../notification/notification";
-import { NotificationContainer } from "react-notifications"; //notification
+// import { NotificationContainer } from "react-notifications"; //notification
 import "../product/prod.css";
 import {
   BrowserRouter as Router,
@@ -174,7 +174,7 @@ const Admin = () => {
           </div>
         </Col>
       </Row>
-      <NotificationContainer />
+      {/* <NotificationContainer /> */}
     </>
   );
 };
