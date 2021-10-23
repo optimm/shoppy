@@ -43,7 +43,7 @@ const Admin = () => {
             pathname: "/",
           });
         } else {
-          setm("Hello admin");
+          setm("Hello This is products dashboard");
           seto(true);
           sets("info");
         }

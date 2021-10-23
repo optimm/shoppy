@@ -6,11 +6,15 @@ import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import StoreIcon from "@mui/icons-material/Store";
 import { Row, Col } from "react-bootstrap";
+import CustomizedSnackbars from "../notification/notification";
 import "./dash.css";
 Axios.defaults.withCredentials = true;
 
 const Dash = () => {
   const history = useHistory();
+  let [m, setm] = useState("");
+  let [o, seto] = useState(false);
+  let [s, sets] = useState("success");
   const [data, setData] = useState([]);
   const logout = () => {
     console.log("hey");
@@ -25,6 +29,26 @@ const Dash = () => {
   };
 
   useEffect(() => {
+    Axios.post("http://localhost:8000/cart", {
+      name: "ayush",
+    }).then((response) => {
+      if (response.data.data === false) {
+        history.push({
+          pathname: "/nlog",
+        });
+      } else {
+        if (response.data.usr === "customer") {
+          history.push({
+            pathname: "/",
+          });
+        } else {
+          setm("Hey Admin");
+          seto(true);
+          sets("info");
+        }
+      }
+    });
+
     showdata();
   }, []);
 
@@ -114,6 +138,12 @@ const Dash = () => {
           </div>
         </Col>
       </Row>
+      <CustomizedSnackbars
+        message={m}
+        severity={s}
+        isOpen={o}
+        setisOpen={seto}
+      />
     </div>
   );
 };

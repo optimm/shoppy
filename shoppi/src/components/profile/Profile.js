@@ -40,9 +40,7 @@ const Profile = () => {
       usr: "customer",
     }).then((response) => {
       console.log(response.data);
-      history.push({
-        pathname: "/",
-      });
+      history.push("/");
     });
   };
   return (

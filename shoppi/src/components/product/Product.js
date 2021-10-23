@@ -83,59 +83,59 @@ const Product = (props) => {
         <Navigation />
       </div>
       <div className="product-container">
-      
-        <div className="product-image" >
-          {/* <Col lg={6} md={6} sm={12}> */}
-           
-            <img className="product-image" src={p_image} />
-         
-   
-          </div>
-          {/* <Col lg={6} md={6} sm={12} className="product-description"> */}
-            <div className="product-detailss">
-            <h2 className="product-data-h">{p_name}</h2>
-            <p className="product-data">{p_description}</p>
-            <p className="product-data">Rs. {p_price}</p>
-            <p className="product-data-s">Select size</p>
-            <div className="product-size">
-              S
-              <input
-                className="product-inp"
-                type="radio"
-                name="size"
-                value="s"
-                onChange={(e) => setSize(e.target.value)}
-              />
-              M
-              <input
-                className="product-inp"
-                type="radio"
-                name="size"
-                value="m"
-                onChange={(e) => setSize(e.target.value)}
-              />
-              L
-              <input
-                className="product-inp"
-                type="radio"
-                name="size"
-                value="l"
-                onChange={(e) => setSize(e.target.value)}
-              />
-              XL
-              <input
-                className="product-inp"
-                type="radio"
-                name="size"
-                value="xl"
-                onChange={(e) => setSize(e.target.value)}
-              />
+        <Row>
+          <Col lg={6} md={6} sm={12}>
+            <div
+              className="product-image"
+              style={{ backgroundImage: `url("${p_image}")` }}
+            />
+          </Col>
+          <Col lg={6} md={6} sm={12} className="product-description">
+            <div className="product-det">
+              <h2 className="product-data-h">{p_name}</h2>
+              <p className="product-data">{p_description}</p>
+              <p className="product-data">Rs. {p_price}</p>
+              <p className="product-data-s">Select size</p>
+              <div className="product-size">
+                S
+                <input
+                  className="product-inp"
+                  type="radio"
+                  name="size"
+                  value="s"
+                  onChange={(e) => setSize(e.target.value)}
+                />
+                M
+                <input
+                  className="product-inp"
+                  type="radio"
+                  name="size"
+                  value="m"
+                  onChange={(e) => setSize(e.target.value)}
+                />
+                L
+                <input
+                  className="product-inp"
+                  type="radio"
+                  name="size"
+                  value="l"
+                  onChange={(e) => setSize(e.target.value)}
+                />
+                XL
+                <input
+                  className="product-inp"
+                  type="radio"
+                  name="size"
+                  value="xl"
+                  onChange={(e) => setSize(e.target.value)}
+                />
+              </div>
+              <button className="product-button" onClick={addtocart}>
+                Add to cart
+              </button>
             </div>
-            <button className="product-button" onClick={addtocart}>
-              Add to cart
-            </button>
-            </div>
-   
+          </Col>
+        </Row>
         <CustomizedSnackbars
           message={m}
           severity={s}

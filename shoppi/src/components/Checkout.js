@@ -46,6 +46,7 @@ const Checkout = (props) => {
         o_data: props.location.state.p_data,
         d_addres: addres,
         d_mobile: mobile,
+        total: total,
       }).then((response) => {
         if (response.data.length > 0) {
           alert(response.data);

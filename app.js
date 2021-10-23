@@ -4,6 +4,7 @@ const mysql = require("mysql");
 const cors = require("cors");
 const auth = require("./Middlewares/auth");
 const cookieParser = require("cookie-parser");
+var nodemailer = require("nodemailer");
 
 app.use(express.json({ limit: "1mb" }));
 app.use(cookieParser());
@@ -21,6 +22,14 @@ app.use("/addtocart", auth);
 app.use("/data", auth);
 app.use("/del", auth);
 app.use("/addorders", auth);
+
+var transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "ayushtemp823@gmail.com",
+    pass: "Ayushsaxena@123",
+  },
+});
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -60,14 +69,21 @@ app.post("/addorders", (req, res) => {
   const d_addres = req.body.d_addres;
   const d_mobile = req.body.d_mobile;
   const o_data = req.body.o_data;
-
+  const total = req.body.total;
+  let user_name = "";
+  let user_email = "";
+  let mail_data = "";
   console.log(o_data);
   if (req.isAuthenticated) {
     const t = `myorder_${res.mobile}`;
     let flag = true;
+    user_name = res.name;
+    user_email = res.email;
     o_data.map((e, i) => {
       const [p_id, qty, p_name, p_price, p_image, p_size] = Object.values(e);
-      console.log(p_id, qty, p_name, p_price, p_image, p_size);
+      mail_data += `\n${
+        i + 1
+      } . ${p_name}, Size - ${p_size}, Quantity- ${qty}, Price for 1 - ${p_price}`;
       const q = `INSERT INTO ${t} (p_size, p_qty, p_name, p_image, p_price, p_id,id, delivery_address, delivery_mobile,status) VALUES (?,?,?,?,?,?,?,?,?,?)`;
       console.log(q);
       db.query(
@@ -90,9 +106,36 @@ app.post("/addorders", (req, res) => {
             res.send("");
             flag = false;
           }
+          if (!err) {
+            let mail_start = `Hey! ${user_name} , your order placed on ${id} with  products \n`;
+            let mail_content =
+              mail_start +
+              mail_data +
+              `\n\nWill be delivered on address - ${d_addres} \nTotal price to be paid is Rs. ${total} \n\nThank you for placing the order \nShoppy.com`;
+            console.log(mail_content);
+            let x = 1;
+            if (x > 0) {
+              var mailOptions = {
+                from: "ayushtemp823@gmail.com",
+                to: user_email,
+                subject: "Order confirmation From shoppy",
+                text: mail_content,
+              };
+
+              transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log("Email sent: " + info.response);
+                  x = 0;
+                }
+              });
+            }
+          }
         }
       );
     });
+
     if (flag) {
       const cart_emp = `DELETE FROM cart_${res.mobile}`;
       console.log(cart_emp);
@@ -364,7 +407,7 @@ app.post("/login", (req, res) => {
     );
   }
 });
-
+////////////showing customers to admin///////////////
 app.post("/customer", (req, res) => {
   db.query("SELECT * FROM customer", (err, result) => {
     if (err) {
@@ -377,8 +420,6 @@ app.post("/customer", (req, res) => {
     }
   });
 });
-//////fetch data for profile page
-app.post("/profile", (req, res) => {});
 
 const PORT = process.env.PORT || 8000;
 
