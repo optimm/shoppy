@@ -111,7 +111,7 @@ app.post("/addorders", (req, res) => {
   }
 });
 
-////////////////////del from table start/////////////////
+////////////////////del from cart table start/////////////////
 app.post("/del", (req, res) => {
   let t;
   const p_id = req.body.p_id;
@@ -133,7 +133,7 @@ app.post("/del", (req, res) => {
   }
 });
 
-//////////////////// Admin Delete /////////////////
+//////////////////// Admin Delete product /////////////////
 app.post("/adminDel", (req, res) => {
   let pt;
   const p_id = req.body.p_id;
@@ -154,7 +154,6 @@ app.post("/adminDel", (req, res) => {
 });
 
 ///////////////////// Admin Add Product/////////////////////////////
-
 app.post("/adminAddProduct", (req, res) => {
   // console.log("hello register");
   const p_id = req.body.PiD;
@@ -178,20 +177,18 @@ app.post("/adminAddProduct", (req, res) => {
     "INSERT INTO product (p_id,p_name,p_price,p_image,p_description,p_category,p_type) VALUES (?,?,?,?,?,?,?)",
     [p_id, p_name, p_price, p_image, p_description, p_category, p_type],
     (err, result) => {
-   if (err) {
-  console.log(err.errno);
-  if (err.errno === 1062) {
-    res.send("Invalid PID");
-  }
-}
-if (!err) {
-  res.send("Product added Successfully !!");
-}
-
+      if (err) {
+        console.log(err.errno);
+        if (err.errno === 1062) {
+          res.send("Invalid PID");
+        }
+      }
+      if (!err) {
+        res.send("Product added Successfully !!");
+      }
+    }
+  );
 });
-});
-
-
 
 ///////////////////////register route////////////////////////////////
 app.post("/register", (req, res) => {
@@ -244,9 +241,6 @@ app.post("/register", (req, res) => {
 
   ////////////////////////
 });
-app.get("/", (req, res) => {
-  console.log(req.cookies);
-});
 
 ///////////////////////clear coookie start////////////////////////////////
 app.post("/logout", (req, res) => {
@@ -284,14 +278,23 @@ app.post("/addtocart", (req, res) => {
   });
 });
 ///////////////////////// add to cart end ///////////////////////////////
-
+//====================================================================================================
+//login check route
 app.post("/cart", (req, res) => {
   if (req.isAuthenticated) {
     console.log("hi", res.name, "this is login check");
     let user = res.name;
     let usr = res.usr;
+    let mobile = res.mobile;
+    let email = res.email;
     console.log("IN FIRST");
-    res.send({ data: true, name: user, usr: usr });
+    res.send({
+      data: true,
+      name: user,
+      usr: usr,
+      mobile: mobile,
+      email: email,
+    });
   } else {
     console.log("IN Second");
     res.send({ data: false });
@@ -309,7 +312,7 @@ app.post("/login", (req, res) => {
       .status(200)
       .cookie(
         "LogedIn",
-        { usr: usr, mobile: email, name: usr, LogedIn: true },
+        { usr: usr, mobile: email, email: email, name: usr, LogedIn: true },
         {
           httpOnly: true,
           sameSite: "strict",
@@ -332,12 +335,19 @@ app.post("/login", (req, res) => {
           console.log(result[0].name);
           let uname = result[0].name;
           let mobile = result[0].mobile;
+          let email = result[0].email;
           console.log(mobile);
           res
             .status(200)
             .cookie(
               "LogedIn",
-              { usr: usr, mobile: mobile, name: uname, LogedIn: true },
+              {
+                usr: usr,
+                mobile: mobile,
+                email: email,
+                name: uname,
+                LogedIn: true,
+              },
               {
                 httpOnly: true,
                 sameSite: "strict",
@@ -355,6 +365,9 @@ app.post("/login", (req, res) => {
     );
   }
 });
+
+//////fetch data for profile page
+app.post("/profile", (req, res) => {});
 
 const PORT = process.env.PORT || 8000;
 

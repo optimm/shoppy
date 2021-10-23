@@ -10,6 +10,7 @@ module.exports = (req, res, next) => {
     res.name = req.cookies.LogedIn.name;
     res.mobile = req.cookies.LogedIn.mobile;
     res.usr = req.cookies.LogedIn.usr;
+    res.email = req.cookies.LogedIn.email;
     console.log("auth true");
     console.log(req.cookies.LogedIn.mobile);
     next();
