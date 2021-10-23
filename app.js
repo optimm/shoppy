@@ -245,9 +245,8 @@ app.post("/register", (req, res) => {
 ///////////////////////clear coookie start////////////////////////////////
 app.post("/logout", (req, res) => {
   const usr = req.body.usr;
-  if (usr === "customer") {
-    res.clearCookie("LogedIn");
-  }
+
+  res.clearCookie("LogedIn");
   res.send("done");
 });
 ///////////////////////clear coookie end////////////////////////////////

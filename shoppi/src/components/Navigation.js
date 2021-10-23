@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
-import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
-import FaceOutlinedIcon from "@material-ui/icons/FaceOutlined";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import FaceIcon from "@mui/icons-material/Face";
 import {
   BrowserRouter as Router,
   Switch,
@@ -68,10 +68,10 @@ function Navigation() {
               Women
             </Link>
             <div className="nav-item item nav-hover" onClick={check}>
-              <FaceOutlinedIcon style={{ fontSize: 22 }} />
+              <FaceIcon style={{ fontSize: 22 }} />
             </div>
             <Link className="nav-item nav-hover" to="/cart">
-              <ShoppingCartOutlinedIcon style={{ fontSize: 22 }} />
+              <ShoppingCartIcon style={{ fontSize: 22 }} />
             </Link>
           </Nav>
         </Navbar.Collapse>

@@ -3,19 +3,18 @@ import Axios from "axios";
 import { useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import "./profile.css";
-import Home from "@material-ui/icons/Home";
-import Cart from "@material-ui/icons/ShoppingCart";
-import Exit from "@material-ui/icons/ExitToApp";
-import User from "@material-ui/icons/AccountCircle";
-import { Navbar, Nav, NavDropdown, Container, Row, Col } from "react-bootstrap";
+import HomeIcon from "@mui/icons-material/Home";
+import LocalMallIcon from "@mui/icons-material/LocalMall";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import { Row, Col } from "react-bootstrap";
 
 Axios.defaults.withCredentials = true;
 
 const Profile = () => {
+  const history = useHistory();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
-  const history = useHistory();
   Axios.post("http://localhost:8000/cart", {
     name: "ayush",
   }).then((response) => {
@@ -41,9 +40,9 @@ const Profile = () => {
       usr: "customer",
     }).then((response) => {
       console.log(response.data);
-      history.push({
-        pathname: "/",
-      });
+      // history.push({
+      //   pathname: "/",
+      // });
     });
   };
   return (
@@ -59,7 +58,7 @@ const Profile = () => {
             <div className="profile-buttons">
               <Link to="/">
                 <button className="profile-button">
-                  <Home className="profile-icon" style={{ fontSize: 20 }} />{" "}
+                  <HomeIcon className="profile-icon" style={{ fontSize: 20 }} />{" "}
                   <span>Home</span>
                 </button>
               </Link>
@@ -67,13 +66,19 @@ const Profile = () => {
 
               <Link to="/MyOrder">
                 <button className="profile-button">
-                  <Cart className="profile-icon" style={{ fontSize: 20 }} />{" "}
+                  <LocalMallIcon
+                    className="profile-icon"
+                    style={{ fontSize: 20 }}
+                  />{" "}
                   <span>My Order</span>
                 </button>
               </Link>
               <br />
               <button className="profile-button" onClick={logout}>
-                <Exit className="profile-icon" style={{ fontSize: 20 }} />{" "}
+                <ExitToAppIcon
+                  className="profile-icon"
+                  style={{ fontSize: 20 }}
+                />{" "}
                 <span>Log Out</span>
               </button>
             </div>

@@ -82,14 +82,14 @@ const Admin = () => {
         history.push("/404");
       });
   }
-
   return (
     <>
       <div className="admin-nav">
-        <h1>Admin </h1>
+        <Link to="/admin" className="adminLogo">
+          <h1>Admin</h1>
+        </Link>
         <button className="admin">
-          {" "}
-          <AccountCircle />{" "}
+          <AccountCircle />
         </button>
       </div>
 
