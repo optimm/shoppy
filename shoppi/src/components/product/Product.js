@@ -83,11 +83,16 @@ const Product = (props) => {
         <Navigation />
       </div>
       <div className="product-container">
-        <Row>
-          <Col lg={6} md={6} sm={12}>
+      
+        <div className="product-image" >
+          {/* <Col lg={6} md={6} sm={12}> */}
+           
             <img className="product-image" src={p_image} />
-          </Col>
-          <Col lg={6} md={6} sm={12} className="product-description">
+         
+   
+          </div>
+          {/* <Col lg={6} md={6} sm={12} className="product-description"> */}
+            <div className="product-detailss">
             <h2 className="product-data-h">{p_name}</h2>
             <p className="product-data">{p_description}</p>
             <p className="product-data">Rs. {p_price}</p>
@@ -129,8 +134,8 @@ const Product = (props) => {
             <button className="product-button" onClick={addtocart}>
               Add to cart
             </button>
-          </Col>
-        </Row>
+            </div>
+   
         <CustomizedSnackbars
           message={m}
           severity={s}
