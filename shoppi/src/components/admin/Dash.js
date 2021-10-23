@@ -1,8 +1,7 @@
 import React from "react";
 import Axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
-
 import DeliveryDiningIcon from "@mui/icons-material/DeliveryDining";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import StoreIcon from "@mui/icons-material/Store";
@@ -12,6 +11,7 @@ Axios.defaults.withCredentials = true;
 
 const Dash = () => {
   const history = useHistory();
+  const [data, setData] = useState([]);
   const logout = () => {
     console.log("hey");
     Axios.post("http://localhost:8000/logout", {
@@ -23,6 +23,23 @@ const Dash = () => {
       });
     });
   };
+
+  useEffect(() => {
+    showdata();
+  }, []);
+
+  function showdata() {
+    Axios.post("http://localhost:8000/customer")
+      .then((response) => {
+        if (response.data.length > 0) {
+          setData(response.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        history.push("/404");
+      });
+  }
   return (
     <div className="profile-container">
       <Row className="profile-buttons-row">
@@ -67,10 +84,33 @@ const Dash = () => {
         </Col>
 
         <Col lg={8} md={8} className="profile-right">
-          <h1>Hi Admin !!</h1>
+          <h1>Hi Admin</h1>
           <div className="profile-data">
-            <p className="line"></p>
-            <p className="line"></p>
+            <h3 className="customer">Customers</h3>
+            {data.length > 0 &&
+              data.map((item, index) => {
+                return (
+                  <React.Fragment key={index}>
+                    <Row>
+                      <Col lg={4} md={4} sm={4} xs={4}>
+                        <p id="check-d" className="custmomer-d">
+                          <nobr className="custmomer-data">{item.name}</nobr>
+                        </p>
+                      </Col>
+                      <Col lg={5} md={5} sm={5} xs={5}>
+                        <p id="check-d" className="custmomer-d">
+                          <nobr className="custmomer-data">{item.email}</nobr>
+                        </p>
+                      </Col>
+                      <Col lg={3} md={3} sm={3} xs={3}>
+                        <p id="check-d" className="custmomer-d">
+                          <nobr className="custmomer-data">{item.mobile}</nobr>
+                        </p>
+                      </Col>
+                    </Row>
+                  </React.Fragment>
+                );
+              })}
           </div>
         </Col>
       </Row>

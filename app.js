@@ -365,6 +365,18 @@ app.post("/login", (req, res) => {
   }
 });
 
+app.post("/customer", (req, res) => {
+  db.query("SELECT * FROM customer", (err, result) => {
+    if (err) {
+      console.log(err);
+      res.send({ err: err });
+    }
+    if (!err) {
+      console.log(result);
+      res.send(result);
+    }
+  });
+});
 //////fetch data for profile page
 app.post("/profile", (req, res) => {});
 
