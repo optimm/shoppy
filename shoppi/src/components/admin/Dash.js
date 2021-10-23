@@ -9,20 +9,20 @@ import StoreIcon from "@mui/icons-material/Store";
 import { Row, Col } from "react-bootstrap";
 import "./dash.css";
 Axios.defaults.withCredentials = true;
-const logout = () => {
-  console.log("hey");
-  Axios.post("http://localhost:8000/logout", {
-    usr: "admin",
-  }).then((response) => {
-    console.log(response.data);
-    history.push({
-      pathname: "/",
-    });
-  });
-};
 
 const Dash = () => {
   const history = useHistory();
+  const logout = () => {
+    console.log("hey");
+    Axios.post("http://localhost:8000/logout", {
+      usr: "admin",
+    }).then((response) => {
+      console.log(response.data);
+      history.push({
+        pathname: "/",
+      });
+    });
+  };
   return (
     <div className="profile-container">
       <Row className="profile-buttons-row">

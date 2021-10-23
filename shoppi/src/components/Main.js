@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Navbar, Nav, NavDropdown, Container, Row, Col } from "react-bootstrap";
+import React from "react";
+import { Row, Col } from "react-bootstrap";
 import Navigation from "./Navigation";
+
 import Cards from "./Cards";
 import Land from "./Land";
 import Slider from "./Slider";
 import Foot from "./Foot";
-import Aos from "aos";
-import "aos/dist/aos.css";
 
 const Main = () => {
-  useEffect(() => {
-    Aos.init({ duration: 2000 });
-  }, []);
   return (
     <>
       <div className="main">
@@ -29,10 +25,9 @@ const Main = () => {
           </Col>
         </Row>
       </div>
-      <Cards />
       <Slider />
+      <Cards />
       <Foot />
-      {/* <Cart /> */}
     </>
   );
 };

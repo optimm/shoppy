@@ -1,8 +1,8 @@
 import React from "react";
-import { Delete, Update, AccountCircle, Add } from "@material-ui/icons";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import Axios from "axios";
 import { useState, useEffect } from "react";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CustomizedSnackbars from "../notification/notification";
 import {
   BrowserRouter as Router,
@@ -92,7 +92,7 @@ const AddProd = () => {
           <h1>Admin</h1>
         </Link>
         <button className="admin">
-          <AccountCircle />
+          <AccountCircleIcon />
         </button>
       </div>
       <div class="admin-a">

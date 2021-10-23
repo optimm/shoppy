@@ -3,7 +3,10 @@ import "./admin.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Image } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import { Delete, Update, AccountCircle, Add } from "@material-ui/icons";
+import DeleteIcon from "@mui/icons-material/Delete";
+import UpdateIcon from "@mui/icons-material/Update";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import AddIcon from "@mui/icons-material/Add";
 import CustomizedSnackbars from "../notification/notification";
 import "../product/prod.css";
 import {
@@ -89,7 +92,7 @@ const Admin = () => {
           <h1>Admin</h1>
         </Link>
         <button className="admin">
-          <AccountCircle />
+          <AccountCircleIcon />
         </button>
       </div>
 
@@ -119,7 +122,7 @@ const Admin = () => {
 
                         <div className="admin-buttons">
                           <button className="admin-btn">
-                            <Update />
+                            <UpdateIcon />
                           </button>
                           <button
                             className="admin-btn"
@@ -127,7 +130,7 @@ const Admin = () => {
                               adminDel(index);
                             }}
                           >
-                            <Delete />
+                            <DeleteIcon />
                           </button>
                         </div>
                       </div>
@@ -185,7 +188,7 @@ const Admin = () => {
 
               <div className="admin-add-product">
                 <Link to="/adminadd" className="addProd-btn">
-                  <Add />
+                  <AddIcon />
                   Add product
                 </Link>
               </div>

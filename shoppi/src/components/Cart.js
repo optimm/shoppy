@@ -4,7 +4,7 @@ import Navigation from "./Navigation";
 import { BrowserRouter as Router, Link, useHistory } from "react-router-dom";
 import CustomizedSnackbars from "./notification/notification";
 import { Container, Row, Col, Image } from "react-bootstrap";
-import DeleteIcon from "@material-ui/icons/Delete";
+import DeleteIcon from "@mui/icons-material/Delete";
 import Axios from "axios";
 import "./cart.css";
 Axios.defaults.withCredentials = true;
@@ -174,6 +174,7 @@ const Cart = () => {
                         <DeleteIcon
                           className="cart-remove-btn"
                           onClick={() => del(index)}
+                          style={{ fontSize: 20 }}
                         />
                         <input
                           type="number"
