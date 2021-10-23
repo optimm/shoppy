@@ -9,7 +9,7 @@
   margin: 20px 20px 10px 20px;
   display: grid;
   grid-gap: 30px;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(3, 1fr);
 }
 .product-left-box {
   padding-left: 2%;
@@ -63,19 +63,7 @@
   margin-top: 10px;
   margin-left: 20px;
 }
-.add-cart {
-  font-size: 7vh;
-  margin-top: -3%;
-  color: rgb(179, 179, 179);
-  margin-right: 15%;
-  margin-left: 0;
-  transition: all 0.1s ease-in-out;
-}
-.add-cart:hover {
-  color: red;
-  transform: scale(1.2);
-  cursor: pointer;
-}
+
 .product-right {
   background-color: #ffa005;
   padding: 10px 0px;

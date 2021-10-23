@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col, Image, Modal } from "react-bootstrap";
 import Axios from "axios";
 import { useState, useEffect } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -11,6 +11,7 @@ import {
   Link,
   useHistory,
 } from "react-router-dom";
+
 Axios.defaults.withCredentials = true;
 const AddProd = () => {
   const history = useHistory();
@@ -78,22 +79,37 @@ const AddProd = () => {
         } else {
           alert(response.data);
           history.push({
-            pathname: "/admin",
+            pathname: "/adminprod",
           });
         }
       });
     }
   };
-
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => {
+    if (
+      PiD === 0 ||
+      PName === "" ||
+      PPrice === 0 ||
+      PType === "" ||
+      PImg === "" ||
+      PCat === "" ||
+      PDescription === ""
+    ) {
+      setm("Please fill all fields");
+      seto(true);
+      sets("info");
+    } else {
+      setShow(true);
+    }
+  };
   return (
     <>
       <div className="admin-nav">
         <Link to="/admin" className="adminLogo">
           <h1>Admin</h1>
         </Link>
-        <button className="admin">
-          <AccountCircleIcon />
-        </button>
       </div>
       <div class="admin-a">
         <div className="admin-add">
@@ -194,7 +210,9 @@ const AddProd = () => {
             </Row>
             <Row>
               <Col lg={6} md={6} sm={6} xs={6}>
-                <button className="admin-add-button">Preview</button>
+                <button className="admin-add-button" onClick={handleShow}>
+                  Preview
+                </button>
               </Col>
               <Col lg={6} md={6} sm={6} xs={6}>
                 <button className="admin-add-button" onClick={adminAddProd}>
@@ -206,6 +224,68 @@ const AddProd = () => {
           <div className="admin-add-foot"></div>
         </div>
       </div>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        fullscreen={true}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title></Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="product-container">
+            <Row>
+              <Col lg={6} md={6} sm={12}>
+                <div
+                  className="product-image"
+                  style={{ backgroundImage: `url("${PImg}")` }}
+                />
+              </Col>
+              <Col lg={6} md={6} sm={12} className="product-description">
+                <div className="product-det">
+                  <h2 className="product-data-h">{PName}</h2>
+                  <p className="product-data">{PDescription}</p>
+                  <p className="product-data">Rs. {PPrice}</p>
+                  <p className="product-data-s">Select size</p>
+                  <div className="product-size">
+                    S
+                    <input
+                      className="product-inp"
+                      type="radio"
+                      name="size"
+                      value="s"
+                    />
+                    M
+                    <input
+                      className="product-inp"
+                      type="radio"
+                      name="size"
+                      value="m"
+                    />
+                    L
+                    <input
+                      className="product-inp"
+                      type="radio"
+                      name="size"
+                      value="l"
+                    />
+                    XL
+                    <input
+                      className="product-inp"
+                      type="radio"
+                      name="size"
+                      value="xl"
+                    />
+                  </div>
+                  <button className="product-button">Add to cart</button>
+                </div>
+              </Col>
+            </Row>
+          </div>
+        </Modal.Body>
+      </Modal>
       <CustomizedSnackbars
         message={m}
         severity={s}

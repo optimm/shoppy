@@ -91,9 +91,6 @@ const Admin = () => {
         <Link to="/admin" className="adminLogo">
           <h1>Admin</h1>
         </Link>
-        <button className="admin">
-          <AccountCircleIcon />
-        </button>
       </div>
 
       <Row className="admin-product">
@@ -110,29 +107,42 @@ const Admin = () => {
                           style={{ backgroundImage: `url("${item.p_image}")` }}
                           // onClick={() => prodPage(index)}
                         ></div>
-                        <div className="product-detail">
-                          <p className="product-heading">
-                            <span className="product-name">{item.p_name}</span>
-                            <br />
-                            <span className="product-price">
-                              Rs. {item.p_price}
-                            </span>
-                          </p>
-                        </div>
-
-                        <div className="admin-buttons">
-                          <button className="admin-btn">
-                            <UpdateIcon />
-                          </button>
-                          <button
-                            className="admin-btn"
-                            onClick={() => {
-                              adminDel(index);
-                            }}
-                          >
-                            <DeleteIcon />
-                          </button>
-                        </div>
+                        <Row className="category-row">
+                          <Col lg={8}>
+                            <div className="product-detail admin-detail">
+                              <p className="product-heading admin-product-heading">
+                                <span className="product-name admin-item-name">
+                                  {item.p_name}
+                                </span>
+                                <br />
+                                <span className="product-price admin-item-price">
+                                  Rs. {item.p_price}
+                                </span>
+                              </p>
+                            </div>
+                          </Col>
+                          <Col lg={4} style={{ padding: "0" }}>
+                            <div className="admin-buttons">
+                              <button className="admin-btn">
+                                <UpdateIcon
+                                  className="admin-prod-btn"
+                                  style={{ fontSize: 25 }}
+                                />
+                              </button>
+                              <button
+                                className="admin-btn"
+                                onClick={() => {
+                                  adminDel(index);
+                                }}
+                              >
+                                <DeleteIcon
+                                  className="admin-prod-btn"
+                                  style={{ fontSize: 25 }}
+                                />
+                              </button>
+                            </div>
+                          </Col>
+                        </Row>
                       </div>
                     );
                   }
