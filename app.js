@@ -178,16 +178,20 @@ app.post("/adminAddProduct", (req, res) => {
     "INSERT INTO product (p_id,p_name,p_price,p_image,p_description,p_category,p_type) VALUES (?,?,?,?,?,?,?)",
     [p_id, p_name, p_price, p_image, p_description, p_category, p_type],
     (err, result) => {
-      if (err) {
-        console.log(err);
-        res.send("");
-      }
-      if (!err) {
-        res.send("Product added Successfully !!");
-      }
-    }
-  );
+   if (err) {
+  console.log(err.errno);
+  if (err.errno === 1062) {
+    res.send("Invalid PID");
+  }
+}
+if (!err) {
+  res.send("Product added Successfully !!");
+}
+
 });
+});
+
+
 
 ///////////////////////register route////////////////////////////////
 app.post("/register", (req, res) => {
