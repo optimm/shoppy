@@ -141,6 +141,22 @@
   height: 100%;
   overflow-y: scroll;
 }
+
+.new-right-btn {
+  display: block;
+  margin: auto;
+  margin-top: 15px;
+  outline: none;
+  border: none;
+  font-size: 12px;
+  padding: 5px 20px;
+  border-radius: 5px;
+  background-color: #ffffff4d;
+}
+.sort-price-label {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
 @media only screen and (max-width: 980px) {
   .product-right {
     display: none;

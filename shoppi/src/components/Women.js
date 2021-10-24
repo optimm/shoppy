@@ -1,7 +1,7 @@
 import React from "react";
 import Navigation from "./Navigation";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col, Image, Modal } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -41,6 +41,16 @@ const Women = () => {
     });
   };
   const [sort, setSort] = useState("");
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => {
+    setShow(true);
+  };
+  const [show2, setShow2] = useState(false);
+  const handleClose2 = () => setShow2(false);
+  const handleShow2 = () => {
+    setShow2(true);
+  };
   return (
     <>
       <Row className="product">
@@ -79,12 +89,9 @@ const Women = () => {
           </div>
         </Col>
 
-        {/* right */}
 
         <Col lg={3} md={12} sm={12} className="product-right">
-          {/* media query div */}
 
-          {/* main right div */}
 
           <div className="product-filterBox">
             <h2>Women's Fashion</h2>
@@ -194,7 +201,166 @@ const Women = () => {
           </div>
         </Col>
       </Row>
-      <div class="product-right-new"></div>
+      <div class="product-right-new">
+        <Row className="new-right">
+          <Col lg={6} md={6} sm={6} xs={6}>
+            <button className="new-right-btn" onClick={handleShow}>
+              Sort by price
+            </button>
+          </Col>
+          <Col lg={6} md={6} sm={6} xs={6}>
+            <button className="new-right-btn" onClick={handleShow2}>
+              Sort by type
+            </button>
+          </Col>
+        </Row>
+      </div>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        size="lg"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title></Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="sort-price">
+            <h3>Price</h3>
+            <input
+              type="radio"
+              id="lth"
+              name="sort"
+              value="lth"
+              onChange={(e) => setSort(e.target.value)}
+            />
+            <label for="lth" className="sort-price-label">
+              Low to High
+            </label>
+            <br />
+            <input
+              type="radio"
+              id="htl"
+              name="sort"
+              value="htl"
+              onChange={(e) => setSort(e.target.value)}
+            />
+            <label for="htl" className="sort-price-label">
+              High to Low
+            </label>
+            <br />
+            <button class="product-apply" onClick={price}>
+              Apply
+            </button>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={show2}
+        onHide={handleClose2}
+        backdrop="static"
+        keyboard={false}
+        size="lg"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title></Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="sort-price sort-type">
+            <h3>Type</h3>
+            <div className="sort-type-choice">
+              <input
+                type="radio"
+                id="all"
+                name="sort"
+                value="all"
+                onChange={(e) => setCategory(e.target.value)}
+              />
+              <label for="all" className="sort-price-label">
+                All
+              </label>
+              <br />
+              <input
+                type="radio"
+                id="pants"
+                name="sort"
+                value="pants"
+                onChange={(e) => setCategory(e.target.value)}
+              />
+              <label for="pants" className="sort-price-label">
+                Pants
+              </label>
+              <br />
+              <input
+                type="radio"
+                id="shirt"
+                name="sort"
+                value="shirt"
+                onChange={(e) => setCategory(e.target.value)}
+              />
+              <label for="shirt" className="sort-price-label">
+                Shirt
+              </label>
+              <br />
+              <input
+                type="radio"
+                id="suit"
+                name="sort"
+                value="suit"
+                onChange={(e) => setCategory(e.target.value)}
+              />
+              <label for="suit" className="sort-price-label">
+                Suit
+              </label>
+              <br />
+              <input
+                type="radio"
+                id="jeans"
+                name="sort"
+                value="jeans"
+                onChange={(e) => setCategory(e.target.value)}
+              />
+              <label for="jeans" className="sort-price-label">
+                Jeans
+              </label>
+              <br />
+              <input
+                type="radio"
+                id="kurta"
+                name="sort"
+                value="kurta"
+                onChange={(e) => setCategory(e.target.value)}
+              />
+              <label for="kurta" className="sort-price-label">
+                Kurta
+              </label>
+              <br />
+              <input
+                type="radio"
+                id="jacket"
+                name="sort"
+                value="jacket"
+                onChange={(e) => setCategory(e.target.value)}
+              />
+              <label for="jacket" className="sort-price-label">
+                Jacket
+              </label>
+              <br />
+              <input
+                type="radio"
+                id="shirt"
+                name="sort"
+                value="shirt"
+                onChange={(e) => setCategory(e.target.value)}
+              />
+              <label for="shirt" className="sort-price-label">
+                Shirt
+              </label>
+            </div>
+          </div>
+        </Modal.Body>
+      </Modal>
     </>
   );
 };
