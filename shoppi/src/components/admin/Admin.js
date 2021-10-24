@@ -101,6 +101,11 @@ const Admin = () => {
     setPImg(data[index].p_image);
     setShow(true);
   };
+  const [show2, setShow2] = useState(false);
+  const handleClose2 = () => setShow2(false);
+  const handleShow2 = () => {
+    setShow2(true);
+  };
   return (
     <>
       <div className="admin-nav">
@@ -109,10 +114,10 @@ const Admin = () => {
         </Link>
       </div>
 
-      <Row className="admin-product">
-        <Col lg={9} md={12} sm={12}>
-          <div className="product-left-box" id="scroll">
-            <div className="product-cloth">
+      <Row>
+        <Col lg={9} md={12} sm={12} className="admin-product">
+          <div className="product-left-box admin-product" id="scroll">
+            <div className="product-cloth admin-product-cloth">
               {data.length > 0 &&
                 data.map((item, index) => {
                   if (item.p_category === category || category === "all") {
@@ -176,8 +181,6 @@ const Admin = () => {
           </div>
         </Col>
 
-        {/* right */}
-
         <Col lg={3} md={12} sm={12} className="admin-right">
           <div className="admin-filterBox">
             <Col className="admin-filter-category">
@@ -231,6 +234,21 @@ const Admin = () => {
           </div>
         </Col>
       </Row>
+
+      <div class="product-right-new admin-right-new">
+        <Row className="new-right">
+          <Col lg={6} md={6} sm={6} xs={6}>
+            <button className="new-right-btn add" onClick={handleShow2}>
+              View by category
+            </button>
+          </Col>
+          <Col lg={6} md={6} sm={6} xs={6}>
+            <Link to="/adminadd" style={{ textDecoration: "none" }}>
+              <button className="new-right-btn add">Add product</button>
+            </Link>
+          </Col>
+        </Row>
+      </div>
       <Modal
         show={show}
         onHide={handleClose}
@@ -261,6 +279,64 @@ const Admin = () => {
                 </div>
               </Col>
             </Row>
+          </div>
+        </Modal.Body>
+      </Modal>
+      <Modal
+        show={show2}
+        onHide={handleClose2}
+        backdrop="static"
+        keyboard={false}
+        size="lg"
+      >
+        <Modal.Header closeButton></Modal.Header>
+        <Modal.Body>
+          <div className="sort-category admin-sort-category">
+            <h6 style={{ textAlign: "center" }}> View by category</h6>
+            <input
+              type="radio"
+              id="all"
+              name="category"
+              value="all"
+              onChange={(e) => setCategory(e.target.value)}
+            />
+            <label for="all" className="sort-price-label">
+              All
+            </label>
+            <br />
+            <input
+              type="radio"
+              id="men"
+              name="category"
+              value="men"
+              onChange={(e) => setCategory(e.target.value)}
+            />
+            <label for="men" className="sort-price-label">
+              Mens
+            </label>
+            <br />
+            <input
+              type="radio"
+              id="women"
+              name="category"
+              value="women"
+              onChange={(e) => setCategory(e.target.value)}
+            />
+            <label for="women" className="sort-price-label">
+              Womens
+            </label>
+            <br />
+            <input
+              type="radio"
+              id="kids"
+              name="category"
+              value="kids"
+              onChange={(e) => setCategory(e.target.value)}
+            />
+            <label for="kids" className="sort-price-label">
+              Kids
+            </label>
+            <br />
           </div>
         </Modal.Body>
       </Modal>
