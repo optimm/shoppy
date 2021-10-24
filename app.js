@@ -30,7 +30,7 @@ var transporter = nodemailer.createTransport({
     pass: "Ayushsaxena@123",
   },
 });
-
+/////// sql connection/////////
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -174,63 +174,6 @@ app.post("/del", (req, res) => {
   } else {
     console.log("not authenticated");
   }
-});
-
-//////////////////// Admin Delete product /////////////////
-app.post("/adminDel", (req, res) => {
-  let pt;
-  const p_id = req.body.p_id;
-  console.log("called");
-
-  pt = `product`;
-  console.log("pt");
-  const q = `DELETE FROM ${pt} WHERE p_id = ? `;
-  db.query(q, [p_id], (err, result) => {
-    if (err) {
-      console.log(err);
-      res.send("");
-    }
-    if (!err) {
-      res.send("item deleted");
-    }
-  });
-});
-
-///////////////////// Admin Add Product/////////////////////////////
-app.post("/adminAddProduct", (req, res) => {
-  // console.log("hello register");
-  const p_id = req.body.PiD;
-  const p_name = req.body.PName;
-  const p_price = req.body.PPrice;
-  const p_type = req.body.PType;
-  const p_category = req.body.PCat;
-  const p_image = req.body.PImg;
-  const p_description = req.body.PDescription;
-
-  console.log(
-    p_id,
-    p_name,
-    p_price,
-    p_image,
-    p_description,
-    p_category,
-    p_type
-  );
-  db.query(
-    "INSERT INTO product (p_id,p_name,p_price,p_image,p_description,p_category,p_type) VALUES (?,?,?,?,?,?,?)",
-    [p_id, p_name, p_price, p_image, p_description, p_category, p_type],
-    (err, result) => {
-      if (err) {
-        console.log(err.errno);
-        if (err.errno === 1062) {
-          res.send("Invalid PID");
-        }
-      }
-      if (!err) {
-        res.send("Product added Successfully !!");
-      }
-    }
-  );
 });
 
 ///////////////////////register route////////////////////////////////
@@ -407,6 +350,8 @@ app.post("/login", (req, res) => {
     );
   }
 });
+
+// =============================== Admin =============================================================
 ////////////showing customers to admin///////////////
 app.post("/customer", (req, res) => {
   db.query("SELECT * FROM customer", (err, result) => {
@@ -451,6 +396,88 @@ app.post("/getpid", (req, res) => {
       console.log("  erroor ", err);
     }
   });
+});
+
+//////////////////// Admin Delete product /////////////////
+app.post("/adminDel", (req, res) => {
+  let pt;
+  const p_id = req.body.p_id;
+  console.log("called");
+
+  pt = `product`;
+  console.log("pt");
+  const q = `DELETE FROM ${pt} WHERE p_id = ? `;
+  db.query(q, [p_id], (err, result) => {
+    if (err) {
+      console.log(err);
+      res.send("");
+    }
+    if (!err) {
+      res.send("item deleted");
+    }
+  });
+});
+
+///////////////////// Admin Add Product/////////////////////////////
+app.post("/adminAddProduct", (req, res) => {
+  // console.log("hello register");
+  const p_id = req.body.PiD;
+  const p_name = req.body.PName;
+  const p_price = req.body.PPrice;
+  const p_type = req.body.PType;
+  const p_category = req.body.PCat;
+  const p_image = req.body.PImg;
+  const p_description = req.body.PDescription;
+
+  console.log(
+    p_id,
+    p_name,
+    p_price,
+    p_image,
+    p_description,
+    p_category,
+    p_type
+  );
+  db.query(
+    "INSERT INTO product (p_id,p_name,p_price,p_image,p_description,p_category,p_type) VALUES (?,?,?,?,?,?,?)",
+    [p_id, p_name, p_price, p_image, p_description, p_category, p_type],
+    (err, result) => {
+      if (err) {
+        console.log(err.errno);
+        if (err.errno === 1062) {
+          res.send("Invalid PID");
+        }
+      }
+      if (!err) {
+        res.send("Product added Successfully !!");
+      }
+    }
+  );
+});
+
+////////////////// update product admin///////////////
+app.post("/update", (req, res) => {
+  const p_name = req.body.p_name;
+  const p_price = req.body.p_price;
+  const p_image = req.body.p_image;
+  const p_description = req.body.p_description;
+  const p_category = req.body.p_category;
+  const p_type = req.body.p_type;
+  const p_id = req.body.p_id;
+
+  db.query(
+    "UPDATE product SET p_name = ?, p_price = ?, p_image = ? , p_description = ? , p_category = ? , p_type = ? WHERE p_id = ?",
+    [p_name, p_price, p_image, p_description, p_category, p_type, p_id],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+        res.send("");
+      }
+      if (!err) {
+        res.send("item was updated");
+      }
+    }
+  );
 });
 const PORT = process.env.PORT || 8000;
 

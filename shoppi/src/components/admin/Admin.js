@@ -1,7 +1,7 @@
 import React from "react";
 import "./admin.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col, Image, Modal } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import UpdateIcon from "@mui/icons-material/Update";
@@ -27,7 +27,11 @@ const Admin = () => {
   let [m, setm] = useState("");
   let [o, seto] = useState(false);
   let [s, sets] = useState("success");
-
+  const [PName, setPName] = useState("");
+  const [PDescription, setPDescription] = useState("");
+  const [PPrice, setPPrice] = useState(0);
+  const [PType, setPType] = useState("");
+  const [PImg, setPImg] = useState("");
   useEffect(() => {
     showdata();
     Axios.post("http://localhost:8000/cart", {
@@ -42,10 +46,6 @@ const Admin = () => {
           history.push({
             pathname: "/",
           });
-        } else {
-          setm("Hello This is products dashboard");
-          seto(true);
-          sets("info");
         }
       }
     });
@@ -85,6 +85,22 @@ const Admin = () => {
         history.push("/404");
       });
   }
+  const update = (index) => {
+    history.push({
+      pathname: "/adminupdate",
+      state: { data: data[index] },
+    });
+  };
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = (index) => {
+    setPName(data[index].p_name);
+    setPDescription(data[index].p_description);
+    setPPrice(data[index].p_price);
+    setPType(data[index].p_type);
+    setPImg(data[index].p_image);
+    setShow(true);
+  };
   return (
     <>
       <div className="admin-nav">
@@ -101,49 +117,58 @@ const Admin = () => {
                 data.map((item, index) => {
                   if (item.p_category === category || category === "all") {
                     return (
-                      <div className="category-section" key={index}>
-                        <div
-                          className="category"
-                          style={{ backgroundImage: `url("${item.p_image}")` }}
-                          // onClick={() => prodPage(index)}
-                        ></div>
-                        <Row className="category-row">
-                          <Col lg={8}>
-                            <div className="product-detail admin-detail">
-                              <p className="product-heading admin-product-heading">
-                                <span className="product-name admin-item-name">
-                                  {item.p_name}
-                                </span>
-                                <br />
-                                <span className="product-price admin-item-price">
-                                  Rs. {item.p_price}
-                                </span>
-                              </p>
-                            </div>
-                          </Col>
-                          <Col lg={4} style={{ padding: "0" }}>
-                            <div className="admin-buttons">
-                              <button className="admin-btn">
-                                <UpdateIcon
-                                  className="admin-prod-btn"
-                                  style={{ fontSize: 25 }}
-                                />
-                              </button>
-                              <button
-                                className="admin-btn"
-                                onClick={() => {
-                                  adminDel(index);
-                                }}
-                              >
-                                <DeleteIcon
-                                  className="admin-prod-btn"
-                                  style={{ fontSize: 25 }}
-                                />
-                              </button>
-                            </div>
-                          </Col>
-                        </Row>
-                      </div>
+                      <>
+                        <div className="category-section" key={index}>
+                          <div
+                            className="category"
+                            onClick={() => {
+                              handleShow(index);
+                            }}
+                            style={{
+                              backgroundImage: `url("${item.p_image}")`,
+                            }}
+                          ></div>
+                          <Row className="category-row">
+                            <Col lg={8}>
+                              <div className="product-detail admin-detail">
+                                <p className="product-heading admin-product-heading">
+                                  <span className="product-name admin-item-name">
+                                    {item.p_name}
+                                  </span>
+                                  <br />
+                                  <span className="product-price">
+                                    Rs. {item.p_price}
+                                  </span>
+                                </p>
+                              </div>
+                            </Col>
+                            <Col lg={4} style={{ padding: "0" }}>
+                              <div className="admin-buttons">
+                                <button
+                                  className="admin-btn"
+                                  onClick={() => update(index)}
+                                >
+                                  <UpdateIcon
+                                    className="admin-prod-btn"
+                                    style={{ fontSize: 25 }}
+                                  />
+                                </button>
+                                <button
+                                  className="admin-btn"
+                                  onClick={() => {
+                                    adminDel(index);
+                                  }}
+                                >
+                                  <DeleteIcon
+                                    className="admin-prod-btn"
+                                    style={{ fontSize: 25 }}
+                                  />
+                                </button>
+                              </div>
+                            </Col>
+                          </Row>
+                        </div>
+                      </>
                     );
                   }
                 })}
@@ -206,6 +231,39 @@ const Admin = () => {
           </div>
         </Col>
       </Row>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        fullscreen={true}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title></Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="product-container">
+            <Row>
+              <Col lg={6} md={6} sm={12}>
+                <div
+                  className="product-image"
+                  style={{
+                    backgroundImage: `url("${PImg}")`,
+                  }}
+                />
+              </Col>
+              <Col lg={6} md={6} sm={12} className="product-description">
+                <div className="product-det">
+                  <h2 className="product-data-h">{PName}</h2>
+                  <p className="product-data">{PDescription}</p>
+                  <p className="product-data">Rs. {PDescription}</p>
+                  <p className="product-data">type - {PType}</p>
+                </div>
+              </Col>
+            </Row>
+          </div>
+        </Modal.Body>
+      </Modal>
       <CustomizedSnackbars
         message={m}
         severity={s}
