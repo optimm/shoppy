@@ -5,6 +5,8 @@ const cors = require("cors");
 const auth = require("./Middlewares/auth");
 const cookieParser = require("cookie-parser");
 var nodemailer = require("nodemailer");
+const fast2sms = require("fast-two-sms");
+require("dotenv").config();
 
 app.use(express.json({ limit: "1mb" }));
 app.use(cookieParser());
@@ -27,7 +29,7 @@ var transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: "ayushtemp823@gmail.com",
-    pass: "Ayushsaxena@123",
+    pass: process.env.PASSWORD,
   },
 });
 /////// sql connection/////////
@@ -73,12 +75,14 @@ app.post("/addorders", (req, res) => {
   let user_name = "";
   let user_email = "";
   let mail_data = "";
+  let user_mobile;
   console.log(o_data);
   if (req.isAuthenticated) {
     const t = `myorder_${res.mobile}`;
     let flag = true;
     user_name = res.name;
     user_email = res.email;
+    user_mobile = res.mobile;
     o_data.map((e, i) => {
       const [p_id, qty, p_name, p_price, p_image, p_size] = Object.values(e);
       mail_data += `\n${
@@ -113,6 +117,16 @@ app.post("/addorders", (req, res) => {
               mail_data +
               `\n\nWill be delivered on address - ${d_addres} \nTotal price to be paid is Rs. ${total} \n\nThank you for placing the order \nShoppy.com`;
             console.log(mail_content);
+            fast2sms
+              .sendMessage({
+                authorization: process.env.API_KEY,
+                message: mail_content,
+                numbers: [user_mobile, d_mobile],
+              })
+              .then((response) => {
+                console.log(response);
+                console.log("message sent");
+              });
             let x = 1;
             if (x > 0) {
               var mailOptions = {
