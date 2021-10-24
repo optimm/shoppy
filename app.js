@@ -421,6 +421,37 @@ app.post("/customer", (req, res) => {
   });
 });
 
+///////////////////get pid///////////////////
+app.post("/getpid", (req, res) => {
+  console.log("to get pid");
+  let p_ids = [];
+  let max = 1;
+  db.query("SELECT * FROM product", (err, result) => {
+    if (!err) {
+      // console.log(result);
+      if (result.length > 0) {
+        result.map((item) => {
+          p_ids.push(item.p_id);
+        });
+      }
+      p_ids.sort(function (a, b) {
+        return a - b;
+      });
+      console.log(p_ids);
+      for (let i = 1; i <= result.length; i++) {
+        if (p_ids[i - 1] != i) {
+          max = i;
+          break;
+        }
+      }
+      console.log(max);
+      res.send({ max: max });
+    }
+    if (err) {
+      console.log("  erroor ", err);
+    }
+  });
+});
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, console.log(`Server started on port ${PORT}`));

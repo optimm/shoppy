@@ -15,6 +15,16 @@ import {
 Axios.defaults.withCredentials = true;
 const AddProd = () => {
   const history = useHistory();
+  const [PiD, setPiD] = useState(0);
+  const [PName, setPName] = useState("");
+  const [PPrice, setPPrice] = useState(0);
+  const [PType, setPType] = useState("");
+  const [PImg, setPImg] = useState("");
+  const [PCat, setCategory] = useState("");
+  const [PDescription, setPDescription] = useState("");
+  let [m, setm] = useState("");
+  let [o, seto] = useState(false);
+  let [s, sets] = useState("success");
   useEffect(() => {
     Axios.post("http://localhost:8000/cart", {
       name: "ayush",
@@ -32,24 +42,25 @@ const AddProd = () => {
           setm("Hey add a new product");
           seto(true);
           sets("info");
+          getpid();
         }
       }
     });
   }, []);
-  const [PiD, setPiD] = useState(0);
-  const [PName, setPName] = useState("");
-  const [PPrice, setPPrice] = useState(0);
-  const [PType, setPType] = useState("");
-  // const [PCat   , setPCat]  = useState("");
-  const [PImg, setPImg] = useState("");
-  const [PCat, setCategory] = useState("");
-  const [PDescription, setPDescription] = useState("");
-  let [m, setm] = useState("");
-  let [o, seto] = useState(false);
-  let [s, sets] = useState("success");
+  /////////////////// get pid
+
+  const getpid = () => {
+    Axios.post("http://localhost:8000/getpid")
+      .then((response) => {
+        console.log(" response", response.data);
+        setPiD(response.data.max);
+      })
+      .catch(function (error) {
+        console.log(" error", error);
+      });
+  };
   const adminAddProd = () => {
     if (
-      PiD === 0 ||
       PName === "" ||
       PPrice === 0 ||
       PType === "" ||
@@ -85,6 +96,7 @@ const AddProd = () => {
       });
     }
   };
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => {
@@ -104,6 +116,7 @@ const AddProd = () => {
       setShow(true);
     }
   };
+
   return (
     <>
       <div className="admin-nav">
@@ -196,7 +209,7 @@ const AddProd = () => {
                 />
               </Col>
               <Col lg={12}>
-                <input
+                {/* <input
                   className="admin-add-input url"
                   type="number"
                   id="mobile"
@@ -204,8 +217,8 @@ const AddProd = () => {
                   required
                   name="PiD"
                   onChange={(e) => setPiD(e.target.value)}
-                />
-                {/* <p className="admin-add-input url p-id">{`Product id = ${5}`}</p> */}
+                /> */}
+                <p className="admin-add-input url p-id">{`Product id = ${PiD}`}</p>
               </Col>
             </Row>
             <Row>
