@@ -28,7 +28,7 @@ app.use("/addorders", auth);
 var transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "ayushtemp823@gmail.com",
+    user: process.env.EMAIL,
     pass: process.env.PASSWORD,
   },
 });
@@ -112,10 +112,9 @@ app.post("/addorders", (req, res) => {
             flag = false;
           }
           if (!err) {
-             
-             console.log("insertion called")
-             // Uorder();
-             Iorder(); 
+            console.log("insertion called");
+            // Uorder();
+            Iorder();
 
             let mail_start = `Hey! ${user_name} , your order placed on ${id} with  products \n`;
             let mail_content =
@@ -134,7 +133,7 @@ app.post("/addorders", (req, res) => {
             let x = 1;
             if (x > 0) {
               var mailOptions = {
-                from: "ayushtemp823@gmail.com",
+                from: process.env.EMAIL,
                 to: user_email,
                 subject: "Order confirmation From shoppy",
                 text: mail_content,
@@ -153,56 +152,51 @@ app.post("/addorders", (req, res) => {
         }
       );
 
+      ///////////////inserting in order table
+      function Iorder() {
+        //insert
+        console.log("values inserted in order table");
+        console.log(
+          res.name,
+          res.mobile,
+          p_id,
+          p_name,
+          p_image,
+          p_price,
+          p_size,
+          qty,
+          id,
+          d_addres,
+          d_mobile
+        );
+        db.query(
+          "INSERT INTO `order` ( name , mobile ,p_id, p_name, p_image, p_price,p_size, p_qty,id, delivery_address, delivery_mobile,status ) VALUES (?,?,? ,?,?,? ,?,?,? ,?,?,?)",
+          // console.log(i);
 
-                 
-///////////////inserting in order table
-function Iorder() {
-  //insert
-  console.log("values inserted in order table");
-  console.log(
-      res.name,
-      res.mobile,
-      p_id,
-      p_name,
-      p_image,
-      p_price,
-      p_size,
-      qty,
-      id,
-      d_addres,
-      d_mobile,
-  );
-  db.query( "INSERT INTO `order` ( name , mobile ,p_id, p_name, p_image, p_price,p_size, p_qty,id, delivery_address, delivery_mobile,status ) VALUES (?,?,? ,?,?,? ,?,?,? ,?,?,?)",
-  // console.log(i);
- 
-    [
-      res.name,
-      res.mobile,
-      p_id,
-      p_name,
-      p_image,
-      p_price,
-      p_size,
-      qty,
-      id,
-      d_addres,
-      d_mobile,
-      "pending",
-    ],
-    (err, result) => {
-
-    if (err) {
-      console.log(err);
-
-    }
-    if(!err){
-      console.log(res);
-    }
-  });
-
-
-}
-
+          [
+            res.name,
+            res.mobile,
+            p_id,
+            p_name,
+            p_image,
+            p_price,
+            p_size,
+            qty,
+            id,
+            d_addres,
+            d_mobile,
+            "pending",
+          ],
+          (err, result) => {
+            if (err) {
+              console.log(err);
+            }
+            if (!err) {
+              console.log(res);
+            }
+          }
+        );
+      }
     });
 
     if (flag) {
@@ -221,11 +215,7 @@ function Iorder() {
   } else {
     console.log("not authenticated");
   }
-
 });
-
-
-
 
 //////////////////fetching data from order table///////////
 app.post("/orderData", (req, res) => {
@@ -242,12 +232,7 @@ app.post("/orderData", (req, res) => {
   });
 });
 
-
 ///////////////
-
-
-
-
 
 ////////////////////del from cart table start/////////////////
 app.post("/del", (req, res) => {
