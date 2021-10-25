@@ -19,6 +19,8 @@ const Order = () => {
   const [d_add, setD_add] = useState("");
   const [d_mob, setD_mob] = useState("");
   const [name , setname] = useState("");
+  // const [name , setname] = useState("");
+
 
 
   const [show, setShow] = useState(false);
