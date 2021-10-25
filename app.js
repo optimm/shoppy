@@ -203,10 +203,6 @@ function Iorder() {
 
 }
 
-
-
-
-
     });
 
     if (flag) {
@@ -225,33 +221,6 @@ function Iorder() {
   } else {
     console.log("not authenticated");
   }
-
-
-  
-// /////Create Order table 
-        // function Uorder(){
-
-        //   console.log(" uorder called ");
-        //   const ot = " CREATE TABLE `order`  ( name varchar(100) , mobile bigint(20) NOT NULL, p_id bigint(20) NOT NULL , p_name varchar(100), p_image varchar(300), p_price bigint(20),p_size  char(5) NOT NULL ,  p_qty bigint(20) , id varchar(50) NOT NULL, delivery_address varchar(300), delivery_mobile bigint(20), status varchar(20) NOT NULL , PRIMARY KEY (p_id,p_size,id,mobile,status), FOREIGN KEY (p_id) REFERENCES `product`(p_id))";
-          
-        //   console.log(ot);
-        //   db.query(ot , (err, result) => {
-        //       if (err) {
-        //         console.log("error create table order " , err);
-        //       }
-        //       if(!err){
-        //         console.log("Iorder called");
-        //         Iorder();
-        //         console.log(err);
-        //         console.log("ressss order table created " , res);
-        //         res.send("ordertable created");
-        //       }
-        //     });
-        //   }
-
-
-
-
 
 });
 

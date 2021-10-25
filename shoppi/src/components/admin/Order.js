@@ -7,9 +7,7 @@ import "./admin.css";
 import Axios from "axios";
 Axios.defaults.withCredentials = true;
 
-
 const Order = () => {
-
   const history = useHistory();
   const [order, setOrder] = useState([]);
   const [p_name, setP_name] = useState("");
@@ -18,10 +16,8 @@ const Order = () => {
   const [d_date, setD_date] = useState("");
   const [d_add, setD_add] = useState("");
   const [d_mob, setD_mob] = useState("");
-  const [name , setname] = useState("");
+  const [name, setname] = useState("");
   // const [name , setname] = useState("");
-
-
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -38,7 +34,6 @@ const Order = () => {
     setShow(true);
   };
 
-
   useEffect(() => {
     showOrder();
     Axios.post("http://localhost:8000/cart", {
@@ -52,11 +47,11 @@ const Order = () => {
         if (response.data.usr === "customer") {
           history.push({
             pathname: "/",
-          });          
+          });
         } else {
-            console.log("Hello This is order page");
-            // seto(true);
-            // sets("info");
+          console.log("Hello This is order page");
+          // seto(true);
+          // sets("info");
         }
       }
     });
@@ -64,7 +59,7 @@ const Order = () => {
 
   function showOrder() {
     console.log("callin order data");
-    Axios.post("http://localhost:8000/orderData",)
+    Axios.post("http://localhost:8000/orderData")
       .then((response) => {
         console.log(response.data);
         setOrder(response.data);
@@ -75,17 +70,13 @@ const Order = () => {
       });
   }
 
-
-
-
-    return (   
-     <>
-        <div className="myorder">
-
+  return (
+    <>
+      <div className="myorder">
         <div className="admin-nav">
-        <Link to="/admin" className="adminLogo">
-          <h1>Admin</h1>
-        </Link>
+          <Link to="/admin" className="adminLogo">
+            <h1>Admin</h1>
+          </Link>
         </div>
 
         <Row className="order-list">
@@ -115,22 +106,29 @@ const Order = () => {
                         <Col lg={6} md={6} sm={6} xs={6}>
                           <div className="order-detail">
                             <p
-                              className="order-data myorder-price"
+                              className="order-data myorder-price admin-order-data"
                               id="check-d"
                             >
-                              <nobr>Ordered By -  {item.name}</nobr>
+                              <nobr>Ordered By - {item.name}</nobr>
                             </p>
-                            <p className="order-data"> {item.p_name} x {item.p_qty}</p>
+                            <p className="order-data  admin-order-data">
+                              {" "}
+                              {item.p_name} x {item.p_qty}
+                            </p>
                             {/* <p
                               className="order-data myorder-price"
                               id="check-d"
                             >
                               <nobr>Price - Rs. {item.p_price} Only</nobr>
                             </p> */}
-                            <p className="order-data status">{item.status}</p>
-                            <p className="order-data">Ordered on - {item.id}</p>
+                            <p className="order-data status  admin-order-data">
+                              {item.status}
+                            </p>
+                            <p className="order-data admin-order-data">
+                              {item.id}
+                            </p>
                             <button
-                              className="order-btn"
+                              className="order-btn admin-order-btn"
                               onClick={() => {
                                 handleShow(index);
                               }}
@@ -142,12 +140,10 @@ const Order = () => {
                       </Row>
                     </div>
                   </Col>
-                  </React.Fragment>
-        ))}
-      </Row>
+                </React.Fragment>
+              ))}
+        </Row>
       </div>
-        
-
 
       <Modal
         show={show}
@@ -161,8 +157,7 @@ const Order = () => {
         </Modal.Header>
         <Modal.Body>
           <Row>
-          
-          <Col lg={3} md={3} sm={3} xs={3}>
+            <Col lg={3} md={3} sm={3} xs={3}>
               <p className="more-detail">
                 <b>Ordered By </b>
               </p>
@@ -225,15 +220,8 @@ const Order = () => {
           </Row>
         </Modal.Body>
       </Modal>
-
-
-
-
-
-
-
-        </>
-    );
+    </>
+  );
 };
 
 export default Order;

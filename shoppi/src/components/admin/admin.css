@@ -295,3 +295,18 @@
 .admin-add-button:hover {
   background-color: black;
 }
+
+/* /////////////////////////////////// admin orders ////////////////////////// */
+.admin-order-btn {
+  margin-left: 0px;
+  font-size: 11px;
+  padding: 0px;
+  border: none;
+  background-color: unset;
+  color: rgb(73, 73, 73);
+  text-decoration: underline;
+}
+.admin-order-data {
+  margin-left: 0px;
+  font-size: 11px;
+}

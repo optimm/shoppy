@@ -4,7 +4,7 @@
   padding: 0px;
 }
 .profile-left {
-  background-color: rgb(225, 245, 255);
+  background-color: rgb(102, 188, 231);
   height: 100vh;
   padding: 20px;
   padding-left: 60px;
@@ -30,11 +30,13 @@
   margin-top: 100px;
   text-align: center;
   width: 90%;
-  background-color: rgb(255 255 255 / 45%);
+  background-color: rgb(255 255 255 / 20%);
+  border-top: 1px solid white;
+  border-left: 1px solid white;
   border-radius: 16px;
   padding: 40px 0px;
   /* box-shadow: inset -4px -4px 4px rgba(0, 0, 0, 0.1), inset 4px 4px 4px rgba(0, 0, 0, 0.1); */
-  box-shadow: 5px 5px 4px #dadada;
+  /* box-shadow: 5px 5px 4px #dadada; */
   display: block;
 }
 
