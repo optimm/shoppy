@@ -12,6 +12,32 @@ const Order = () => {
 
   const history = useHistory();
   const [order, setOrder] = useState([]);
+  const [p_name, setP_name] = useState("");
+  const [p_size, setP_size] = useState("");
+  const [p_total, setP_total] = useState("");
+  const [d_date, setD_date] = useState("");
+  const [d_add, setD_add] = useState("");
+  const [d_mob, setD_mob] = useState("");
+  const [name , setname] = useState("");
+  // const [name , setname] = useState("");
+
+
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = (index) => {
+    let ind = order.length - 1 - index;
+    setP_name(`${order[ind].p_name} - x${order[ind].p_qty}`);
+    setname(order[ind].name);
+    setP_size(order[ind].p_size);
+    setP_total(order[ind].p_price * order[ind].p_qty);
+    setD_date(order[ind].id);
+    setD_add(order[ind].delivery_address);
+    setD_mob(order[ind].delivery_mobile);
+    console.log(p_name, p_size, p_total);
+    setShow(true);
+  };
+
 
   useEffect(() => {
     showOrder();
@@ -94,19 +120,23 @@ const Order = () => {
                             >
                               <nobr>Ordered By -  {item.name}</nobr>
                             </p>
-                            <p className="order-data"> {item.p_name}</p>
-                            <p
+                            <p className="order-data"> {item.p_name} x {item.p_qty}</p>
+                            {/* <p
                               className="order-data myorder-price"
                               id="check-d"
                             >
                               <nobr>Price - Rs. {item.p_price} Only</nobr>
-                            </p>
-                            <p className="order-data">Quantity- {item.p_qty}</p>
+                            </p> */}
                             <p className="order-data status">{item.status}</p>
                             <p className="order-data">Ordered on - {item.id}</p>
-                            {/* <button className="order-btn" onClick={handleShow}>
+                            <button
+                              className="order-btn"
+                              onClick={() => {
+                                handleShow(index);
+                              }}
+                            >
                               More detail
-                            </button> */}
+                            </button>
                           </div>
                         </Col>
                       </Row>
@@ -116,6 +146,91 @@ const Order = () => {
         ))}
       </Row>
       </div>
+        
+
+
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+        size="lg"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title></Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Row>
+          
+          <Col lg={3} md={3} sm={3} xs={3}>
+              <p className="more-detail">
+                <b>Ordered By </b>
+              </p>
+            </Col>
+            <Col lg={9} md={9} sm={9} xs={9}>
+              <p className="more-detail">{name}</p>
+            </Col>
+
+            <Col lg={3} md={3} sm={3} xs={3}>
+              <p className="more-detail">
+                <b>Product</b>
+              </p>
+            </Col>
+            <Col lg={9} md={9} sm={9} xs={9}>
+              <p className="more-detail">{p_name}</p>
+            </Col>
+            <Col lg={3} md={3} sm={3} xs={3}>
+              <p className="more-detail">
+                <b>Size</b>
+              </p>
+            </Col>
+            <Col lg={9} md={9} sm={9} xs={9}>
+              <p className="more-detail">{p_size}</p>
+            </Col>
+            <Col lg={3} md={3} sm={3} xs={3}>
+              <p className="more-detail">
+                <b>Total Price</b>
+              </p>
+            </Col>
+            <Col lg={9} md={9} sm={9} xs={9}>
+              <p className="more-detail">{p_total}</p>
+            </Col>
+            <hr />
+            <p className="delivery-detais">Delivery Details</p>
+            {/* <hr /> */}
+            <Col lg={3} md={3} sm={3} xs={3}>
+              <p className="more-detail">
+                <b>Address</b>
+              </p>
+            </Col>
+            <Col lg={9} md={9} sm={9} xs={9}>
+              <p className="more-detail">{d_add}</p>
+            </Col>
+            <Col lg={3} md={3} sm={3} xs={3}>
+              <p className="more-detail">
+                <b>Mobile</b>
+              </p>
+            </Col>
+            <Col lg={9} md={9} sm={9} xs={9}>
+              <p className="more-detail">{d_mob}</p>
+            </Col>
+            <Col lg={3} md={3} sm={3} xs={3}>
+              <p className="more-detail">
+                <b>Ordered On</b>
+              </p>
+            </Col>
+            <Col lg={9} md={9} sm={9} xs={9}>
+              <p className="more-detail">{d_date}</p>
+            </Col>
+          </Row>
+        </Modal.Body>
+      </Modal>
+
+
+
+
+
+
 
         </>
     );
