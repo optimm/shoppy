@@ -32,6 +32,7 @@ var transporter = nodemailer.createTransport({
     pass: process.env.PASSWORD,
   },
 });
+
 /////// sql connection/////////
 const db = mysql.createConnection({
   host: "localhost",
@@ -122,16 +123,14 @@ app.post("/addorders", (req, res) => {
               mail_data +
               `\n\nWill be delivered on address - ${d_addres} \nTotal price to be paid is Rs. ${total} \n\nThank you for placing the order \nShoppy.com`;
             console.log(mail_content);
-            fast2sms
-              .sendMessage({
-                authorization: process.env.API_KEY,
-                message: mail_content,
-                numbers: [user_mobile, d_mobile],
-              })
-              .then((response) => {
-                console.log(response);
-                console.log("message sent");
-              });
+            var options = {
+              authorization: process.env.API_KEY,
+              message: `Hey your order from Shoppy was placed and you will recive an email with complete details, Thank you keep shopping`,
+              numbers: [`${user_mobile}`, `${d_mobile}`],
+            };
+            fast2sms.sendMessage(options).then((response) => {
+              console.log(response);
+            });
             let x = 1;
             if (x > 0) {
               var mailOptions = {
