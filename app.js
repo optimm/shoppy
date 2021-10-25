@@ -112,6 +112,11 @@ app.post("/addorders", (req, res) => {
             flag = false;
           }
           if (!err) {
+             
+             console.log("insertion called")
+             // Uorder();
+             Iorder(); 
+
             let mail_start = `Hey! ${user_name} , your order placed on ${id} with  products \n`;
             let mail_content =
               mail_start +
@@ -147,6 +152,61 @@ app.post("/addorders", (req, res) => {
           }
         }
       );
+
+
+                 
+///////////////inserting in order table
+function Iorder() {
+  //insert
+  console.log("values inserted in order table");
+  console.log(
+      res.name,
+      res.mobile,
+      p_id,
+      p_name,
+      p_image,
+      p_price,
+      p_size,
+      qty,
+      id,
+      d_addres,
+      d_mobile,
+  );
+  db.query( "INSERT INTO `order` ( name , mobile ,p_id, p_name, p_image, p_price,p_size, p_qty,id, delivery_address, delivery_mobile,status ) VALUES (?,?,? ,?,?,? ,?,?,? ,?,?,?)",
+  // console.log(i);
+ 
+    [
+      res.name,
+      res.mobile,
+      p_id,
+      p_name,
+      p_image,
+      p_price,
+      p_size,
+      qty,
+      id,
+      d_addres,
+      d_mobile,
+      "pending",
+    ],
+    (err, result) => {
+
+    if (err) {
+      console.log(err);
+
+    }
+    if(!err){
+      console.log(res);
+    }
+  });
+
+
+}
+
+
+
+
+
     });
 
     if (flag) {
@@ -165,7 +225,60 @@ app.post("/addorders", (req, res) => {
   } else {
     console.log("not authenticated");
   }
+
+
+  
+// /////Create Order table 
+        // function Uorder(){
+
+        //   console.log(" uorder called ");
+        //   const ot = " CREATE TABLE `order`  ( name varchar(100) , mobile bigint(20) NOT NULL, p_id bigint(20) NOT NULL , p_name varchar(100), p_image varchar(300), p_price bigint(20),p_size  char(5) NOT NULL ,  p_qty bigint(20) , id varchar(50) NOT NULL, delivery_address varchar(300), delivery_mobile bigint(20), status varchar(20) NOT NULL , PRIMARY KEY (p_id,p_size,id,mobile,status), FOREIGN KEY (p_id) REFERENCES `product`(p_id))";
+          
+        //   console.log(ot);
+        //   db.query(ot , (err, result) => {
+        //       if (err) {
+        //         console.log("error create table order " , err);
+        //       }
+        //       if(!err){
+        //         console.log("Iorder called");
+        //         Iorder();
+        //         console.log(err);
+        //         console.log("ressss order table created " , res);
+        //         res.send("ordertable created");
+        //       }
+        //     });
+        //   }
+
+
+
+
+
 });
+
+
+
+
+//////////////////fetching data from order table///////////
+app.post("/orderData", (req, res) => {
+  // const value = req.body.category;
+  // let t = "order";
+  console.log("data from order table ");
+  const q = "SELECT * FROM `order`";
+  db.query(q, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.send({ err: err });
+    }
+    res.send(result);
+  });
+});
+
+
+///////////////
+
+
+
+
 
 ////////////////////del from cart table start/////////////////
 app.post("/del", (req, res) => {

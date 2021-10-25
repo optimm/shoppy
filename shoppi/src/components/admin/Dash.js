@@ -86,7 +86,7 @@ const Dash = () => {
               </Link>
               <br />
 
-              <Link to="">
+              <Link to="/order">
                 <button className="profile-button">
                   <DeliveryDiningIcon
                     className="profile-icon"

@@ -16,6 +16,7 @@ import Admin from "./components/admin/Admin";
 import Dash from "./components/admin/Dash";
 import AdminADD from "./components/admin/AddProd";
 import Updateprod from "./components/admin/Updateprod";
+import Order from "./components/admin/Order";
 
 import { Route, Switch } from "react-router-dom";
 
@@ -40,6 +41,7 @@ function App() {
         <Route exact path="/adminprod" component={Admin}></Route>
         <Route exact path="/adminadd" component={AdminADD}></Route>
         <Route exact path="/adminupdate" component={Updateprod}></Route>
+        <Route exact path="/order" component={Order}></Route>
       </Switch>
     </>
   );
