@@ -26,3 +26,4 @@ Shoppy is a advanced online clothing management system made using react js , nod
 #### contributors
 - Ayush Saxena (https://github.com/optimm)
 - Bhawna Khatri (https://github.com/Bhawna147)
+- Aditya Kumar Yadav (https://github.com/aditya-0209)
