@@ -7,6 +7,13 @@ import { Row, Col } from "react-bootstrap";
 import { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+} from "react-router-dom";
 
 import "./footer.css";
 function Foot() {
@@ -25,10 +32,19 @@ function Foot() {
           </p>
         </div>
         <div className="icons">
-          <InstagramIcon style={{ fontSize: 30 }} className="foot-icon" />
-          <TwitterIcon style={{ fontSize: 30 }} className="foot-icon" />
-          <YouTubeIcon style={{ fontSize: 30 }} className="foot-icon" />
-          <FacebookIcon style={{ fontSize: 30 }} className="foot-icon" />
+          <a href="https://www.instagram.com/yadav_aditya_2223/" target="_blank">
+            <InstagramIcon style={{ fontSize: 30 }} className="foot-icon" />
+          </a>
+          <a href="https://twitter.com/AdityaR52929911" target="_blank">
+            <TwitterIcon style={{ fontSize: 30 }} className="foot-icon" />
+          </a>
+          <a href="https://www.youtube.com/channel/UCvK7ZlW8cuoQLvvP6ncwf4w" target="_blank">
+            <YouTubeIcon style={{ fontSize: 30 }} className="foot-icon" />
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100009893104080" target="_blank">
+            <FacebookIcon style={{ fontSize: 30 }} className="foot-icon" />
+          </a>
+          {/* Added By Aditya */}
         </div>
       </div>
       <div className="foot-bottom">
