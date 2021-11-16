@@ -153,12 +153,12 @@ const Women = () => {
                   <br />
                   <input
                     type="radio"
-                    id="suit"
+                    id="top"
                     name="sort"
-                    value="suit"
+                    value="top"
                     onChange={(e) => setCategory(e.target.value)}
                   />
-                  <label for="suit">Suit</label>
+                  <label for="suit">Top</label>
                   <br />
                   <input
                     type="radio"
@@ -189,12 +189,12 @@ const Women = () => {
                   <br />
                   <input
                     type="radio"
-                    id="shirt"
+                    id="tshirt"
                     name="sort"
-                    value="shirt"
+                    value="tshirt"
                     onChange={(e) => setCategory(e.target.value)}
                   />
-                  <label for="shirt">Shirt</label>
+                  <label for="tshirt">T-Shirt</label>
                 </div>
               </div>
             </Col>

@@ -52,7 +52,7 @@ const AddProd = () => {
   const getpid = () => {
     Axios.post("http://localhost:8000/getpid")
       .then((response) => {
-        console.log(" response", response.data);
+        console.log(" response", response.data.max);
         setPiD(response.data.max);
       })
       .catch(function (error) {

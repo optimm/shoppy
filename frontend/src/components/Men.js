@@ -188,12 +188,12 @@ const Men = () => {
                   <br />
                   <input
                     type="radio"
-                    id="shirt"
+                    id="tshirt"
                     name="sort"
-                    value="shirt"
+                    value="tshirt"
                     onChange={(e) => setCategory(e.target.value)}
                   />
-                  <label for="shirt">Shirt</label>
+                  <label for="tshirt">T-Shirt</label>
                 </div>
               </div>
             </Col>

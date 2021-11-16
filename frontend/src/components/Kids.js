@@ -89,9 +89,7 @@ const Kid = () => {
           </div>
         </Col>
 
-
         <Col lg={3} md={12} sm={12} className="product-right">
-
           <div className="product-filterBox">
             <h2>Kids Fashion</h2>
 
@@ -188,12 +186,21 @@ const Kid = () => {
                   <br />
                   <input
                     type="radio"
-                    id="shirt"
+                    id="tshirt"
                     name="sort"
-                    value="shirt"
+                    value="tshirt"
                     onChange={(e) => setCategory(e.target.value)}
                   />
-                  <label for="shirt">Shirt</label>
+                  <label for="tshirt">T-Shirt</label>
+                  <br />
+                  <input
+                    type="radio"
+                    id="top"
+                    name="sort"
+                    value="top"
+                    onChange={(e) => setCategory(e.target.value)}
+                  />
+                  <label for="top">Top</label>
                 </div>
               </div>
             </Col>

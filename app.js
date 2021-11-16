@@ -463,13 +463,14 @@ app.post("/getpid", (req, res) => {
         return a - b;
       });
       console.log(p_ids);
-      for (let i = 1; i <= result.length; i++) {
+      for (let i = 1; i <= p_ids.length + 1; i++) {
         if (p_ids[i - 1] != i) {
           max = i;
+          console.log("finding max pid", max, i);
           break;
         }
       }
-      console.log(max);
+      // console.log(max);
       res.send({ max: max });
     }
     if (err) {
