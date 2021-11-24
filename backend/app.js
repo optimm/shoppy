@@ -35,9 +35,10 @@ var transporter = nodemailer.createTransport({
 
 /////// sql connection/////////
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  database: "shoppy",
+  host: "sql6.freesqldatabase.com",
+  user: "sql6453641",
+  password: "W3IwRw2WqG",
+  database: "sql6453641",
 });
 
 /////////////////// fetching data from the  table/////////////////////
