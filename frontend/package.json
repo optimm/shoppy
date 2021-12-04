@@ -2,7 +2,11 @@
   "name": "face",
   "version": "0.1.0",
   "private": true,
+<<<<<<< HEAD
   "proxy": "https://shooppy1.herokuapp.com",
+=======
+  "proxy": "http://localhost:8000",
+>>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
   "dependencies": {
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",

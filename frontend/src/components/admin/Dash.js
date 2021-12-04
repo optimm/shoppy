@@ -18,7 +18,11 @@ const Dash = () => {
   const [data, setData] = useState([]);
   const logout = () => {
     console.log("hey");
+<<<<<<< HEAD
     Axios.post("https://shooppy1.herokuapp.com/logout", {
+=======
+    Axios.post("http://localhost:8000/logout", {
+>>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
       usr: "admin",
     }).then((response) => {
       console.log(response.data);
@@ -29,7 +33,11 @@ const Dash = () => {
   };
 
   useEffect(() => {
+<<<<<<< HEAD
     Axios.post("https://shooppy1.herokuapp.com/cart", {
+=======
+    Axios.post("http://localhost:8000/cart", {
+>>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
       name: "ayush",
     }).then((response) => {
       if (response.data.data === false) {
@@ -53,7 +61,11 @@ const Dash = () => {
   }, []);
 
   function showdata() {
+<<<<<<< HEAD
     Axios.post("https://shooppy1.herokuapp.com/customer")
+=======
+    Axios.post("http://localhost:8000/customer")
+>>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
       .then((response) => {
         if (response.data.length > 0) {
           setData(response.data);

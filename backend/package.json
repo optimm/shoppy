@@ -1,4 +1,8 @@
 {
+<<<<<<< HEAD
+=======
+  "proxy": "http://localhost:3000",
+>>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
   "dependencies": {
     "aos": "^2.3.4",
     "bootstrap": "^5.1.0",

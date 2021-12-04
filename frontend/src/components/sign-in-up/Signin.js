@@ -28,7 +28,11 @@ const Sign = (props) => {
   let [s, sets] = useState("success");
 
   useEffect(() => {
+<<<<<<< HEAD
     Axios.post("https://shooppy1.herokuapp.com/cart", {
+=======
+    Axios.post("http://localhost:8000/cart", {
+>>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
       name: "ayush",
     }).then((response) => {
       console.log(response);
@@ -60,7 +64,11 @@ const Sign = (props) => {
           user = "admin";
         }
       }
+<<<<<<< HEAD
       Axios.post("https://shooppy1.herokuapp.com/login", {
+=======
+      Axios.post("http://localhost:8000/login", {
+>>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
         email: email,
         pass: pass,
         usr: user,
