@@ -26,11 +26,7 @@ const Signup = () => {
   let [m, setm] = useState("");
   let [o, seto] = useState(false);
   let [s, sets] = useState("success");
-<<<<<<< HEAD
-  Axios.post("https://shooppy1.herokuapp.com/cart", {
-=======
   Axios.post("http://localhost:8000/cart", {
->>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
     name: "ayush",
   }).then((response) => {
     if (response.data.data === true) {
@@ -62,11 +58,7 @@ const Signup = () => {
         seto(true);
         sets("warning");
       } else {
-<<<<<<< HEAD
-        Axios.post("https://shooppy1.herokuapp.com/register", {
-=======
         Axios.post("http://localhost:8000/register", {
->>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
           email: email,
           pass: pass,
           name: name,

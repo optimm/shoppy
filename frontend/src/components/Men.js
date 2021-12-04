@@ -20,11 +20,8 @@ const Men = () => {
 
   const [data, setData] = useState([]);
   useEffect(() => {
-<<<<<<< HEAD
-    Axios.post("https://shooppy1.herokuapp.com/data", {
-=======
+
     Axios.post("http://localhost:8000/data", {
->>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
       category: "men",
     }).then((response) => {
       setData(response.data);

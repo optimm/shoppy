@@ -32,11 +32,8 @@ const MyOrder = () => {
   };
 
   useEffect(() => {
-<<<<<<< HEAD
-    Axios.post("https://shooppy1.herokuapp.com/cart", {
-=======
+
     Axios.post("http://localhost:8000/cart", {
->>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
       name: "ayush",
     }).then((response) => {
       if (response.data.data === false) {
@@ -55,11 +52,9 @@ const MyOrder = () => {
   }, []);
   function showOrder() {
     console.log("hi i am called");
-<<<<<<< HEAD
-    Axios.post("https://shooppy1.herokuapp.com/data", {
-=======
+
     Axios.post("http://localhost:8000/data", {
->>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
+
       category: "myorder",
     })
       .then((response) => {

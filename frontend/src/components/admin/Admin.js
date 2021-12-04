@@ -34,11 +34,7 @@ const Admin = () => {
   const [PImg, setPImg] = useState("");
   useEffect(() => {
     showdata();
-<<<<<<< HEAD
-    Axios.post("https://shooppy1.herokuapp.com/cart", {
-=======
     Axios.post("http://localhost:8000/cart", {
->>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
       name: "ayush",
     }).then((response) => {
       if (response.data.data === false) {
@@ -59,11 +55,7 @@ const Admin = () => {
 
   function adminDel(index) {
     if (window.confirm("Are you sure you want to delete this!")) {
-<<<<<<< HEAD
-      Axios.post("https://shooppy1.herokuapp.com/adminDel", {
-=======
       Axios.post("http://localhost:8000/adminDel", {
->>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
         p_id: data[index].p_id,
       }).then((response) => {
         if (response.data.length > 0) {
@@ -80,11 +72,7 @@ const Admin = () => {
     }
   }
   function showdata() {
-<<<<<<< HEAD
-    Axios.post("https://shooppy1.herokuapp.com/data", {
-=======
     Axios.post("http://localhost:8000/data", {
->>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
       category: "men",
     })
       .then((response) => {

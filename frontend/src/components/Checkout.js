@@ -11,11 +11,8 @@ const Checkout = (props) => {
   let name, addres, mobile, total;
   const history = useHistory();
   useEffect(() => {
-<<<<<<< HEAD
-    Axios.post("https://shooppy1.herokuapp.com/cart", {
-=======
+
     Axios.post("http://localhost:8000/cart", {
->>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
       name: "ayush",
     }).then((response) => {
       if (response.data.data === false) {
@@ -46,11 +43,7 @@ const Checkout = (props) => {
 
   function confirm() {
     if (window.confirm("Place order")) {
-<<<<<<< HEAD
-      Axios.post("https://shooppy1.herokuapp.com/addorders", {
-=======
       Axios.post("http://localhost:8000/addorders", {
->>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
         o_data: props.location.state.p_data,
         d_addres: addres,
         d_mobile: mobile,

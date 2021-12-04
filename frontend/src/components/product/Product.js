@@ -22,11 +22,8 @@ const Product = (props) => {
   // add to cart function
 
   useEffect(() => {
-<<<<<<< HEAD
-    Axios.post("https://shooppy1.herokuapp.com/cart", {
-=======
+
     Axios.post("http://localhost:8000/cart", {
->>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
       name: "ayush",
     }).then((response) => {
       if (response.data.data === false) {
@@ -61,11 +58,8 @@ const Product = (props) => {
       seto(true);
       sets("info");
     } else {
-<<<<<<< HEAD
-      Axios.post("https://shooppy1.herokuapp.com/addtocart", {
-=======
+
       Axios.post("http://localhost:8000/addtocart", {
->>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
         product_id: props.location.state.data.p_id,
         product_size: size,
       }).then((response) => {

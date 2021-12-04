@@ -26,11 +26,9 @@ const AddProd = () => {
   let [o, seto] = useState(false);
   let [s, sets] = useState("success");
   useEffect(() => {
-<<<<<<< HEAD
-    Axios.post("https://shooppy1.herokuapp.com/cart", {
-=======
+
     Axios.post("http://localhost:8000/cart", {
->>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
+
       name: "ayush",
     }).then((response) => {
       if (response.data.data === false) {
@@ -54,11 +52,7 @@ const AddProd = () => {
   /////////////////// get pid
 
   const getpid = () => {
-<<<<<<< HEAD
-    Axios.post("https://shooppy1.herokuapp.com/getpid")
-=======
     Axios.post("http://localhost:8000/getpid")
->>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
       .then((response) => {
         console.log(" response", response.data.max);
         setPiD(response.data.max);
@@ -81,11 +75,7 @@ const AddProd = () => {
       seto(true);
       sets("info");
     } else {
-<<<<<<< HEAD
-      Axios.post("https://shooppy1.herokuapp.com/adminAddProduct", {
-=======
       Axios.post("http://localhost:8000/adminAddProduct", {
->>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
         PName: PName,
         PPrice: PPrice,
         PType: PType,

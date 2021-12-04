@@ -24,11 +24,8 @@ const Cart = () => {
   const deliveryData = [name, addres, mobile, total];
   const [data, setData] = useState([]);
   useEffect(() => {
-<<<<<<< HEAD
-    Axios.post("https://shooppy1.herokuapp.com/cart", {
-=======
+
     Axios.post("http://localhost:8000/cart", {
->>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
       name: "ayush",
     }).then((response) => {
       if (response.data.data === false) {
@@ -51,11 +48,7 @@ const Cart = () => {
     // console.log("flag ki value hai ye", flag);
   }, []);
   function showdata() {
-<<<<<<< HEAD
-    Axios.post("https://shooppy1.herokuapp.com/data", {
-=======
     Axios.post("http://localhost:8000/data", {
->>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
       category: "cart",
     })
       .then((response) => {
@@ -98,11 +91,7 @@ const Cart = () => {
   ///////// delete from cart/////////////////
   function del(index) {
     if (window.confirm("Are you sure you want to delete this!")) {
-<<<<<<< HEAD
-      Axios.post("https://shooppy1.herokuapp.com/del", {
-=======
       Axios.post("http://localhost:8000/del", {
->>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
         p_id: data[index].p_id,
         p_size: data[index].p_size,
       }).then((response) => {

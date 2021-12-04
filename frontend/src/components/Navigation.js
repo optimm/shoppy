@@ -15,11 +15,8 @@ Axios.defaults.withCredentials = true;
 function Navigation() {
   const history = useHistory();
   const check = () => {
-<<<<<<< HEAD
-    Axios.post("https://shooppy1.herokuapp.com/cart", {
-=======
+
     Axios.post("http://localhost:8000/cart", {
->>>>>>> 841b19353a7ec3e91b105c2a9399d91d9b996cf5
       name: "ayush",
     })
       .then((response) => {
