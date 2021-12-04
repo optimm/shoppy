@@ -1,0 +1,109 @@
+.cards {
+  margin-top: 100px;
+  transition: all 0.5s ease-in-out;
+}
+.card-item {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 20px;
+  transition: all 0.5s ease-in-out;
+  max-width: 500px;
+  max-height: 500px;
+
+  /* border: 4px solid black;
+  border-block-color: #ffa005; */
+}
+.card-image {
+  width: 98%;
+  border-radius: 20px 20px 0 0;
+  transition: all 0.5s ease-in-out;
+}
+.card-head {
+  text-align: center;
+  margin-top: 200px;
+  transition: all 0.5s ease-in-out;
+}
+.card-head h1 {
+  text-align: center;
+  color: rgb(78, 77, 77);
+  font-size: 2.3rem;
+  transition: all 0.5s ease-in-out;
+
+  letter-spacing: 1px;
+}
+.card-item:hover {
+  transform: scale(1.05);
+}
+
+/* .card-item.aos-init.aos-animate:hover{
+  transform: translateY(-35px);
+} */
+
+.card-text {
+  width: 98%;
+  margin-top: 5px;
+  text-align: center;
+  color: rgb(233, 233, 233);
+  background-color: rgb(44, 44, 44);
+  padding: 5% 5% 3% 5%;
+  font-size: 1.5rem;
+  transition: all 0.5s ease-in-out;
+  border-radius: 0 0 20px 20px;
+}
+.card-link {
+  text-decoration: none;
+  transition: all 0.5s ease-in-out;
+}
+@media only screen and (max-width: 1200px) {
+  .card-head {
+    margin-top: 150px;
+  }
+  .card-head h1 {
+    font-size: 1.5rem;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .card-item {
+    max-width: 350px;
+    max-height: 350px;
+  }
+  .card-image,
+  .card-text {
+    width: 100%;
+  }
+  .card-head h1 {
+    font-size: 1.2rem;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .card-item {
+    max-width: 220px;
+    max-height: 220px;
+    margin: auto;
+    margin-bottom: 100px;
+  }
+  .card-text {
+    font-size: 1rem;
+    border-radius: 0 0 20px 20px;
+    padding: 4% 4% 2.5% 4%;
+  }
+  .cards {
+    margin-top: 120px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .card-item {
+    max-width: 170px;
+    max-height: 170px;
+    margin: auto;
+    margin-bottom: 100px;
+  }
+
+  .card-text {
+    font-size: 1rem;
+    border-radius: 0 0 20px 20px;
+    padding: 4% 4% 2.5% 4%;
+  }
+  .cards {
+    margin-top: 120px;
+  }
+}

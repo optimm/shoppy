@@ -1,0 +1,138 @@
+.nav {
+  background-color: rgb(255, 253, 253);
+  transition: all 0.3s ease-in-out;
+}
+
+.container {
+  margin-left: -30px;
+  margin-top: 20px;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.logo {
+  width: 200px;
+  height: 120px;
+  margin-top: -50px;
+  transition: all 0.3s ease-in-out;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+.me-auto {
+  margin-top: -30px;
+  margin-left: 0px;
+  transition: all 0s;
+}
+
+.nav-item {
+  color: rgb(85, 85, 85);
+  text-decoration: none;
+  margin-left: 30px;
+  margin-right: 25px;
+  font-size: 16px;
+  /* font-weight: bold; */
+  transition: all 0.3s ease-in-out;
+  padding: 4px;
+  border-radius: 100%;
+  width: 33px;
+  /* background-color: aqua; */
+
+}
+
+.nav-item:hover {
+  color: black;
+}
+
+.nav-ani::after {
+  content: "";
+  display: block;
+  background-color: #ffa005;
+  width: 0%;
+  height: 3px;
+  transition: width 0.3;
+}
+
+.nav-ani:hover::after {
+  width: 110%;
+  transition: width 0.8s;
+}
+
+.toggle {
+  transition: all 0.5s ease-in-out;
+  position: absolute;
+  right: 20px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  top: 35px;
+  border: none;
+}
+
+.navbar-light .navbar-toggler-icon {
+  background-size: 20px;
+}
+
+.item {
+  margin-left: 50px;
+}
+
+@media only screen and (max-width: 1100px) {
+  .item {
+    margin-left: 30px;
+  }
+  .logo {
+    width: 180px;
+    height: 110px;
+  }
+  .me-auto {
+    margin-left: -12px;
+  }
+  .nav-item {
+    font-size: 11px;
+    /* font-weight: bold; */
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .item {
+    margin-left: 30px;
+  }
+  .logo {
+    width: 190px;
+    height: 120px;
+  }
+  .me-auto {
+    margin-left: -15px;
+  }
+  .nav-item {
+    font-size: 13px;
+    /* font-weight: bold; */
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .me-auto {
+    margin-top: 0px;
+    padding-left: 10px;
+    margin-left: 0px;
+  }
+  .nav-item {
+    padding-bottom: 10px;
+  }
+  .logo {
+    width: 190px;
+    height: 110px;
+    margin-left: 10px;
+  }
+  .toggle {
+    top: 30px;
+  }
+}
+
+.nav-hover:hover {
+  background-color: #ffa005;
+  border-radius: 100%;
+}

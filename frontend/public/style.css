@@ -1,0 +1,44 @@
+body {
+  overflow-x: hidden;
+  /* rgb(255, 253, 253); */
+}
+* {
+  margin: 0px;
+  padding: 0px;
+}
+/* .main {
+  /* display: flex; */
+/* flex-wrap: wrap; */
+/* border-bottom: 0.5px solid rgb(131, 131, 131);} */
+
+.yellow {
+  /* position: relative; */
+  background-color: #ffa005;
+  /* width: 700px; */
+  animation: slide 2s;
+}
+.white {
+  background-color: rgb(255, 253, 253);
+  /* border-bottom: 1px soPhoto by NASA Image Librarylid rgb(207, 206, 206, 0.5); */
+  /* animation: updown 2s; */
+}
+@keyframes updown {
+  0% {
+    margin-top: -500px;
+  }
+  100% {
+    margin-top: 0px;
+  }
+}
+
+@keyframes slide {
+  0% {
+    margin-left: 800px;
+  }
+  100% {
+    margin-left: 0px;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}

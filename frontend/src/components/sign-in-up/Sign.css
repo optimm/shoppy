@@ -1,0 +1,205 @@
+* {
+  font-family: Ubuntu;
+  margin: 0;
+  padding: 0;
+}
+
+.login-main {
+  margin-top: 20px;
+}
+.login-image img {
+  width: 450px;
+  height: 500px;
+}
+
+.login-left {
+  position: relative;
+  text-align: center;
+  height: 500px;
+  margin-left: 10%;
+  border: 1px solid black;
+}
+.login-heading {
+  background-color: rgb(26, 26, 26);
+  color: #ffffff;
+  padding: 10px 0;
+  text-align: center;
+}
+.login-inputs {
+  margin-top: 50px;
+}
+.login-input {
+  margin: 20px auto;
+  border: 2px solid rgba(207, 207, 207, 0.7);
+  border-bottom: none;
+  font-size: 18px;
+  width: 80%;
+  height: 50px;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  color: rgb(26, 26, 26);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.1em 1em;
+}
+.login-btn {
+  width: 250px;
+  height: 40px;
+  background: rgb(0, 174, 255, 0.7);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 1.3px;
+  border-radius: 8px;
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+  margin-top: 70px;
+  margin-bottom: 20px;
+}
+.login-btn:hover{
+  background-color: orange;
+}
+.login-foot-dark {
+  width: 100%;
+  height: 8%;
+  position: absolute;
+  bottom: 0;
+  background-color: #000;
+}
+.login-input:focus {
+  outline: none;
+}
+.login-foot {
+  font-size: 0.8rem;
+}
+@media (max-width: 1150px) {
+  .login-left {
+    margin-left: 5%;
+    height: 400px;
+  }
+  .login-image img {
+    width: 350px;
+    height: 400px;
+  }
+  .login-left {
+    text-align: center;
+    margin-left: 10%;
+    border: 1px solid black;
+  }
+  .login-inputs {
+    margin-top: 30px;
+  }
+  .login-input {
+    margin: 15px auto;
+    height: 37px;
+    font-size: 15px;
+    width: 75%;
+    padding: 1px 5px;
+  }
+  .login-foot-dark {
+    height: 5%;
+    position: absolute;
+    bottom: 0;
+    background-color: #000;
+  }
+  .login-heading {
+    padding: 8px 0;
+  }
+  .login-heading h2 {
+    font-size: 1.5rem;
+  }
+  .login-btn {
+    height: 33px;
+    font-size: 16px;
+
+    margin-top: 50px;
+    margin-bottom: 18px;
+  }
+}
+
+@media (max-width: 950px) {
+  .login-left {
+    margin-left: 20px;
+    height: 400px;
+  }
+  .login-input {
+    margin: 15px auto;
+    height: 35px;
+    font-size: 13px;
+    width: 70%;
+    padding: 1px 5px;
+  }
+}
+@media (max-width: 850px) {
+  .login-left {
+    margin-left: 0px;
+    height: 400px;
+  }
+}
+@media (max-width: 766px) {
+  .login-image {
+    display: none;
+  }
+  .login-left {
+    height: auto;
+  }
+
+  .login-main {
+    padding: 5px 40px;
+  }
+  .login-inputs {
+    margin-top: 30px;
+  }
+  .login-input {
+    margin: 20px auto;
+    height: 40px;
+    font-size: 15px;
+    width: 80%;
+    padding: 2px 5px;
+  }
+  .login-btn {
+    height: 33px;
+    font-size: 16px;
+
+    margin-top: 55px;
+  }
+  .login-foot {
+    display: block;
+    height: 100px;
+  }
+  .login-foot-dark {
+    height: 7%;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 500px) {
+  .login-input {
+    margin: 18px auto;
+    height: 40px;
+    font-size: 15px;
+    width: 85%;
+    padding: 2px 5px;
+  }
+  .login-btn {
+    width: 120px;
+    margin-bottom: 30px;
+  }
+  .login-heading h2 {
+    font-size: 1.2rem;
+  }
+}
+
+/*
+.login-btn:hover {
+  background-color: #f0a411;
+}
+
+.login-btn2 {
+  margin-top: 42px;
+}
+
+.login h3 {
+  position: relative;
+  top: 7rem;
+  /* margin-left: 8em; 
+} 
+*/

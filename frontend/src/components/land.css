@@ -1,0 +1,253 @@
+.btn {
+  background-color: #ffa005;
+  border-radius: 20px;
+  width: 200px;
+  height: 55px;
+  color: black;
+  font-size: 18px;
+  transition: all 0.2s ease-in-out;
+  margin-bottom: 50px;
+  animation: glow 2s;
+}
+@keyframes glow {
+  0% {
+    margin-left: -500px;
+  }
+  100% {
+    margin-left: 0px;
+  }
+}
+
+.btn:hover {
+  background-color: rgb(170, 170, 170);
+}
+
+.main {
+  overflow-x: hidden;
+}
+
+.main-heading {
+  margin: 120px 0 0 8%;
+  width: 60%;
+  transition: all 0.5s ease-in-out;
+}
+
+.main-image {
+  height: 91vh;
+  max-height: 660px;
+  margin-left: -230px;
+  transition: all 0.5s ease-in-out;
+  animation: MoveLeftRight 10s linear infinite;
+}
+@keyframes MoveLeftRight {
+  0%,
+  100% {
+    margin-left: -260px;
+  }
+  50% {
+    margin-left: -210px;
+  }
+}
+.yellow {
+  padding-top: 145px;
+  transition: all 0.5s ease-in-out;
+  /* border-radius: 50% 0 0 50%; */
+}
+
+.land-heading {
+  color: rgb(46, 46, 46);
+  font-family: "Helvetica Neue";
+  font-size: 3.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: all 0.5s ease-in-out;
+}
+
+.land-sub-heading {
+  font-size: 1.18rem;
+  font-weight: lighter;
+  margin-top: 20px;
+}
+
+.btn {
+  margin-top: 40px;
+  font-weight: light;
+  letter-spacing: 1.5px;
+  transition: all 0.5s ease-in-out;
+}
+
+/* 
+===============MEDIA QUERIES ================== */
+
+@media only screen and (max-width: 1200px) {
+  .main-heading {
+    width: 70%;
+  }
+  .land-heading {
+    font-size: 3.5rem;
+  }
+  .main-image {
+    max-height: 600px;
+    height: 85vh;
+  }
+  .yellow {
+    padding-top: 160px;
+  }
+  .btn {
+    margin-top: 30px;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .main-heading {
+    width: 67%;
+  }
+  .main-image {
+    height: 84vh;
+    margin-left: -270px;
+  }
+  .yellow {
+    padding-top: 170px;
+  }
+  @keyframes MoveLeftRight {
+    0%,
+    100% {
+      margin-left: -270px;
+    }
+    50% {
+      margin-left: -240px;
+    }
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  /* .main-heading {
+    width: 65%;
+  } */
+  .land-heading {
+    font-size: 3.2rem;
+  }
+  .main-image {
+    margin-left: -270px;
+    height: 560px;
+  }
+}
+
+@media only screen and (max-width: 955px) {
+  .main-heading {
+    margin: 130px 0 0 8%;
+  }
+  .land-heading {
+    font-size: 2.5rem;
+  }
+  .land-sub-heading {
+    font-size: 1rem;
+  }
+  .btn {
+    width: 150px;
+    height: 40px;
+    font-size: 12px;
+  }
+  .main-image {
+    height: 530px;
+    margin-left: -280px;
+  }
+}
+
+@media only screen and (max-width: 890px) {
+  .main-heading {
+    margin-top: 110px;
+  }
+  .main-image {
+    margin-left: -250px;
+    height: 500px;
+  }
+}
+
+/* 752 going down  530 se*/
+
+@media only screen and (max-width: 767px) {
+  .main-heading {
+    margin: 50px 0 0 15%;
+  }
+  /* .main-image {
+    margin-left: -250px;
+    height: 500px;
+  } */
+  .land-heading {
+    font-size: 3.3rem;
+  }
+  .land-sub-heading {
+    font-size: 1.25rem;
+  }
+  .btn {
+    font-size: 15px;
+    width: 180px;
+    height: 50px;
+    margin-bottom: 100px;
+  }
+  .yellow {
+    padding-top: 15px;
+    transition: all 0.5s ease-in-out;
+  }
+  .main-image {
+    height: 400px;
+    margin-left: 10%;
+  }
+  @keyframes MoveLeftRight {
+    0%,
+    100% {
+      margin-left: 13%;
+    }
+    50% {
+      margin-left: 3%;
+    }
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .main-heading {
+    margin: 50px 0 0 15%;
+  }
+  .land-heading {
+    font-size: 2.5rem;
+  }
+  .land-sub-heading {
+    font-size: 0.9rem;
+  }
+  .btn {
+    margin-top: 20px;
+    font-size: 11px;
+    width: 140px;
+    height: 40px;
+    margin-bottom: 80px;
+  }
+  .main-image {
+    height: 300px;
+    margin-left: 0px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .main-heading {
+    margin: 50px 0 0 10%;
+    width: 80%;
+  }
+  .land-heading {
+    font-size: 2rem;
+  }
+  .land-sub-heading {
+    font-size: 0.8rem;
+  }
+  .btn {
+    margin-top: 20px;
+    font-size: 10px;
+    width: 130px;
+    height: 35px;
+    margin-bottom: 80px;
+  }
+  .main-image {
+    height: 280px;
+    margin-left: -15px;
+  }
+}
